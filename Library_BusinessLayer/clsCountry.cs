@@ -16,6 +16,7 @@ namespace Library_BusinessLayer
             CountryID = null;
             CountryName = null;
         }
+
         private clsCountry(int? CountryID, string CountryName)
         {
             _Mode = enMode.Update;
@@ -23,7 +24,7 @@ namespace Library_BusinessLayer
             this.CountryName = CountryName;
         }
 
-        public static clsCountry Find(int CountryID)
+        public static clsCountry Find(int? CountryID)
         {
             string CountryName = null;
 
@@ -35,7 +36,19 @@ namespace Library_BusinessLayer
                 return null;
         }
 
-        public static bool IsCountryExist(int CountryID)
+        public static clsCountry Find(string CountryName)
+        {
+            int? CountryID = null;
+
+            bool IsFound = clsCountryData.GetCountryInfoByName(CountryName, ref CountryID);
+
+            if (IsFound)
+                return new clsCountry(CountryID, CountryName);
+            else
+                return null;
+        }
+
+        public static bool IsCountryExist(int? CountryID)
         {
             return clsCountryData.IsCountryExist(CountryID);
         }

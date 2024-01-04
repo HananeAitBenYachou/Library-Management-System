@@ -1,5 +1,5 @@
-using Libray_DataAccessLayer;
 using Library_Utility;
+using Libray_DataAccessLayer;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -8,7 +8,9 @@ namespace Library_DataAccessLayer
 {
     public class clsPersonData
     {
-        public static bool GetPersonInfoByID(int? PersonID, ref string FirstName, ref string LastName, ref string NationalNo, ref char? Gender, ref DateTime? BirthDate, ref string Address, ref string Phone, ref string Email, ref int? NationalityCountryID, ref string PersonalImagePath, ref string Password)
+        public static bool GetPersonInfoByID(int? PersonID, ref string FirstName, ref string LastName, ref string NationalNo, 
+            ref char? Gender, ref DateTime? BirthDate, ref string Address, ref string Phone, 
+            ref string Email, ref int? NationalityCountryID, ref string PersonalImagePath, ref string Password)
         {
             bool IsFound = false;
 
@@ -38,7 +40,84 @@ namespace Library_DataAccessLayer
 
                                 NationalNo = (reader["NationalNo"] != DBNull.Value) ? (string)reader["NationalNo"] : null;
 
-                                Gender = (reader["Gender"] != DBNull.Value) ? (char?)reader["Gender"] : null;
+                                if ((reader["Gender"] != DBNull.Value))                             
+                                    Gender = char.Parse((string)reader["Gender"]);
+                                
+                                else                               
+                                    Gender = null;
+                                
+                                BirthDate = (reader["BirthDate"] != DBNull.Value) ? (DateTime?)reader["BirthDate"] : null;
+
+                                Address = (reader["Address"] != DBNull.Value) ? (string)reader["Address"] : null;
+
+                                Phone = (reader["Phone"] != DBNull.Value) ? (string)reader["Phone"] : null;
+
+                                Email = (reader["Email"] != DBNull.Value) ? (string)reader["Email"] : null;
+
+                                NationalityCountryID = (reader["NationalityCountryID"] != DBNull.Value) ? (int?)reader["NationalityCountryID"] : null;
+
+                                PersonalImagePath = (reader["PersonalImagePath"] != DBNull.Value) ? (string)reader["PersonalImagePath"] : null;
+
+                                Password = (reader["Password"] != DBNull.Value) ? (string)reader["Password"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                IsFound = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+
+        public static bool GetPersonInfoByNationalNo(string NationalNo , ref int? PersonID, ref string FirstName, ref string LastName,
+            ref char? Gender, ref DateTime? BirthDate, ref string Address, ref string Phone,
+            ref string Email, ref int? NationalityCountryID, ref string PersonalImagePath, ref string Password)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * 
+                            FROM People 
+                            WHERE NationalNo = @NationalNo;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@NationalNo", (object)NationalNo ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                IsFound = true;
+
+                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+
+                                FirstName = (reader["FirstName"] != DBNull.Value) ? (string)reader["FirstName"] : null;
+
+                                LastName = (reader["LastName"] != DBNull.Value) ? (string)reader["LastName"] : null;
+
+                                if ((reader["Gender"] != DBNull.Value))
+                                    Gender = char.Parse((string)reader["Gender"]);
+
+                                else
+                                    Gender = null;
 
                                 BirthDate = (reader["BirthDate"] != DBNull.Value) ? (DateTime?)reader["BirthDate"] : null;
 
@@ -105,7 +184,71 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
-        public static int? AddNewPerson(string FirstName, string LastName, string NationalNo, char? Gender, DateTime? BirthDate, string Address, string Phone, string Email, int? NationalityCountryID, string PersonalImagePath, string Password)
+        public static bool IsPersonExistByNationalNo(string NationalNo)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT IsFound = 1 
+                             FROM People
+                             WHERE NationalNo = @NationalNo;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@NationalNo", (object)NationalNo ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        IsFound = (reader != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static bool IsPersonExistByEmail(string Email)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT IsFound = 1 
+                             FROM People
+                             WHERE Email = @Email;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Email", (object)Email ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        IsFound = (reader != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static int? AddNewPerson(string FirstName, string LastName, string NationalNo,
+            char? Gender, DateTime? BirthDate, string Address, string Phone, string Email,
+            int? NationalityCountryID, string PersonalImagePath, string Password)
         {
             int? PersonID = null;
 
@@ -156,7 +299,9 @@ namespace Library_DataAccessLayer
             return PersonID;
         }
 
-        public static bool UpdatePersonInfo(int? PersonID, string FirstName, string LastName, string NationalNo, char? Gender, DateTime? BirthDate, string Address, string Phone, string Email, int? NationalityCountryID, string PersonalImagePath, string Password)
+        public static bool UpdatePersonInfo(int? PersonID, string FirstName, string LastName, 
+            string NationalNo, char? Gender, DateTime? BirthDate, string Address, 
+            string Phone, string Email, int? NationalityCountryID, string PersonalImagePath, string Password)
         {
             int rowsAffected = 0;
 

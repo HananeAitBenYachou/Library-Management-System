@@ -43,7 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsAuthorData.cs" />
-    <Compile Include="clsBookCopieData.cs" />
+    <Compile Include="clsBookCopyData.cs" />
     <Compile Include="clsBookData.cs" />
     <Compile Include="clsBorrowingRecordData.cs" />
     <Compile Include="clsCountryData.cs" />
@@ -56,7 +56,6 @@
     <Compile Include="clsReservationData.cs" />
     <Compile Include="clsSettingsData.cs" />
     <Compile Include="clsUserData.cs" />
-    <Compile Include="GlobalClasses\clsErrorLogger.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
-using Libray_DataAccessLayer;
 using Library_Utility;
+using Libray_DataAccessLayer;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -9,7 +9,7 @@ namespace Library_DataAccessLayer
     public class clsBorrowingRecordData
     {
         public static bool GetBorrowingRecordInfoByID(int? BorrowingRecordID, ref int? MemberID, ref int? BookCopyID,
-            ref DateTime? BorrowingDate, ref DateTime? DueDate, ref DateTime? ActualReturnDate, 
+            ref DateTime? BorrowingDate, ref DateTime? DueDate, ref DateTime? ActualReturnDate,
             ref int? CreatedByUserID)
         {
             bool IsFound = false;
@@ -97,7 +97,7 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
-        public static int? AddNewBorrowingRecord(int? MemberID, int? BookCopyID, DateTime? BorrowingDate, 
+        public static int? AddNewBorrowingRecord(int? MemberID, int? BookCopyID, DateTime? BorrowingDate,
             DateTime? DueDate, DateTime? ActualReturnDate, int? CreatedByUserID)
         {
             int? BorrowingRecordID = null;
@@ -144,8 +144,8 @@ namespace Library_DataAccessLayer
             return BorrowingRecordID;
         }
 
-        public static bool UpdateBorrowingRecordInfo(int? BorrowingRecordID, int? MemberID, 
-            int? BookCopyID, DateTime? BorrowingDate, DateTime? DueDate, 
+        public static bool UpdateBorrowingRecordInfo(int? BorrowingRecordID, int? MemberID,
+            int? BookCopyID, DateTime? BorrowingDate, DateTime? DueDate,
             DateTime? ActualReturnDate, int? CreatedByUserID)
         {
             int rowsAffected = 0;

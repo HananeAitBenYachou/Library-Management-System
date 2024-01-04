@@ -20,6 +20,12 @@ namespace Library_BusinessLayer
         public int? NationalityCountryID { get; set; }
         public string PersonalImagePath { get; set; }
         public string Password { get; set; }
+        public string FullName
+        {
+            get { return FirstName+ " " + LastName; }
+        }
+
+        public clsCountry CountryInfo { get; }
 
         public clsPerson()
         {
@@ -52,9 +58,11 @@ namespace Library_BusinessLayer
             this.NationalityCountryID = NationalityCountryID;
             this.PersonalImagePath = PersonalImagePath;
             this.Password = Password;
+
+            CountryInfo = clsCountry.Find(NationalityCountryID);
         }
 
-        public static clsPerson Find(int PersonID)
+        public static clsPerson Find(int? PersonID)
         {
             string FirstName = null;
             string LastName = null;
@@ -76,9 +84,41 @@ namespace Library_BusinessLayer
                 return null;
         }
 
-        public static bool IsPersonExist(int PersonID)
+        public static clsPerson Find(string NationalNo)
+        {
+            int? PersonID = null;
+            string FirstName = null;
+            string LastName = null;           
+            char? Gender = null;
+            DateTime? BirthDate = null;
+            string Address = null;
+            string Phone = null;
+            string Email = null;
+            int? NationalityCountryID = null;
+            string PersonalImagePath = null;
+            string Password = null;
+
+            bool IsFound = clsPersonData.GetPersonInfoByNationalNo(NationalNo , ref PersonID, ref FirstName, ref LastName, ref Gender, ref BirthDate, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref PersonalImagePath, ref Password);
+
+            if (IsFound)
+                return new clsPerson(PersonID, FirstName, LastName, NationalNo, Gender, BirthDate, Address, Phone, Email, NationalityCountryID, PersonalImagePath, Password);
+            else
+                return null;
+        }
+
+        public static bool IsPersonExist(int? PersonID)
         {
             return clsPersonData.IsPersonExist(PersonID);
+        }
+
+        public static bool IsPersonExistByNationalNo(string NationalNo)
+        {
+            return clsPersonData.IsPersonExistByNationalNo(NationalNo);
+        }
+
+        public static bool IsPersonExistByEmail(string Email)
+        {
+            return clsPersonData.IsPersonExistByEmail(Email);
         }
 
         private bool _AddNewPerson()
@@ -111,7 +151,7 @@ namespace Library_BusinessLayer
             return false;
         }
 
-        public static bool DeletePerson(int PersonID)
+        public static bool DeletePerson(int? PersonID)
         {
             return clsPersonData.DeletePerson(PersonID);
         }

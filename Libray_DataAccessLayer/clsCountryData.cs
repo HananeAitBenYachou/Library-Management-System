@@ -1,5 +1,5 @@
-using Libray_DataAccessLayer;
 using Library_Utility;
+using Libray_DataAccessLayer;
 using System;
 using System.Data;
 using System.Data.SqlClient;
@@ -33,6 +33,52 @@ namespace Library_DataAccessLayer
                                 IsFound = true;
 
                                 CountryName = (reader["CountryName"] != DBNull.Value) ? (string)reader["CountryName"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                IsFound = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static bool GetCountryInfoByName(string CountryName, ref int? CountryID)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * 
+                            FROM Countries 
+                            WHERE CountryName = @CountryName;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@CountryName", (object)CountryName ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                IsFound = true;
+
+                                CountryID = (reader["CountryID"] != DBNull.Value) ? (int?)reader["CountryID"] : null;
 
                             }
 

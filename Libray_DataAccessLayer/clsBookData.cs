@@ -1,15 +1,15 @@
+using Library_Utility;
 using Libray_DataAccessLayer;
 using System;
 using System.Data;
 using System.Data.SqlClient;
-using Library_Utility;
 
 
 namespace Library_DataAccessLayer
 {
     public class clsBookData
     {
-        public static bool GetBookInfoByID(int? BookID, ref string Title, ref string ISBN, ref int? GenreID, ref string AdditionalDetails, ref int? AuthorID, ref int? CreatedByUserID)
+        public static bool GetBookInfoByID(int? BookID, ref string Title, ref string ISBN, ref int? GenreID, ref string AdditionalDetails, ref int? AuthorID, ref int? CreatedByUserID, ref DateTime? PublicationDate)
         {
             bool IsFound = false;
 
@@ -44,6 +44,8 @@ namespace Library_DataAccessLayer
                                 AuthorID = (reader["AuthorID"] != DBNull.Value) ? (int?)reader["AuthorID"] : null;
 
                                 CreatedByUserID = (reader["CreatedByUserID"] != DBNull.Value) ? (int?)reader["CreatedByUserID"] : null;
+
+                                PublicationDate = (reader["PublicationDate"] != DBNull.Value) ? (DateTime?)reader["PublicationDate"] : null;
 
                             }
 
@@ -96,7 +98,7 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
-        public static int? AddNewBook(string Title, string ISBN, int? GenreID, string AdditionalDetails, int? AuthorID, int? CreatedByUserID)
+        public static int? AddNewBook(string Title, string ISBN, int? GenreID, string AdditionalDetails, int? AuthorID, int? CreatedByUserID, DateTime? PublicationDate)
         {
             int? BookID = null;
 
@@ -105,8 +107,8 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO Books (Title,ISBN,GenreID,AdditionalDetails,AuthorID,CreatedByUserID)
-                            VALUES (@Title,@ISBN,@GenreID,@AdditionalDetails,@AuthorID,@CreatedByUserID);
+                    string query = @"INSERT INTO Books (Title,ISBN,GenreID,AdditionalDetails,AuthorID,CreatedByUserID,PublicationDate)
+                            VALUES (@Title,@ISBN,@GenreID,@AdditionalDetails,@AuthorID,@CreatedByUserID,@PublicationDate);
                             SELECT SCOPE_IDENTITY();";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -118,6 +120,7 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@AdditionalDetails", (object)AdditionalDetails ?? DBNull.Value);
                         command.Parameters.AddWithValue("@AuthorID", (object)AuthorID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@PublicationDate", (object)PublicationDate ?? DBNull.Value);
 
                         object InsertedRowID = command.ExecuteScalar();
 
@@ -142,7 +145,7 @@ namespace Library_DataAccessLayer
             return BookID;
         }
 
-        public static bool UpdateBookInfo(int? BookID, string Title, string ISBN, int? GenreID, string AdditionalDetails, int? AuthorID, int? CreatedByUserID)
+        public static bool UpdateBookInfo(int? BookID, string Title, string ISBN, int? GenreID, string AdditionalDetails, int? AuthorID, int? CreatedByUserID, DateTime? PublicationDate)
         {
             int rowsAffected = 0;
 
@@ -158,7 +161,8 @@ namespace Library_DataAccessLayer
 							GenreID = @GenreID,
 							AdditionalDetails = @AdditionalDetails,
 							AuthorID = @AuthorID,
-							CreatedByUserID = @CreatedByUserID
+							CreatedByUserID = @CreatedByUserID,
+							PublicationDate = @PublicationDate
                             WHERE BookID = @BookID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -171,6 +175,7 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@AdditionalDetails", (object)AdditionalDetails ?? DBNull.Value);
                         command.Parameters.AddWithValue("@AuthorID", (object)AuthorID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@PublicationDate", (object)PublicationDate ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
 

@@ -1,10 +1,12 @@
 using Library_DataAccessLayer;
+using System;
 using System.Data;
 
 namespace Library_BusinessLayer
 {
     public class clsBook
     {
+
         private enum enMode { AddNew = 0, Update = 1 };
         private enMode _Mode;
         public int? BookID { get; private set; }
@@ -14,6 +16,7 @@ namespace Library_BusinessLayer
         public string AdditionalDetails { get; set; }
         public int? AuthorID { get; set; }
         public int? CreatedByUserID { get; set; }
+        public DateTime? PublicationDate { get; set; }
 
         public clsBook()
         {
@@ -25,8 +28,9 @@ namespace Library_BusinessLayer
             AdditionalDetails = null;
             AuthorID = null;
             CreatedByUserID = null;
+            PublicationDate = null;
         }
-        private clsBook(int? BookID, string Title, string ISBN, int? GenreID, string AdditionalDetails, int? AuthorID, int? CreatedByUserID)
+        private clsBook(int? BookID, string Title, string ISBN, int? GenreID, string AdditionalDetails, int? AuthorID, int? CreatedByUserID, DateTime? PublicationDate)
         {
             _Mode = enMode.Update;
             this.BookID = BookID;
@@ -36,6 +40,7 @@ namespace Library_BusinessLayer
             this.AdditionalDetails = AdditionalDetails;
             this.AuthorID = AuthorID;
             this.CreatedByUserID = CreatedByUserID;
+            this.PublicationDate = PublicationDate;
         }
 
         public static clsBook Find(int BookID)
@@ -46,11 +51,12 @@ namespace Library_BusinessLayer
             string AdditionalDetails = null;
             int? AuthorID = null;
             int? CreatedByUserID = null;
+            DateTime? PublicationDate = null;
 
-            bool IsFound = clsBookData.GetBookInfoByID(BookID, ref Title, ref ISBN, ref GenreID, ref AdditionalDetails, ref AuthorID, ref CreatedByUserID);
+            bool IsFound = clsBookData.GetBookInfoByID(BookID, ref Title, ref ISBN, ref GenreID, ref AdditionalDetails, ref AuthorID, ref CreatedByUserID, ref PublicationDate);
 
             if (IsFound)
-                return new clsBook(BookID, Title, ISBN, GenreID, AdditionalDetails, AuthorID, CreatedByUserID);
+                return new clsBook(BookID, Title, ISBN, GenreID, AdditionalDetails, AuthorID, CreatedByUserID, PublicationDate);
             else
                 return null;
         }
@@ -62,13 +68,13 @@ namespace Library_BusinessLayer
 
         private bool _AddNewBook()
         {
-            BookID = clsBookData.AddNewBook(Title, ISBN, GenreID, AdditionalDetails, AuthorID, CreatedByUserID);
+            BookID = clsBookData.AddNewBook(Title, ISBN, GenreID, AdditionalDetails, AuthorID, CreatedByUserID, PublicationDate);
             return BookID.HasValue;
         }
 
         private bool _UpdateBook()
         {
-            return clsBookData.UpdateBookInfo(BookID, Title, ISBN, GenreID, AdditionalDetails, AuthorID, CreatedByUserID);
+            return clsBookData.UpdateBookInfo(BookID, Title, ISBN, GenreID, AdditionalDetails, AuthorID, CreatedByUserID, PublicationDate);
         }
 
         public bool Save()
@@ -99,6 +105,5 @@ namespace Library_BusinessLayer
         {
             return clsBookData.GetAllBooks();
         }
-
     }
 }
