@@ -15,9 +15,9 @@ namespace LibraryManagementSystem.People.UserControls
     {
         public event EventHandler<int?> PersonFound;
 
-        protected virtual void OnPersonFound()
+        protected virtual void OnPersonFound(int? PersonID)
         {
-            PersonFound?.Invoke(this, ucPersonCard1.PersonID);
+            PersonFound?.Invoke(this,PersonID);
         }
 
         private bool _FilterEnabled = true;
@@ -33,6 +33,9 @@ namespace LibraryManagementSystem.People.UserControls
             {
                 _FilterEnabled = value;
                 gbFilter.Enabled = _FilterEnabled;
+
+                if(!_FilterEnabled)
+                    txtFilterValue.Validating -= txtFilterValue_Validating;
             }
         }
 
@@ -47,13 +50,15 @@ namespace LibraryManagementSystem.People.UserControls
 
         public void LoadPersonData(int? PersonID)
         {
+            FilterEnabled = false;
+            txtFilterValue.Text = PersonID.ToString();
             _FindPerson();
         }
 
         public void ResetPersonData()
         {
             cbFilterByOptions.SelectedIndex = 0;
-            _FilterFocus();
+            FilterFocus();
             ucPersonCard1.ResetPersonData();
         }
 
@@ -72,7 +77,7 @@ namespace LibraryManagementSystem.People.UserControls
 
         private void ucPersonCardWithFilter_Load(object sender, EventArgs e)
         {
-            _FilterFocus();
+            FilterFocus();
         }
 
         private void btnSearchForPerson_Click(object sender, EventArgs e)
@@ -85,8 +90,8 @@ namespace LibraryManagementSystem.People.UserControls
 
             _FindPerson();
 
-            if (_FilterEnabled && PersonID.HasValue)
-                OnPersonFound();
+            if (FilterEnabled && PersonID.HasValue)
+                OnPersonFound(ucPersonCard1.PersonID);
         }
 
         private void btnAddNewPerson_Click(object sender, EventArgs e)
@@ -105,7 +110,7 @@ namespace LibraryManagementSystem.People.UserControls
 
         private void cbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _FilterFocus();
+            FilterFocus();
         }
 
         private void txtFilterValue_Validating(object sender, CancelEventArgs e)
@@ -129,7 +134,7 @@ namespace LibraryManagementSystem.People.UserControls
                 e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
         }
 
-        private void _FilterFocus()
+        public void FilterFocus()
         {
             txtFilterValue.ResetText();
             txtFilterValue.Select();

@@ -161,5 +161,10 @@ namespace Library_BusinessLayer
             return clsPersonData.GetAllPeople();
         }
 
+        public bool UpdatePersonPassword(int? PersonID, string NewPassword)
+        {
+            return clsPersonData.UpdatePassword(PersonID, NewPassword);
+        }
+
     }
 }

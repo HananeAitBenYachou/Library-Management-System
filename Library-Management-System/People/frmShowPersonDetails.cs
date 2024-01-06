@@ -28,7 +28,6 @@ namespace LibraryManagementSystem.People
 
         private void frmShowPersonDetails_Load(object sender, EventArgs e)
         {
-
             if (!clsPerson.IsPersonExist(_PersonID))
             {
                 MessageBox.Show($"No person with ID = {_PersonID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -38,7 +37,6 @@ namespace LibraryManagementSystem.People
 
             ucPersonCard1.LoadPersonData(_PersonID);
         }
-
 
     }
 }

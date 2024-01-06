@@ -8,7 +8,7 @@ namespace Library_DataAccessLayer
 {
     public class clsUserData
     {
-        public static bool GetUserInfoByID(int? UserID, ref int? PersonID, ref string UserName, ref short? Permissions)
+        public static bool GetUserInfoByID(int? UserID, ref int? PersonID, ref string UserName, ref short? Permissions, ref bool? IsActive)
         {
             bool IsFound = false;
 
@@ -37,6 +37,60 @@ namespace Library_DataAccessLayer
                                 UserName = (reader["UserName"] != DBNull.Value) ? (string)reader["UserName"] : null;
 
                                 Permissions = (reader["Permissions"] != DBNull.Value) ? (short?)reader["Permissions"] : null;
+
+                                IsActive = (reader["IsActive"] != DBNull.Value) ? (bool?)reader["IsActive"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                IsFound = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static bool GetUserInfoByName(string UserName , ref int? UserID, ref int? PersonID, ref short? Permissions, ref bool? IsActive)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * 
+                            FROM Users 
+                            WHERE UserName = @UserName;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserName", (object)UserName ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                IsFound = true;
+
+                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+
+                                UserID = (reader["UserID"] != DBNull.Value) ? (int?)reader["UserID"] : null;
+
+                                Permissions = (reader["Permissions"] != DBNull.Value) ? (short?)reader["Permissions"] : null;
+
+                                IsActive = (reader["IsActive"] != DBNull.Value) ? (bool?)reader["IsActive"] : null;
 
                             }
 
@@ -89,7 +143,69 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
-        public static int? AddNewUser(int? PersonID, string UserName, short? Permissions)
+        public static bool IsUserExistByPersonID(int? PersonID)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT IsFound = 1 
+                             FROM Users
+                             WHERE PersonID = @PersonID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        IsFound = (reader != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static bool IsUserExist(string UserName)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT IsFound = 1 
+                             FROM Users
+                             WHERE UserName = @UserName;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@UserName", (object)UserName ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        IsFound = (reader != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static int? AddNewUser(int? PersonID, string UserName, short? Permissions, bool? IsActive)
         {
             int? UserID = null;
 
@@ -98,8 +214,8 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO Users (PersonID,UserName,Permissions)
-                            VALUES (@PersonID,@UserName,@Permissions);
+                    string query = @"INSERT INTO Users (PersonID,UserName,Permissions,IsActive)
+                            VALUES (@PersonID,@UserName,@Permissions,@IsActive);
                             SELECT SCOPE_IDENTITY();";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -108,6 +224,7 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@UserName", (object)UserName ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Permissions", (object)Permissions ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@IsActive", (object)IsActive ?? DBNull.Value);
 
                         object InsertedRowID = command.ExecuteScalar();
 
@@ -132,7 +249,7 @@ namespace Library_DataAccessLayer
             return UserID;
         }
 
-        public static bool UpdateUserInfo(int? UserID, int? PersonID, string UserName, short? Permissions)
+        public static bool UpdateUserInfo(int? UserID, int? PersonID, string UserName, short? Permissions, bool? IsActive)
         {
             int rowsAffected = 0;
 
@@ -145,7 +262,8 @@ namespace Library_DataAccessLayer
                             SET 
 							PersonID = @PersonID,
 							UserName = @UserName,
-							Permissions = @Permissions
+							Permissions = @Permissions,
+							IsActive = @IsActive
                             WHERE UserID = @UserID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -155,6 +273,7 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@UserName", (object)UserName ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Permissions", (object)Permissions ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@IsActive", (object)IsActive ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
 
@@ -207,7 +326,10 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Users;";
+                    string query = @"SELECT UserID AS 'User ID', Users.PersonID AS 'Person ID', People.FirstName + ' '+ People.LastName AS 'Full Name',
+                                    UserName AS 'User Name' , Permissions , IsActive AS 'Is Active'
+                                    FROM Users
+                                    INNER JOIN People ON Users.PersonID = People.PersonID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -219,7 +341,6 @@ namespace Library_DataAccessLayer
                                 Datatable.Load(reader);
                             }
                         }
-
                     }
                 }
             }

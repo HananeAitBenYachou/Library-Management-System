@@ -41,8 +41,8 @@
             this.btnGenres = new Guna.UI2.WinForms.Guna2Button();
             this.btnBooks = new Guna.UI2.WinForms.Guna2Button();
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
+            this.pnlContainer = new Sipaa.Framework.SPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.sPanel2 = new Sipaa.Framework.SPanel();
             this.sPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -104,6 +104,7 @@
             this.btnUsers.Text = "Users";
             this.btnUsers.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnUsers.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
             // 
             // btnPayments
             // 
@@ -366,6 +367,18 @@
             this.btnDashboard.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDashboard.TextOffset = new System.Drawing.Point(40, 0);
             // 
+            // pnlContainer
+            // 
+            this.pnlContainer.BackColor = System.Drawing.Color.White;
+            this.pnlContainer.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.pnlContainer.BorderRadius = 6;
+            this.pnlContainer.BorderSize = 0;
+            this.pnlContainer.ForeColor = System.Drawing.Color.White;
+            this.pnlContainer.Location = new System.Drawing.Point(296, 150);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(1286, 743);
+            this.pnlContainer.TabIndex = 3;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LibraryManagementSystem.Properties.Resources.bookrworm_library_high_resolution_logo_transparent;
@@ -376,25 +389,13 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // sPanel2
-            // 
-            this.sPanel2.BackColor = System.Drawing.Color.White;
-            this.sPanel2.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.sPanel2.BorderRadius = 6;
-            this.sPanel2.BorderSize = 0;
-            this.sPanel2.ForeColor = System.Drawing.Color.White;
-            this.sPanel2.Location = new System.Drawing.Point(296, 150);
-            this.sPanel2.Name = "sPanel2";
-            this.sPanel2.Size = new System.Drawing.Size(1286, 743);
-            this.sPanel2.TabIndex = 3;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1605, 917);
-            this.Controls.Add(this.sPanel2);
+            this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.sPanel1);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -423,7 +424,7 @@
         private Guna.UI2.WinForms.Guna2Button btnAuthors;
         private Guna.UI2.WinForms.Guna2Button btnGenres;
         private Guna.UI2.WinForms.Guna2Button btnBooks;
-        private Sipaa.Framework.SPanel sPanel2;
+        private Sipaa.Framework.SPanel pnlContainer;
     }
 }
 

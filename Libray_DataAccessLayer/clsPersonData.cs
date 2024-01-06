@@ -415,5 +415,38 @@ namespace Library_DataAccessLayer
             return Datatable;
         }
 
+        public static bool UpdatePassword(int? PersonID , string NewPassword)
+        {
+            int rowsAffected = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"UPDATE People
+                            SET 
+							Password = @Password
+                            WHERE PersonID = @PersonID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+
+                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Password", (object)NewPassword ?? DBNull.Value);
+
+                        rowsAffected = command.ExecuteNonQuery();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                rowsAffected = 0;
+            }
+            return rowsAffected != 0;
+        }
+
     }
 }
