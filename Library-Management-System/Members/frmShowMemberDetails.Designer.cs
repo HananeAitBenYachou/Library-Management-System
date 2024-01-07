@@ -1,6 +1,6 @@
-﻿namespace LibraryManagementSystem.Users
+﻿namespace LibraryManagementSystem.Members
 {
-    partial class frmShowUserDetails
+    partial class frmShowMemberDetails
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.lblTitle = new System.Windows.Forms.Label();
-            this.ucUserCard1 = new LibraryManagementSystem.Users.UserControls.ucUserCard();
             this.btnClose = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.ucMemberCard1 = new LibraryManagementSystem.Members.UserControls.ucMemberCard();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -38,19 +38,11 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
-            this.lblTitle.Location = new System.Drawing.Point(340, 6);
+            this.lblTitle.Location = new System.Drawing.Point(327, 7);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(295, 46);
-            this.lblTitle.TabIndex = 169;
-            this.lblTitle.Text = "User Information";
-            // 
-            // ucUserCard1
-            // 
-            this.ucUserCard1.BackColor = System.Drawing.Color.Transparent;
-            this.ucUserCard1.Location = new System.Drawing.Point(14, 60);
-            this.ucUserCard1.Name = "ucUserCard1";
-            this.ucUserCard1.Size = new System.Drawing.Size(979, 477);
-            this.ucUserCard1.TabIndex = 170;
+            this.lblTitle.Size = new System.Drawing.Size(358, 46);
+            this.lblTitle.TabIndex = 172;
+            this.lblTitle.Text = "Member Information";
             // 
             // btnClose
             // 
@@ -67,36 +59,43 @@
             this.btnClose.Image = global::LibraryManagementSystem.Properties.Resources.folder__1_;
             this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
             this.btnClose.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnClose.Location = new System.Drawing.Point(816, 546);
+            this.btnClose.Location = new System.Drawing.Point(817, 544);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(177, 54);
-            this.btnClose.TabIndex = 168;
+            this.btnClose.TabIndex = 171;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // frmShowUserDetails
+            // ucMemberCard1
+            // 
+            this.ucMemberCard1.BackColor = System.Drawing.Color.Transparent;
+            this.ucMemberCard1.Location = new System.Drawing.Point(12, 58);
+            this.ucMemberCard1.Name = "ucMemberCard1";
+            this.ucMemberCard1.Size = new System.Drawing.Size(979, 477);
+            this.ucMemberCard1.TabIndex = 173;
+            // 
+            // frmShowMemberDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1009, 608);
-            this.Controls.Add(this.ucUserCard1);
+            this.Controls.Add(this.ucMemberCard1);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.btnClose);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmShowUserDetails";
+            this.Name = "frmShowMemberDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "User Details";
-            this.Load += new System.EventHandler(this.frmShowUserDetails_Load);
+            this.Text = "Member Details";
+            this.Load += new System.EventHandler(this.frmShowMemberDetails_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
         private System.Windows.Forms.Label lblTitle;
         private Guna.UI2.WinForms.Guna2GradientButton btnClose;
-        private UserControls.ucUserCard ucUserCard1;
+        private UserControls.ucMemberCard ucMemberCard1;
     }
 }

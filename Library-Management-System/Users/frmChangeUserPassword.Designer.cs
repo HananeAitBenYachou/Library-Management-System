@@ -268,7 +268,7 @@
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // frmChangePassword
+            // frmChangeUserPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -288,9 +288,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.ucUserCard1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmChangePassword";
+            this.Name = "frmChangeUserPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Change Password";
+            this.Text = "Change User Password";
             this.Load += new System.EventHandler(this.frmChangePassword_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);

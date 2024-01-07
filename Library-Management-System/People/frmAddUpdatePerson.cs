@@ -28,6 +28,23 @@ namespace LibraryManagementSystem.People
 
         public event EventHandler<int?> PersonAdded;
 
+        public bool _PasswordEditEnabled = true;
+
+        public bool PasswordEditEnabled
+        {
+            get
+            {
+                return _PasswordEditEnabled;
+            }
+
+            set
+            {
+                txtPassword.Visible = value;
+                iconPassword.Visible = value;
+                lblPassword.Visible = value;
+            }
+        }
+
         protected virtual void OnPersonAdded(int? personID)
         {
             PersonAdded?.Invoke(this, personID);
@@ -53,11 +70,13 @@ namespace LibraryManagementSystem.People
             if (_Mode == enMode.AddNew)
             {
                 lblTitle.Text = "Add New Person";
+                PasswordEditEnabled = true;
                 _Person = new clsPerson();
             }
 
             else
             {
+                PasswordEditEnabled = false;
                 lblTitle.Text = "Update Person";
             }
 
@@ -121,14 +140,14 @@ namespace LibraryManagementSystem.People
             _Person.Email = txtEmail.Text;
             _Person.NationalNo = txtNationalNo.Text;
             _Person.Phone = txtPhoneNo.Text;
-            _Person.Address = txtAddress.Text; 
-            _Person.Password = txtPassword.Text;
+            _Person.Address = txtAddress.Text;          
             _Person.Gender = rbMale.Checked ? 'M' : 'F';
             _Person.BirthDate = dtpBirthDate.Value;
             _Person.NationalityCountryID = clsCountry.Find(cbCountries.Text).CountryID;
             _Person.PersonalImagePath = pbPersonImage.ImageLocation ?? null;
+            _Person.Password = PasswordEditEnabled ? txtPassword.Text : _Person.Password;
 
-            if(_Person.Save())
+            if (_Person.Save())
             {
                 MessageBox.Show("Person data saved successfully !", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -325,5 +344,6 @@ namespace LibraryManagementSystem.People
             if (pbPersonImage.ImageLocation == null)
                 pbPersonImage.Image = Resources.woman;
         }
+
     }
 }

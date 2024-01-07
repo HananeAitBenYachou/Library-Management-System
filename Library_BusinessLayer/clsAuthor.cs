@@ -8,51 +8,55 @@ namespace Library_BusinessLayer
         private enum enMode { AddNew = 0, Update = 1 };
         private enMode _Mode;
         public int? AuthorID { get; private set; }
-        public int? PersonID { get; set; }
+        public int? NationalityCountryID { get; set; }
         public string Biography { get; set; }
+        public string FullName { get; set; }
 
         public clsAuthor()
         {
             _Mode = enMode.AddNew;
             AuthorID = null;
-            PersonID = null;
+            NationalityCountryID = null;
             Biography = null;
+            FullName = null;
         }
-        private clsAuthor(int? AuthorID, int? PersonID, string Biography)
+        private clsAuthor(int? AuthorID, int? NationalityCountryID, string Biography, string FullName)
         {
             _Mode = enMode.Update;
             this.AuthorID = AuthorID;
-            this.PersonID = PersonID;
+            this.NationalityCountryID = NationalityCountryID;
             this.Biography = Biography;
+            this.FullName = FullName;
         }
 
-        public static clsAuthor Find(int AuthorID)
+        public static clsAuthor Find(int? AuthorID)
         {
-            int? PersonID = null;
+            int? NationalityCountryID = null;
             string Biography = null;
+            string FullName = null;
 
-            bool IsFound = clsAuthorData.GetAuthorInfoByID(AuthorID, ref PersonID, ref Biography);
+            bool IsFound = clsAuthorData.GetAuthorInfoByID(AuthorID, ref NationalityCountryID, ref Biography, ref FullName);
 
             if (IsFound)
-                return new clsAuthor(AuthorID, PersonID, Biography);
+                return new clsAuthor(AuthorID, NationalityCountryID, Biography, FullName);
             else
                 return null;
         }
 
-        public static bool IsAuthorExist(int AuthorID)
+        public static bool IsAuthorExist(int? AuthorID)
         {
             return clsAuthorData.IsAuthorExist(AuthorID);
         }
 
         private bool _AddNewAuthor()
         {
-            AuthorID = clsAuthorData.AddNewAuthor(PersonID, Biography);
+            AuthorID = clsAuthorData.AddNewAuthor(NationalityCountryID, Biography, FullName);
             return AuthorID.HasValue;
         }
 
         private bool _UpdateAuthor()
         {
-            return clsAuthorData.UpdateAuthorInfo(AuthorID, PersonID, Biography);
+            return clsAuthorData.UpdateAuthorInfo(AuthorID, NationalityCountryID, Biography, FullName);
         }
 
         public bool Save()
@@ -74,7 +78,7 @@ namespace Library_BusinessLayer
             return false;
         }
 
-        public static bool DeleteAuthor(int AuthorID)
+        public static bool DeleteAuthor(int? AuthorID)
         {
             return clsAuthorData.DeleteAuthor(AuthorID);
         }
@@ -83,6 +87,6 @@ namespace Library_BusinessLayer
         {
             return clsAuthorData.GetAllAuthors();
         }
-
     }
+
 }

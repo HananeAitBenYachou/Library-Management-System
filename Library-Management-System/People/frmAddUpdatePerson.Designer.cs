@@ -32,8 +32,8 @@
             this.lblPersonID = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.guna2ImageButton11 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.label13 = new System.Windows.Forms.Label();
+            this.iconPassword = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnClose = new Guna.UI2.WinForms.Guna2GradientButton();
@@ -106,8 +106,8 @@
             // guna2GroupBox1
             // 
             this.guna2GroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.guna2GroupBox1.Controls.Add(this.guna2ImageButton11);
-            this.guna2GroupBox1.Controls.Add(this.label13);
+            this.guna2GroupBox1.Controls.Add(this.iconPassword);
+            this.guna2GroupBox1.Controls.Add(this.lblPassword);
             this.guna2GroupBox1.Controls.Add(this.txtPassword);
             this.guna2GroupBox1.Controls.Add(this.btnSave);
             this.guna2GroupBox1.Controls.Add(this.btnClose);
@@ -153,28 +153,28 @@
             this.guna2GroupBox1.Size = new System.Drawing.Size(1008, 492);
             this.guna2GroupBox1.TabIndex = 161;
             // 
-            // guna2ImageButton11
+            // iconPassword
             // 
-            this.guna2ImageButton11.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton11.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2ImageButton11.Image = global::LibraryManagementSystem.Properties.Resources.password;
-            this.guna2ImageButton11.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton11.ImageRotate = 0F;
-            this.guna2ImageButton11.ImageSize = new System.Drawing.Size(28, 28);
-            this.guna2ImageButton11.Location = new System.Drawing.Point(509, 311);
-            this.guna2ImageButton11.Name = "guna2ImageButton11";
-            this.guna2ImageButton11.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton11.TabIndex = 162;
+            this.iconPassword.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.iconPassword.HoverState.ImageSize = new System.Drawing.Size(25, 25);
+            this.iconPassword.Image = global::LibraryManagementSystem.Properties.Resources.password;
+            this.iconPassword.ImageOffset = new System.Drawing.Point(0, 0);
+            this.iconPassword.ImageRotate = 0F;
+            this.iconPassword.ImageSize = new System.Drawing.Size(28, 28);
+            this.iconPassword.Location = new System.Drawing.Point(509, 311);
+            this.iconPassword.Name = "iconPassword";
+            this.iconPassword.Size = new System.Drawing.Size(30, 30);
+            this.iconPassword.TabIndex = 162;
             // 
-            // label13
+            // lblPassword
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 8.5F, System.Drawing.FontStyle.Bold);
-            this.label13.Location = new System.Drawing.Point(411, 315);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(81, 20);
-            this.label13.TabIndex = 161;
-            this.label13.Text = "Password :";
+            this.lblPassword.AutoSize = true;
+            this.lblPassword.Font = new System.Drawing.Font("Segoe UI Semibold", 8.5F, System.Drawing.FontStyle.Bold);
+            this.lblPassword.Location = new System.Drawing.Point(411, 315);
+            this.lblPassword.Name = "lblPassword";
+            this.lblPassword.Size = new System.Drawing.Size(81, 20);
+            this.lblPassword.TabIndex = 161;
+            this.lblPassword.Text = "Password :";
             // 
             // txtPassword
             // 
@@ -777,7 +777,7 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // frmAddEditPerson
+            // frmAddUpdatePerson
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -789,7 +789,7 @@
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.guna2GroupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmAddEditPerson";
+            this.Name = "frmAddUpdatePerson";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Add / Edit Person Info";
             this.Load += new System.EventHandler(this.frmAddEditPerson_Load);
@@ -844,8 +844,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label14;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton11;
-        private System.Windows.Forms.Label label13;
+        private Guna.UI2.WinForms.Guna2ImageButton iconPassword;
+        private System.Windows.Forms.Label lblPassword;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton10;
         private System.Windows.Forms.ErrorProvider errorProvider1;

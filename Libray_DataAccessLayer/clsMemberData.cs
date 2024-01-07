@@ -56,6 +56,54 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
+        public static bool GetMemberInfoByLibraryCardNo(string LibraryCardNumber , ref int? MemberID, ref int? PersonID)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * 
+                            FROM Members 
+                            WHERE LibraryCardNumber = @LibraryCardNumber;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@LibraryCardNumber", (object)LibraryCardNumber ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                IsFound = true;
+
+                                MemberID = (reader["MemberID"] != DBNull.Value) ? (int?)reader["MemberID"] : null;
+
+                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                IsFound = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
         public static bool IsMemberExist(int? MemberID)
         {
             bool IsFound = false;
@@ -72,6 +120,68 @@ namespace Library_DataAccessLayer
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@MemberID", (object)MemberID ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        IsFound = (reader != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static bool IsMemberExistByPersonID(int? PersonID)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT IsFound = 1 
+                             FROM Members
+                             WHERE PersonID = @PersonID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        IsFound = (reader != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static bool IsMemberExist(string LibraryCardNumber)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT IsFound = 1 
+                             FROM Members
+                             WHERE LibraryCardNumber = @LibraryCardNumber;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@LibraryCardNumber", (object)LibraryCardNumber ?? DBNull.Value);
 
                         object reader = command.ExecuteScalar();
 
@@ -202,7 +312,19 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Members;";
+                    string query = @"SELECT MemberID AS 'Member ID' , People.PersonID AS 'Person ID' , NationalNo AS 'National No' , 
+							        LibraryCardNumber AS 'LibraryCard No', FirstName + ' ' + LastName AS 'Full Name', 
+                                    CASE 
+	                                    WHEN Gender = 'M' THEN 'Male'
+	                                    WHEN Gender = 'F' THEN 'Female'
+	                                    ELSE 'Not Specified'
+                                    END AS 'Gender' ,
+                                    BirthDate AS 'Birth Date' , CountryName AS 'Nationality',
+                                    Phone , Email
+                                    FROM Members
+                                    INNER JOIN People ON Members.PersonID = People.PersonID
+                                    INNER JOIN Countries ON People.NationalityCountryID = 
+                                    Countries.CountryID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {

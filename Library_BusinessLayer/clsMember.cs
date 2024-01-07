@@ -11,6 +11,7 @@ namespace Library_BusinessLayer
         public string LibraryCardNumber { get; set; }
         public int? PersonID { get; set; }
 
+        public clsPerson PersonInfo { get; }
         public clsMember()
         {
             _Mode = enMode.AddNew;
@@ -24,9 +25,10 @@ namespace Library_BusinessLayer
             this.MemberID = MemberID;
             this.LibraryCardNumber = LibraryCardNumber;
             this.PersonID = PersonID;
+            this.PersonInfo = clsPerson.Find(this.PersonID);
         }
 
-        public static clsMember Find(int MemberID)
+        public static clsMember Find(int? MemberID)
         {
             string LibraryCardNumber = null;
             int? PersonID = null;
@@ -39,9 +41,32 @@ namespace Library_BusinessLayer
                 return null;
         }
 
-        public static bool IsMemberExist(int MemberID)
+        public static clsMember Find(string LibraryCardNumber)
+        {
+            int? MemberID = null;
+            int? PersonID = null;
+
+            bool IsFound = clsMemberData.GetMemberInfoByLibraryCardNo(LibraryCardNumber, ref MemberID, ref PersonID);
+
+            if (IsFound)
+                return new clsMember(MemberID, LibraryCardNumber, PersonID);
+            else
+                return null;
+        }
+
+        public static bool IsMemberExist(int? MemberID)
         {
             return clsMemberData.IsMemberExist(MemberID);
+        }
+
+        public static bool IsMemberExistByPersonID(int? PersonID)
+        {
+            return clsMemberData.IsMemberExistByPersonID(PersonID);
+        }
+
+        public static bool IsMemberExist(string LibraryCardNumber)
+        {
+            return clsMemberData.IsMemberExist(LibraryCardNumber);
         }
 
         private bool _AddNewMember()
@@ -74,7 +99,7 @@ namespace Library_BusinessLayer
             return false;
         }
 
-        public static bool DeleteMember(int MemberID)
+        public static bool DeleteMember(int? MemberID)
         {
             return clsMemberData.DeleteMember(MemberID);
         }
@@ -82,6 +107,11 @@ namespace Library_BusinessLayer
         public static DataTable GetAllMembers()
         {
             return clsMemberData.GetAllMembers();
+        }
+
+        public bool UpdateMemberPassword(string NewPassword)
+        {
+            return this.PersonInfo.UpdatePersonPassword(PersonID, NewPassword);
         }
 
     }

@@ -8,7 +8,7 @@ namespace Library_DataAccessLayer
 {
     public class clsAuthorData
     {
-        public static bool GetAuthorInfoByID(int? AuthorID, ref int? PersonID, ref string Biography)
+        public static bool GetAuthorInfoByID(int? AuthorID, ref int? NationalityCountryID, ref string Biography, ref string FullName)
         {
             bool IsFound = false;
 
@@ -32,9 +32,11 @@ namespace Library_DataAccessLayer
                                 // The record was found successfully !
                                 IsFound = true;
 
-                                PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+                                NationalityCountryID = (reader["NationalityCountryID"] != DBNull.Value) ? (int?)reader["NationalityCountryID"] : null;
 
                                 Biography = (reader["Biography"] != DBNull.Value) ? (string)reader["Biography"] : null;
+
+                                FullName = (reader["FullName"] != DBNull.Value) ? (string)reader["FullName"] : null;
 
                             }
 
@@ -87,7 +89,7 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
-        public static int? AddNewAuthor(int? PersonID, string Biography)
+        public static int? AddNewAuthor(int? NationalityCountryID, string Biography, string FullName)
         {
             int? AuthorID = null;
 
@@ -96,15 +98,16 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO Authors (PersonID,Biography)
-                            VALUES (@PersonID,@Biography);
+                    string query = @"INSERT INTO Authors (NationalityCountryID,Biography,FullName)
+                            VALUES (@NationalityCountryID,@Biography,@FullName);
                             SELECT SCOPE_IDENTITY();";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
 
-                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@NationalityCountryID", (object)NationalityCountryID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Biography", (object)Biography ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@FullName", (object)FullName ?? DBNull.Value);
 
                         object InsertedRowID = command.ExecuteScalar();
 
@@ -129,7 +132,7 @@ namespace Library_DataAccessLayer
             return AuthorID;
         }
 
-        public static bool UpdateAuthorInfo(int? AuthorID, int? PersonID, string Biography)
+        public static bool UpdateAuthorInfo(int? AuthorID, int? NationalityCountryID, string Biography, string FullName)
         {
             int rowsAffected = 0;
 
@@ -140,16 +143,18 @@ namespace Library_DataAccessLayer
                     connection.Open();
                     string query = @"UPDATE Authors
                             SET 
-							PersonID = @PersonID,
-							Biography = @Biography
+							NationalityCountryID = @NationalityCountryID,
+							Biography = @Biography,
+							FullName = @FullName
                             WHERE AuthorID = @AuthorID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
 
                         command.Parameters.AddWithValue("@AuthorID", (object)AuthorID ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@NationalityCountryID", (object)NationalityCountryID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Biography", (object)Biography ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@FullName", (object)FullName ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
 

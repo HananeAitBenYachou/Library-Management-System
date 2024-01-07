@@ -159,7 +159,8 @@ namespace LibraryManagementSystem.Users
 
         private void changePasswordtoolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmChangeUserPassword frm = new frmChangeUserPassword((int)dgvUsersList.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
         }
 
     }

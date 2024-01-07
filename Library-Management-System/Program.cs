@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using LibraryManagementSystem.Members;
 using LibraryManagementSystem.People;
 using LibraryManagementSystem.Users;
 
@@ -19,7 +20,7 @@ namespace LibraryManagementSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmMain());
+            Application.Run(new frmListMembers());
 
         }
 
