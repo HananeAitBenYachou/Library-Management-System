@@ -58,6 +58,7 @@ namespace LibraryManagementSystem.People.UserControls
             lblBirthDate.Text = _Person.BirthDate.Value.ToShortDateString();
             lblCountry.Text = _Person.CountryInfo.CountryName;
 
+            pbPersonImage.ImageLocation = _Person.PersonalImagePath ?? null;
         }
 
         public void LoadPersonData(int? PersonID)

@@ -26,7 +26,7 @@ namespace Library_BusinessLayer
             this.AvailabilityStatus = AvailabilityStatus;
         }
 
-        public static clsBookCopy Find(int BookCopyID)
+        public static clsBookCopy Find(int? BookCopyID)
         {
             int? BookID = null;
             bool? AvailabilityStatus = null;
@@ -39,7 +39,7 @@ namespace Library_BusinessLayer
                 return null;
         }
 
-        public static bool IsBookCopyExist(int BookCopyID)
+        public static bool IsBookCopyExist(int? BookCopyID)
         {
             return clsBookCopyData.IsBookCopyExist(BookCopyID);
         }
@@ -74,14 +74,24 @@ namespace Library_BusinessLayer
             return false;
         }
 
-        public static bool DeleteBookCopy(int BookCopyID)
+        public static bool DeleteBookCopy(int? BookCopyID)
         {
             return clsBookCopyData.DeleteBookCopy(BookCopyID);
+        }
+
+        public static bool DeleteBookCopies(int? BookID)
+        {
+            return clsBookCopyData.DeleteBookCopies(BookID);
         }
 
         public static DataTable GetAllBookCopies()
         {
             return clsBookCopyData.GetAllBookCopies();
+        }
+
+        public static DataTable GetAllBookCopies(int? BookID)
+        {
+            return clsBookCopyData.GetAllBookCopies(BookID);
         }
 
     }

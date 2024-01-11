@@ -144,6 +144,7 @@ namespace LibraryManagementSystem.Users
             if (clsUser.DeleteUser(UserID))
             {
                 MessageBox.Show("User has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _RefreshUsersList();
             }
 
             else

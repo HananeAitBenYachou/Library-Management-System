@@ -140,6 +140,7 @@ namespace LibraryManagementSystem.Members
             if (clsMember.DeleteMember(MemberID))
             {
                 MessageBox.Show("Member has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _RefreshMembersList();
             }
 
             else

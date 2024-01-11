@@ -56,6 +56,53 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
+        public static bool GetGenreInfoByName(string GenreName, ref int? GenreID, ref string Description)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * 
+                            FROM Genres 
+                            WHERE GenreName = @GenreName;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@GenreName", (object)GenreName ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                IsFound = true;
+
+                                GenreID = (reader["GenreID"] != DBNull.Value) ? (int?)reader["GenreID"] : null;
+
+                                Description = (reader["Description"] != DBNull.Value) ? (string)reader["Description"] : null;
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                IsFound = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
         public static bool IsGenreExist(int? GenreID)
         {
             bool IsFound = false;
@@ -72,6 +119,37 @@ namespace Library_DataAccessLayer
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@GenreID", (object)GenreID ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        IsFound = (reader != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static bool IsGenreExist(string GenreName)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT IsFound = 1 
+                             FROM Genres
+                             WHERE GenreName = @GenreName;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@GenreName", (object)GenreName ?? DBNull.Value);
 
                         object reader = command.ExecuteScalar();
 

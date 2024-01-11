@@ -58,12 +58,49 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authors\frmAddUpdateAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authors\frmAddUpdateAuthor.Designer.cs">
+      <DependentUpon>frmAddUpdateAuthor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Books\frmAddUpdateBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Books\frmAddUpdateBook.Designer.cs">
+      <DependentUpon>frmAddUpdateBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Books\frmListBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Books\frmListBooks.Designer.cs">
+      <DependentUpon>frmListBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Books\frmShowBookDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Books\frmShowBookDetails.Designer.cs">
+      <DependentUpon>frmShowBookDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Books\UserControls\ucBookCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Books\UserControls\ucBookCard.Designer.cs">
+      <DependentUpon>ucBookCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="Genres\frmAddUpdateGenre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Genres\frmAddUpdateGenre.Designer.cs">
+      <DependentUpon>frmAddUpdateGenre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobalClasses\clsGlobal.cs" />
     <Compile Include="Members\frmAddUpdateMember.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,8 +193,26 @@
     <Compile Include="Users\UserControls\ucUserCard.Designer.cs">
       <DependentUpon>ucUserCard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Authors\frmAddUpdateAuthor.resx">
+      <DependentUpon>frmAddUpdateAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Books\frmAddUpdateBook.resx">
+      <DependentUpon>frmAddUpdateBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Books\frmListBooks.resx">
+      <DependentUpon>frmListBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Books\frmShowBookDetails.resx">
+      <DependentUpon>frmShowBookDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Books\UserControls\ucBookCard.resx">
+      <DependentUpon>ucBookCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Genres\frmAddUpdateGenre.resx">
+      <DependentUpon>frmAddUpdateGenre.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Members\frmAddUpdateMember.resx">
       <DependentUpon>frmAddUpdateMember.cs</DependentUpon>
@@ -391,6 +446,45 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\boss.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\title.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\library-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\barcode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\3d-notes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\skill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book %281%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\stack-of-books.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\biography.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

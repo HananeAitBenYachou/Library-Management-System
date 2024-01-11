@@ -58,6 +58,56 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
+        public static bool GetAuthorInfoByName(string FullName , ref int? AuthorID, ref int? NationalityCountryID, ref string Biography)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * 
+                            FROM Authors 
+                            WHERE FullName = @FullName;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@FullName", (object)FullName ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                IsFound = true;
+
+                                AuthorID = (reader["AuthorID"] != DBNull.Value) ? (int?)reader["AuthorID"] : null;
+
+                                NationalityCountryID = (reader["NationalityCountryID"] != DBNull.Value) ? (int?)reader["NationalityCountryID"] : null;
+
+                                Biography = (reader["Biography"] != DBNull.Value) ? (string)reader["Biography"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                IsFound = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
         public static bool IsAuthorExist(int? AuthorID)
         {
             bool IsFound = false;
@@ -74,6 +124,37 @@ namespace Library_DataAccessLayer
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@AuthorID", (object)AuthorID ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        IsFound = (reader != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static bool IsAuthorExist(string FullName)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT IsFound = 1 
+                             FROM Authors
+                             WHERE FullName = @FullName;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@FullName", (object)FullName ?? DBNull.Value);
 
                         object reader = command.ExecuteScalar();
 

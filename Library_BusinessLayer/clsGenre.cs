@@ -26,7 +26,7 @@ namespace Library_BusinessLayer
             this.Description = Description;
         }
 
-        public static clsGenre Find(int GenreID)
+        public static clsGenre Find(int?  GenreID)
         {
             string GenreName = null;
             string Description = null;
@@ -39,9 +39,27 @@ namespace Library_BusinessLayer
                 return null;
         }
 
-        public static bool IsGenreExist(int GenreID)
+        public static clsGenre Find(string GenreName)
+        {
+            int? GenreID = null;
+            string Description = null;
+
+            bool IsFound = clsGenreData.GetGenreInfoByName(GenreName, ref GenreID, ref Description);
+
+            if (IsFound)
+                return new clsGenre(GenreID, GenreName, Description);
+            else
+                return null;
+        }
+
+        public static bool IsGenreExist(int? GenreID)
         {
             return clsGenreData.IsGenreExist(GenreID);
+        }
+
+        public static bool IsGenreExist(string GenreName)
+        {
+            return clsGenreData.IsGenreExist(GenreName);
         }
 
         private bool _AddNewGenre()
@@ -74,7 +92,7 @@ namespace Library_BusinessLayer
             return false;
         }
 
-        public static bool DeleteGenre(int GenreID)
+        public static bool DeleteGenre(int? GenreID)
         {
             return clsGenreData.DeleteGenre(GenreID);
         }

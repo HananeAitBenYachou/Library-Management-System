@@ -11,6 +11,7 @@ namespace Library_BusinessLayer
         public int? NationalityCountryID { get; set; }
         public string Biography { get; set; }
         public string FullName { get; set; }
+        public clsCountry CountryInfo { get; }
 
         public clsAuthor()
         {
@@ -27,6 +28,8 @@ namespace Library_BusinessLayer
             this.NationalityCountryID = NationalityCountryID;
             this.Biography = Biography;
             this.FullName = FullName;
+
+            this.CountryInfo = clsCountry.Find(NationalityCountryID);
         }
 
         public static clsAuthor Find(int? AuthorID)
@@ -43,9 +46,28 @@ namespace Library_BusinessLayer
                 return null;
         }
 
+        public static clsAuthor Find(string FullName)
+        {
+            int? NationalityCountryID = null;
+            string Biography = null;
+            int? AuthorID = null;
+
+            bool IsFound = clsAuthorData.GetAuthorInfoByName(FullName, ref AuthorID, ref NationalityCountryID, ref Biography);
+
+            if (IsFound)
+                return new clsAuthor(AuthorID, NationalityCountryID, Biography, FullName);
+            else
+                return null;
+        }
+
         public static bool IsAuthorExist(int? AuthorID)
         {
             return clsAuthorData.IsAuthorExist(AuthorID);
+        }
+
+        public static bool IsAuthorExist(string FullName)
+        {
+            return clsAuthorData.IsAuthorExist(FullName);
         }
 
         private bool _AddNewAuthor()
@@ -87,6 +109,7 @@ namespace Library_BusinessLayer
         {
             return clsAuthorData.GetAllAuthors();
         }
+
     }
 
 }

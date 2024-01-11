@@ -9,7 +9,9 @@ namespace Library_DataAccessLayer
 {
     public class clsBookData
     {
-        public static bool GetBookInfoByID(int? BookID, ref string Title, ref string ISBN, ref int? GenreID, ref string AdditionalDetails, ref int? AuthorID, ref int? CreatedByUserID, ref DateTime? PublicationDate)
+        public static bool GetBookInfoByID(int? BookID, ref string Title,
+            ref string ISBN, ref int? GenreID, ref string AdditionalDetails, ref int? AuthorID, 
+            ref int? CreatedByUserID, ref DateTime? PublicationDate, ref string BookImagePath)
         {
             bool IsFound = false;
 
@@ -46,6 +48,8 @@ namespace Library_DataAccessLayer
                                 CreatedByUserID = (reader["CreatedByUserID"] != DBNull.Value) ? (int?)reader["CreatedByUserID"] : null;
 
                                 PublicationDate = (reader["PublicationDate"] != DBNull.Value) ? (DateTime?)reader["PublicationDate"] : null;
+
+                                BookImagePath = (reader["BookImagePath"] != DBNull.Value) ? (string)reader["BookImagePath"] : null;
 
                             }
 
@@ -98,7 +102,71 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
-        public static int? AddNewBook(string Title, string ISBN, int? GenreID, string AdditionalDetails, int? AuthorID, int? CreatedByUserID, DateTime? PublicationDate)
+        public static bool IsBookExistByTitle(string Title)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT IsFound = 1 
+                             FROM Books
+                             WHERE Title = @Title;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@Title", (object)Title ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        IsFound = (reader != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static bool IsBookExistByISBN(string ISBN)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT IsFound = 1 
+                             FROM Books
+                             WHERE ISBN = @ISBN;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ISBN", (object)ISBN ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        IsFound = (reader != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static int? AddNewBook(string Title, string ISBN, int? GenreID, 
+            string AdditionalDetails, int? AuthorID, int? CreatedByUserID, 
+            DateTime? PublicationDate, string BookImagePath)
         {
             int? BookID = null;
 
@@ -107,8 +175,8 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO Books (Title,ISBN,GenreID,AdditionalDetails,AuthorID,CreatedByUserID,PublicationDate)
-                            VALUES (@Title,@ISBN,@GenreID,@AdditionalDetails,@AuthorID,@CreatedByUserID,@PublicationDate);
+                    string query = @"INSERT INTO Books (Title,ISBN,GenreID,AdditionalDetails,AuthorID,CreatedByUserID,PublicationDate,BookImagePath)
+                            VALUES (@Title,@ISBN,@GenreID,@AdditionalDetails,@AuthorID,@CreatedByUserID,@PublicationDate,@BookImagePath);
                             SELECT SCOPE_IDENTITY();";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -121,6 +189,7 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@AuthorID", (object)AuthorID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PublicationDate", (object)PublicationDate ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@BookImagePath", (object)BookImagePath ?? DBNull.Value);
 
                         object InsertedRowID = command.ExecuteScalar();
 
@@ -145,7 +214,10 @@ namespace Library_DataAccessLayer
             return BookID;
         }
 
-        public static bool UpdateBookInfo(int? BookID, string Title, string ISBN, int? GenreID, string AdditionalDetails, int? AuthorID, int? CreatedByUserID, DateTime? PublicationDate)
+        public static bool UpdateBookInfo(int? BookID, string Title, 
+            string ISBN, int? GenreID, string AdditionalDetails, 
+            int? AuthorID, int? CreatedByUserID, 
+            DateTime? PublicationDate, string BookImagePath)
         {
             int rowsAffected = 0;
 
@@ -162,7 +234,8 @@ namespace Library_DataAccessLayer
 							AdditionalDetails = @AdditionalDetails,
 							AuthorID = @AuthorID,
 							CreatedByUserID = @CreatedByUserID,
-							PublicationDate = @PublicationDate
+							PublicationDate = @PublicationDate,
+							BookImagePath = @BookImagePath
                             WHERE BookID = @BookID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -176,6 +249,7 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@AuthorID", (object)AuthorID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PublicationDate", (object)PublicationDate ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@BookImagePath", (object)BookImagePath ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
 
@@ -228,7 +302,12 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Books;";
+                    string query = @"SELECT BookID AS 'Book ID', Title , ISBN , Authors.FullName AS 'Author', 
+                                    Genres.GenreName AS 'Genre', (SELECT COUNT(BookCopyID) FROM BookCopies WHERE BookCopies.BookID = Books.BookID) AS 'Quantity',
+                                    PublicationDate AS 'Publication Date', AdditionalDetails AS 'Additional Details'
+                                    FROM Books
+                                    INNER JOIN Authors ON Books.AuthorID = Authors.AuthorID
+                                    INNER JOIN Genres ON Books.GenreID = Genres.GenreID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {

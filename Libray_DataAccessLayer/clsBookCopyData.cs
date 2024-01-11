@@ -178,7 +178,6 @@ namespace Library_DataAccessLayer
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-
                         command.Parameters.AddWithValue("@BookCopyID", (object)BookCopyID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
@@ -191,6 +190,35 @@ namespace Library_DataAccessLayer
                 clsErrorLogger.LogError(ex);
             }
             return rowsAffected != 0;
+        }
+
+        public static bool DeleteBookCopies(int? BookID)
+        {
+            int totalBookCopies = GetNumberOfTableCopies(BookID); 
+
+            int rowsAffected = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"DELETE BookCopies
+                              WHERE BookID = @BookID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@BookID", (object)BookID ?? DBNull.Value);
+
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return rowsAffected == totalBookCopies;
         }
 
         public static DataTable GetAllBookCopies()
@@ -224,6 +252,77 @@ namespace Library_DataAccessLayer
             }
             return Datatable;
         }
+
+        public static DataTable GetAllBookCopies(int? BookID)
+        {
+            DataTable Datatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT * FROM BookCopies WHERE BookID = @BookID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@BookID", (object)BookID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                Datatable.Load(reader);
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return Datatable;
+        }
+
+        public static int GetNumberOfTableCopies(int? BookID)
+        {
+            int CopiesCount = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT COUNT(BookCopyID)
+                                     FROM BookCopies WHERE BookID = @BookID";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+
+                        command.Parameters.AddWithValue("@BookID", (object)BookID ?? DBNull.Value);
+
+                        object rows = command.ExecuteScalar();
+
+                        if (rows != null && int.TryParse(rows.ToString(), out int count))
+                        {
+                            CopiesCount = count;
+                        }
+
+                        else
+                            CopiesCount = 0;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                CopiesCount = 0;
+            }
+            return CopiesCount;
+        }
+
 
     }
 }
