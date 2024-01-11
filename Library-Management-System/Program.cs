@@ -22,7 +22,7 @@ namespace LibraryManagementSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmListBooks());
+            Application.Run(new frmAddUpdateAuthor());
 
         }
 

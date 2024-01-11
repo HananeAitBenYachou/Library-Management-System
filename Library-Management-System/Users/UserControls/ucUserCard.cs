@@ -38,13 +38,13 @@ namespace LibraryManagementSystem.Users.UserControls
             ucPersonCard1.ResetPersonData();
         }
 
-        public void LoadUserData(int? UserID)
+        public void LoadUserData(int? userID)
         {
-            _User = clsUser.Find(UserID);
+            _User = clsUser.Find(userID);
 
             if (_User == null)
             {
-                MessageBox.Show($"No user with ID = {UserID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No user with ID = {userID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ResetUserData();
                 return;
             }

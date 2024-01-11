@@ -53,7 +53,7 @@ namespace LibraryManagementSystem.Books
         {
             foreach (DataRow row in clsGenre.GetAllGenres().Rows)
             {
-                cbGenres.Items.Add((string)row["GenreName"]);        
+                cbGenres.Items.Add((string)row["Genre Name"]);        
             }
 
         }
@@ -62,7 +62,7 @@ namespace LibraryManagementSystem.Books
         {
             foreach (DataRow row in clsAuthor.GetAllAuthors().Rows)
             {
-                cbAuthors.Items.Add((string)row["FullName"]);
+                cbAuthors.Items.Add((string)row["Name"]);
             }
         }
 

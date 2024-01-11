@@ -64,6 +64,24 @@
     <Compile Include="Authors\frmAddUpdateAuthor.Designer.cs">
       <DependentUpon>frmAddUpdateAuthor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Authors\frmListAuthors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authors\frmListAuthors.Designer.cs">
+      <DependentUpon>frmListAuthors.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Authors\frmShowAuthorDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authors\frmShowAuthorDetails.Designer.cs">
+      <DependentUpon>frmShowAuthorDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Authors\UserControls\ucAuthorCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Authors\UserControls\ucAuthorCard.Designer.cs">
+      <DependentUpon>ucAuthorCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Books\frmAddUpdateBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -195,6 +213,15 @@
     </Compile>
     <EmbeddedResource Include="Authors\frmAddUpdateAuthor.resx">
       <DependentUpon>frmAddUpdateAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Authors\frmListAuthors.resx">
+      <DependentUpon>frmListAuthors.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Authors\frmShowAuthorDetails.resx">
+      <DependentUpon>frmShowAuthorDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Authors\UserControls\ucAuthorCard.resx">
+      <DependentUpon>ucAuthorCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Books\frmAddUpdateBook.resx">
       <DependentUpon>frmAddUpdateBook.cs</DependentUpon>
@@ -485,6 +512,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\biography.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\quill.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\editor1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\writer %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -280,7 +280,9 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Genres;";
+                    string query = @"SELECT GenreID AS 'Genre ID' , GenreName 
+                                    AS 'Genre Name' , Description
+                                    FROM genres;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {

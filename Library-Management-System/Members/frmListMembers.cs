@@ -125,19 +125,19 @@ namespace LibraryManagementSystem.Members
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete this member ?", "Confrim",
+            if (MessageBox.Show("Are you sure you want to delete this member ?", "Confirm",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
 
-            int MemberID = (int)dgvMembersList.CurrentRow.Cells[0].Value;
+            int memberID = (int)dgvMembersList.CurrentRow.Cells[0].Value;
 
-            if (!clsMember.IsMemberExist(MemberID))
+            if (!clsMember.IsMemberExist(memberID))
             {
-                MessageBox.Show($"No member with ID = {MemberID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No member with ID = {memberID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (clsMember.DeleteMember(MemberID))
+            if (clsMember.DeleteMember(memberID))
             {
                 MessageBox.Show("Member has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _RefreshMembersList();

@@ -45,13 +45,13 @@ namespace LibraryManagementSystem.Books.UserControls
             pbBookImage.Image = Resources.book1;
         }
 
-        public void LoadBookData(int? BookID)
+        public void LoadBookData(int? bookID)
         {
-            _Book = clsBook.Find(BookID);
+            _Book = clsBook.Find(bookID);
 
             if (_Book == null)
             {
-                MessageBox.Show($"No book with ID = {BookID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No book with ID = {bookID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ResetBookData();
                 return;
             }
@@ -79,7 +79,5 @@ namespace LibraryManagementSystem.Books.UserControls
             LoadBookData(_BookID);
 
         }
-
-
     }
 }

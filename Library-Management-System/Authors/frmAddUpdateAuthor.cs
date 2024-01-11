@@ -60,7 +60,7 @@ namespace LibraryManagementSystem.Authors
 
         private void _ResetDefaultValues()
         {
-            _FillCountriesInComboBoxAsync();
+            _FillCountriesInComboBox();
 
             if (_Mode == enMode.AddNew)
             {
@@ -128,25 +128,16 @@ namespace LibraryManagementSystem.Authors
 
             if (_Mode == enMode.Update)
                 _LoadAuthorData();
-
         }
 
-        private async void _FillCountriesInComboBoxAsync()
+        private void _FillCountriesInComboBox()
         {
-            await Task.Run(() =>
+            foreach (DataRow row in clsCountry.GetAllCountries().Rows)
             {
-                foreach (DataRow row in clsCountry.GetAllCountries().Rows)
-                {
-                    cbCountries.Invoke((Action)(() => cbCountries.Items.Add(row["CountryName"])));
-                }
+                cbCountries.Items.Add(row["CountryName"]);
+            }
 
-                cbCountries.Invoke((Action)(() =>
-                {
-                    cbCountries.SelectedIndex = cbCountries.FindString("Morocco");
-                }));
-
-            });
-          
+            cbCountries.SelectedIndex = cbCountries.FindString("Morocco");
         }
 
         private void txtFullName_Validating(object sender, CancelEventArgs e)

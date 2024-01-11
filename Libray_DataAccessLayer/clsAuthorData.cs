@@ -288,7 +288,10 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Authors;";
+                    string query = @"SELECT AuthorID AS 'Author ID', FullName AS 'Name' , CountryName AS 'Nationality', 
+                                    Biography
+                                    FROM AUTHORS
+                                    INNER JOIN Countries ON Countries.CountryID = Authors.NationalityCountryID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {

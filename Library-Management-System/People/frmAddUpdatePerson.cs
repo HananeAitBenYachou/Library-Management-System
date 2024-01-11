@@ -65,7 +65,7 @@ namespace LibraryManagementSystem.People
 
         private void _ResetDefaultValues()
         {
-            _FillCountriesInComboBoxAsync();
+            _FillCountriesInComboBox();
             
             if (_Mode == enMode.AddNew)
             {
@@ -212,13 +212,10 @@ namespace LibraryManagementSystem.People
 
             if (_Mode == enMode.Update)
                 _LoadPersonData();
-
         }
 
-        private async void _FillCountriesInComboBoxAsync()
+        private void _FillCountriesInComboBox()
         {
-            await Task.Delay(10);
-
             foreach (DataRow row in clsCountry.GetAllCountries().Rows)
             {
                 cbCountries.Items.Add(row["CountryName"]);

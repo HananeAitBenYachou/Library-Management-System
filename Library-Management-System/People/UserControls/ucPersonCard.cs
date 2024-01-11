@@ -39,7 +39,6 @@ namespace LibraryManagementSystem.People.UserControls
             lblGender.Text = "[????]";
             lblBirthDate.Text = "[????]";
             lblCountry.Text = "[????]";
-
         }
 
         private void _LoadPersonData()
@@ -75,13 +74,13 @@ namespace LibraryManagementSystem.People.UserControls
             _LoadPersonData();
         }
 
-        public void LoadPersonData(string NationalNo)
+        public void LoadPersonData(string nationalNo)
         {
-            _Person = clsPerson.Find(NationalNo);
+            _Person = clsPerson.Find(nationalNo);
 
             if (_Person == null)
             {
-                MessageBox.Show($"No person with NationalNo = {NationalNo} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No person with NationalNo = {nationalNo} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ResetPersonData();
                 return;
             }
@@ -94,7 +93,6 @@ namespace LibraryManagementSystem.People.UserControls
             frmAddUpdatePerson form = new frmAddUpdatePerson(_PersonID);
             form.ShowDialog();
             LoadPersonData(_PersonID);
-
         }
 
     }

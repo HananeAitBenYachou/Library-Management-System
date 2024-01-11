@@ -12,7 +12,6 @@ namespace LibraryManagementSystem.People
 {
     public partial class frmFindPerson : Form
     {
-
         public event EventHandler<int?> PersonFound;
 
         protected virtual void OnPersonFound()

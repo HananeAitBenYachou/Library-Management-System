@@ -129,19 +129,19 @@ namespace LibraryManagementSystem.Users
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to delete this user ?", "Confrim",
+            if (MessageBox.Show("Are you sure you want to delete this user ?", "Confirm",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
                 return;
 
-            int UserID = (int)dgvUsersList.CurrentRow.Cells[0].Value;
+            int userID = (int)dgvUsersList.CurrentRow.Cells[0].Value;
 
-            if (!clsUser.IsUserExist(UserID))
+            if (!clsUser.IsUserExist(userID))
             {
-                MessageBox.Show($"No user with ID = {UserID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No user with ID = {userID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (clsUser.DeleteUser(UserID))
+            if (clsUser.DeleteUser(userID))
             {
                 MessageBox.Show("User has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _RefreshUsersList();
