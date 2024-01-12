@@ -45,17 +45,8 @@ namespace LibraryManagementSystem.Books.UserControls
             pbBookImage.Image = Resources.book1;
         }
 
-        public void LoadBookData(int? bookID)
+        private void _LoadBookData()
         {
-            _Book = clsBook.Find(bookID);
-
-            if (_Book == null)
-            {
-                MessageBox.Show($"No book with ID = {bookID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                ResetBookData();
-                return;
-            }
-
             llbEditBookInfo.Enabled = true;
 
             _BookID = _Book.BookID;
@@ -70,6 +61,35 @@ namespace LibraryManagementSystem.Books.UserControls
             lblCreatedByUser.Text = _Book.UserInfo.UserName;
 
             pbBookImage.ImageLocation = _Book.BookImagePath ?? null;
+        }
+
+        public void LoadBookData(int? bookID)
+        {
+            _Book = clsBook.Find(bookID);
+
+            if (_Book == null)
+            {
+                MessageBox.Show($"No book with ID = {bookID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ResetBookData();
+                return;
+            }
+
+            _LoadBookData();
+
+        }
+
+        public void LoadBookData(string ISBN)
+        {
+            _Book = clsBook.Find(ISBN);
+
+            if (_Book == null)
+            {
+                MessageBox.Show($"No book with ID = {ISBN} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ResetBookData();
+                return;
+            }
+
+            _LoadBookData();
         }
 
         private void llbEditBookInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

@@ -74,6 +74,25 @@ namespace Library_BusinessLayer
                 return null;
         }
 
+        public static clsBook Find(string ISBN)
+        {
+            int? BookID = null;
+            string Title = null;
+            int? GenreID = null;
+            string AdditionalDetails = null;
+            int? AuthorID = null;
+            int? CreatedByUserID = null;
+            DateTime? PublicationDate = null;
+            string BookImagePath = null;
+
+            bool IsFound = clsBookData.GetBookInfoByISBN(ISBN , ref BookID, ref Title, ref GenreID, ref AdditionalDetails, ref AuthorID, ref CreatedByUserID, ref PublicationDate, ref BookImagePath);
+
+            if (IsFound)
+                return new clsBook(BookID, Title, ISBN, GenreID, AdditionalDetails, AuthorID, CreatedByUserID, PublicationDate, BookImagePath);
+            else
+                return null;
+        }
+
         public static bool IsBookExist(int? BookID)
         {
             return clsBookData.IsBookExist(BookID);

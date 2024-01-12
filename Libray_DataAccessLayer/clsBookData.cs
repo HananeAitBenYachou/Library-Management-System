@@ -71,6 +71,68 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
+        public static bool GetBookInfoByISBN(string ISBN, ref int? BookID, ref string Title,
+      ref int? GenreID, ref string AdditionalDetails, ref int? AuthorID,
+      ref int? CreatedByUserID, ref DateTime? PublicationDate, ref string BookImagePath)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * 
+                            FROM Books 
+                            WHERE ISBN = @ISBN;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@ISBN", (object)ISBN ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                IsFound = true;
+
+                                BookID = (reader["BookID"] != DBNull.Value) ? (int?)reader["BookID"] : null;
+
+                                Title = (reader["Title"] != DBNull.Value) ? (string)reader["Title"] : null;
+
+                                GenreID = (reader["GenreID"] != DBNull.Value) ? (int?)reader["GenreID"] : null;
+
+                                AdditionalDetails = (reader["AdditionalDetails"] != DBNull.Value) ? (string)reader["AdditionalDetails"] : null;
+
+                                AuthorID = (reader["AuthorID"] != DBNull.Value) ? (int?)reader["AuthorID"] : null;
+
+                                CreatedByUserID = (reader["CreatedByUserID"] != DBNull.Value) ? (int?)reader["CreatedByUserID"] : null;
+
+                                PublicationDate = (reader["PublicationDate"] != DBNull.Value) ? (DateTime?)reader["PublicationDate"] : null;
+
+                                BookImagePath = (reader["BookImagePath"] != DBNull.Value) ? (string)reader["BookImagePath"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                IsFound = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
         public static bool IsBookExist(int? BookID)
         {
             bool IsFound = false;
