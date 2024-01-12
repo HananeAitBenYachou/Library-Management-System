@@ -39,6 +39,5 @@ namespace LibraryManagementSystem.Authors
             ucAuthorCard1.LoadAuthorData(_AuthorID);
         }
 
-
     }
 }

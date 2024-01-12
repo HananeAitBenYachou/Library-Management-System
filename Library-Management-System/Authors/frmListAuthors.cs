@@ -114,7 +114,7 @@ namespace LibraryManagementSystem.Authors
 
         private void btnAddAuthor_Click(object sender, EventArgs e)
         {
-            frmAddUpdateBook frm = new frmAddUpdateBook();
+            frmAddUpdateAuthor frm = new frmAddUpdateAuthor();
             frm.ShowDialog();
             _RefreshAuthorsList();
         }

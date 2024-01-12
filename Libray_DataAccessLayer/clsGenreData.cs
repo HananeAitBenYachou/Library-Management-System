@@ -282,7 +282,7 @@ namespace Library_DataAccessLayer
                     connection.Open();
                     string query = @"SELECT GenreID AS 'Genre ID' , GenreName 
                                     AS 'Genre Name' , Description
-                                    FROM genres;";
+                                    FROM Genres;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {

@@ -113,6 +113,16 @@ namespace LibraryManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add2 {
+            get {
+                object obj = ResourceManager.GetObject("add2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap barcode {
             get {
                 object obj = ResourceManager.GetObject("barcode", resourceCulture);
@@ -363,6 +373,16 @@ namespace LibraryManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap learning_tools {
+            get {
+                object obj = ResourceManager.GetObject("learning-tools", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap library_card {
             get {
                 object obj = ResourceManager.GetObject("library-card", resourceCulture);
@@ -426,6 +446,16 @@ namespace LibraryManagementSystem.Properties {
         internal static System.Drawing.Bitmap note {
             get {
                 object obj = ResourceManager.GetObject("note", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap online_library {
+            get {
+                object obj = ResourceManager.GetObject("online-library", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

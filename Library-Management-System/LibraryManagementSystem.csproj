@@ -118,6 +118,24 @@
     <Compile Include="Genres\frmAddUpdateGenre.Designer.cs">
       <DependentUpon>frmAddUpdateGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Genres\frmListGenres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Genres\frmListGenres.Designer.cs">
+      <DependentUpon>frmListGenres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Genres\frmShowGenreDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Genres\frmShowGenreDetails.Designer.cs">
+      <DependentUpon>frmShowGenreDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Genres\UserControls\ucGenreCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Genres\UserControls\ucGenreCard.Designer.cs">
+      <DependentUpon>ucGenreCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="GlobalClasses\clsGlobal.cs" />
     <Compile Include="Members\frmAddUpdateMember.cs">
       <SubType>Form</SubType>
@@ -240,6 +258,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Genres\frmAddUpdateGenre.resx">
       <DependentUpon>frmAddUpdateGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Genres\frmListGenres.resx">
+      <DependentUpon>frmListGenres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Genres\frmShowGenreDetails.resx">
+      <DependentUpon>frmShowGenreDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Genres\UserControls\ucGenreCard.resx">
+      <DependentUpon>ucGenreCard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Members\frmAddUpdateMember.resx">
       <DependentUpon>frmAddUpdateMember.cs</DependentUpon>
@@ -521,6 +548,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\writer %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\online-library.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\learning-tools.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
