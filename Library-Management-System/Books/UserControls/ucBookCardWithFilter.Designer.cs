@@ -32,11 +32,11 @@
             this.gbFilter = new Guna.UI2.WinForms.Guna2GroupBox();
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.ucBookCard1 = new LibraryManagementSystem.Books.UserControls.ucBookCard();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnAddNewBook = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnSearchForBook = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.label14 = new System.Windows.Forms.Label();
+            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ucBookCard1 = new LibraryManagementSystem.Books.UserControls.ucBookCard();
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -105,29 +105,8 @@
             this.txtFilterValue.SelectedText = "";
             this.txtFilterValue.Size = new System.Drawing.Size(304, 46);
             this.txtFilterValue.TabIndex = 193;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.label14.Location = new System.Drawing.Point(42, 66);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(80, 23);
-            this.label14.TabIndex = 190;
-            this.label14.Text = "Book ID :";
-            // 
-            // ucBookCard1
-            // 
-            this.ucBookCard1.BackColor = System.Drawing.Color.Transparent;
-            this.ucBookCard1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucBookCard1.Location = new System.Drawing.Point(0, 142);
-            this.ucBookCard1.Name = "ucBookCard1";
-            this.ucBookCard1.Size = new System.Drawing.Size(983, 375);
-            this.ucBookCard1.TabIndex = 204;
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            this.txtFilterValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtFilterValue_Validating);
             // 
             // btnAddNewBook
             // 
@@ -143,6 +122,7 @@
             this.btnAddNewBook.ShadowDecoration.Depth = 10;
             this.btnAddNewBook.Size = new System.Drawing.Size(50, 50);
             this.btnAddNewBook.TabIndex = 192;
+            this.btnAddNewBook.Click += new System.EventHandler(this.btnAddNewBook_Click);
             // 
             // btnSearchForBook
             // 
@@ -158,6 +138,30 @@
             this.btnSearchForBook.ShadowDecoration.Depth = 10;
             this.btnSearchForBook.Size = new System.Drawing.Size(50, 50);
             this.btnSearchForBook.TabIndex = 191;
+            this.btnSearchForBook.Click += new System.EventHandler(this.btnSearchForBook_Click);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.label14.Location = new System.Drawing.Point(42, 66);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(80, 23);
+            this.label14.TabIndex = 190;
+            this.label14.Text = "Book ID :";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // ucBookCard1
+            // 
+            this.ucBookCard1.BackColor = System.Drawing.Color.Transparent;
+            this.ucBookCard1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ucBookCard1.Location = new System.Drawing.Point(0, 142);
+            this.ucBookCard1.Name = "ucBookCard1";
+            this.ucBookCard1.Size = new System.Drawing.Size(983, 375);
+            this.ucBookCard1.TabIndex = 204;
             // 
             // ucBookCardWithFilter
             // 
@@ -168,6 +172,7 @@
             this.Controls.Add(this.gbFilter);
             this.Name = "ucBookCardWithFilter";
             this.Size = new System.Drawing.Size(983, 517);
+            this.Load += new System.EventHandler(this.ucBookCardWithFilter_Load);
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();

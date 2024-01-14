@@ -11,6 +11,7 @@ namespace Library_BusinessLayer
         public int? BookID { get; set; }
         public bool? AvailabilityStatus { get; set; }
 
+        public enum enAvailabilityStatus { Borrowed = 0, Available = 1 }
         public clsBookCopy()
         {
             _Mode = enMode.AddNew;
@@ -55,6 +56,16 @@ namespace Library_BusinessLayer
             return clsBookCopyData.UpdateBookCopyInfo(BookCopyID, BookID, AvailabilityStatus);
         }
 
+        public bool Borrow()
+        {
+            return clsBookCopyData.UpdateBookCopyAvailabilityStatus(BookCopyID, false);
+        }
+
+        public bool Return()
+        {
+            return clsBookCopyData.UpdateBookCopyAvailabilityStatus(BookCopyID, true);
+        }
+
         public bool Save()
         {
             switch (_Mode)
@@ -94,5 +105,9 @@ namespace Library_BusinessLayer
             return clsBookCopyData.GetAllBookCopies(BookID);
         }
 
+        public static int? GetAvailableBookCopy(int? BookID)
+        {
+            return clsBookCopyData.GetAvailableBookCopy(BookID);
+        }
     }
 }

@@ -106,6 +106,18 @@
     <Compile Include="Books\UserControls\ucBookCard.Designer.cs">
       <DependentUpon>ucBookCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Books\UserControls\ucBookCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Books\UserControls\ucBookCardWithFilter.Designer.cs">
+      <DependentUpon>ucBookCardWithFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmBorrowBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmBorrowBook.Designer.cs">
+      <DependentUpon>frmBorrowBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +178,12 @@
     </Compile>
     <Compile Include="Members\UserControls\ucMemberCard.Designer.cs">
       <DependentUpon>ucMemberCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Members\UserControls\ucMemberCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Members\UserControls\ucMemberCardWithFilter.Designer.cs">
+      <DependentUpon>ucMemberCardWithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="People\frmAddUpdatePerson.cs">
       <SubType>Form</SubType>
@@ -253,6 +271,12 @@
     <EmbeddedResource Include="Books\UserControls\ucBookCard.resx">
       <DependentUpon>ucBookCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Books\UserControls\ucBookCardWithFilter.resx">
+      <DependentUpon>ucBookCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borrowings&amp;Returns\frmBorrowBook.resx">
+      <DependentUpon>frmBorrowBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -282,6 +306,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Members\UserControls\ucMemberCard.resx">
       <DependentUpon>ucMemberCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Members\UserControls\ucMemberCardWithFilter.resx">
+      <DependentUpon>ucMemberCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="People\frmAddUpdatePerson.resx">
       <DependentUpon>frmAddUpdatePerson.cs</DependentUpon>
@@ -557,6 +584,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\add2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book %281%292.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book %282%291.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

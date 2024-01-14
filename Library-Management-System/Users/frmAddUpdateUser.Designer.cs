@@ -35,8 +35,9 @@
             this.lblUserID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tpPersonalInfo = new System.Windows.Forms.TabPage();
-            this.ucPersonCardWithFilter1 = new LibraryManagementSystem.People.UserControls.ucPersonCardWithFilter();
+            this.btnNext = new Guna.UI2.WinForms.Guna2GradientButton();
             this.tpAccountInfo = new System.Windows.Forms.TabPage();
+            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.label3 = new System.Windows.Forms.Label();
             this.gbPermissions = new Guna.UI2.WinForms.Guna2GroupBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -54,15 +55,14 @@
             this.tsManageBorrowings = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.tsManageFines = new Guna.UI2.WinForms.Guna2ToggleSwitch();
             this.tsManageReturns = new Guna.UI2.WinForms.Guna2ToggleSwitch();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.txtUserName = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tcUserInfo = new Guna.UI2.WinForms.Guna2TabControl();
             this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnClose = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.btnNext = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.ucPersonCardWithFilter1 = new LibraryManagementSystem.People.UserControls.ucPersonCardWithFilter();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tpPersonalInfo.SuspendLayout();
             this.tpAccountInfo.SuspendLayout();
@@ -140,15 +140,27 @@
             this.tpPersonalInfo.TabIndex = 0;
             this.tpPersonalInfo.Text = "Personal Info";
             // 
-            // ucPersonCardWithFilter1
+            // btnNext
             // 
-            this.ucPersonCardWithFilter1.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ucPersonCardWithFilter1.BackColor = System.Drawing.Color.Transparent;
-            this.ucPersonCardWithFilter1.FilterEnabled = true;
-            this.ucPersonCardWithFilter1.Location = new System.Drawing.Point(3, 13);
-            this.ucPersonCardWithFilter1.Name = "ucPersonCardWithFilter1";
-            this.ucPersonCardWithFilter1.Size = new System.Drawing.Size(983, 467);
-            this.ucPersonCardWithFilter1.TabIndex = 167;
+            this.btnNext.BorderRadius = 22;
+            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNext.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnNext.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
+            this.btnNext.FillColor2 = System.Drawing.Color.SandyBrown;
+            this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.ForeColor = System.Drawing.Color.White;
+            this.btnNext.Image = global::LibraryManagementSystem.Properties.Resources.right_arrow;
+            this.btnNext.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnNext.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.btnNext.Location = new System.Drawing.Point(817, 486);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(177, 54);
+            this.btnNext.TabIndex = 166;
+            this.btnNext.Text = "Next";
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // tpAccountInfo
             // 
@@ -169,6 +181,19 @@
             this.tpAccountInfo.Size = new System.Drawing.Size(1007, 549);
             this.tpAccountInfo.TabIndex = 1;
             this.tpAccountInfo.Text = "Account Info";
+            // 
+            // guna2ImageButton2
+            // 
+            this.guna2ImageButton2.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton2.HoverState.ImageSize = new System.Drawing.Size(25, 25);
+            this.guna2ImageButton2.Image = global::LibraryManagementSystem.Properties.Resources.yes_or_no;
+            this.guna2ImageButton2.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton2.ImageRotate = 0F;
+            this.guna2ImageButton2.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton2.Location = new System.Drawing.Point(477, 131);
+            this.guna2ImageButton2.Name = "guna2ImageButton2";
+            this.guna2ImageButton2.Size = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton2.TabIndex = 191;
             // 
             // label3
             // 
@@ -411,6 +436,32 @@
             this.tsManageReturns.UncheckedState.InnerBorderColor = System.Drawing.Color.White;
             this.tsManageReturns.UncheckedState.InnerColor = System.Drawing.Color.White;
             // 
+            // guna2ImageButton1
+            // 
+            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(25, 25);
+            this.guna2ImageButton1.Image = global::LibraryManagementSystem.Properties.Resources.id;
+            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton1.ImageRotate = 0F;
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(477, 18);
+            this.guna2ImageButton1.Name = "guna2ImageButton1";
+            this.guna2ImageButton1.Size = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton1.TabIndex = 186;
+            // 
+            // guna2ImageButton3
+            // 
+            this.guna2ImageButton3.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton3.HoverState.ImageSize = new System.Drawing.Size(25, 25);
+            this.guna2ImageButton3.Image = global::LibraryManagementSystem.Properties.Resources.student_card;
+            this.guna2ImageButton3.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton3.ImageRotate = 0F;
+            this.guna2ImageButton3.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton3.Location = new System.Drawing.Point(477, 73);
+            this.guna2ImageButton3.Name = "guna2ImageButton3";
+            this.guna2ImageButton3.Size = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton3.TabIndex = 185;
+            // 
             // txtUserName
             // 
             this.txtUserName.BorderColor = System.Drawing.Color.Silver;
@@ -521,66 +572,15 @@
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
-            // btnNext
+            // ucPersonCardWithFilter1
             // 
-            this.btnNext.BorderRadius = 22;
-            this.btnNext.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnNext.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNext.DisabledState.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnNext.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnNext.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
-            this.btnNext.FillColor2 = System.Drawing.Color.SandyBrown;
-            this.btnNext.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.ForeColor = System.Drawing.Color.White;
-            this.btnNext.Image = global::LibraryManagementSystem.Properties.Resources.right_arrow;
-            this.btnNext.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnNext.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnNext.Location = new System.Drawing.Point(815, 486);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(177, 54);
-            this.btnNext.TabIndex = 166;
-            this.btnNext.Text = "Next";
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // guna2ImageButton2
-            // 
-            this.guna2ImageButton2.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton2.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2ImageButton2.Image = global::LibraryManagementSystem.Properties.Resources.yes_or_no;
-            this.guna2ImageButton2.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton2.ImageRotate = 0F;
-            this.guna2ImageButton2.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton2.Location = new System.Drawing.Point(477, 131);
-            this.guna2ImageButton2.Name = "guna2ImageButton2";
-            this.guna2ImageButton2.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton2.TabIndex = 191;
-            // 
-            // guna2ImageButton1
-            // 
-            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2ImageButton1.Image = global::LibraryManagementSystem.Properties.Resources.id;
-            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton1.ImageRotate = 0F;
-            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton1.Location = new System.Drawing.Point(477, 18);
-            this.guna2ImageButton1.Name = "guna2ImageButton1";
-            this.guna2ImageButton1.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton1.TabIndex = 186;
-            // 
-            // guna2ImageButton3
-            // 
-            this.guna2ImageButton3.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton3.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2ImageButton3.Image = global::LibraryManagementSystem.Properties.Resources.student_card;
-            this.guna2ImageButton3.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton3.ImageRotate = 0F;
-            this.guna2ImageButton3.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton3.Location = new System.Drawing.Point(477, 73);
-            this.guna2ImageButton3.Name = "guna2ImageButton3";
-            this.guna2ImageButton3.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton3.TabIndex = 185;
+            this.ucPersonCardWithFilter1.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.ucPersonCardWithFilter1.BackColor = System.Drawing.Color.Transparent;
+            this.ucPersonCardWithFilter1.FilterEnabled = true;
+            this.ucPersonCardWithFilter1.Location = new System.Drawing.Point(11, 13);
+            this.ucPersonCardWithFilter1.Name = "ucPersonCardWithFilter1";
+            this.ucPersonCardWithFilter1.Size = new System.Drawing.Size(983, 467);
+            this.ucPersonCardWithFilter1.TabIndex = 167;
             // 
             // frmAddUpdateUser
             // 

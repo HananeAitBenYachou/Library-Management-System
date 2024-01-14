@@ -41,6 +41,19 @@ namespace Library_BusinessLayer
                 return null;
         }
 
+        public static clsMember FindByPersonID(int? PersonID)
+        {
+            string LibraryCardNumber = null;
+            int? MemberID = null;
+
+            bool IsFound = clsMemberData.GetMemberInfoByPersonID(PersonID, ref MemberID, ref LibraryCardNumber);
+
+            if (IsFound)
+                return new clsMember(PersonID, LibraryCardNumber, PersonID);
+            else
+                return null;
+        }
+
         public static clsMember Find(string LibraryCardNumber)
         {
             int? MemberID = null;

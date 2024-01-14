@@ -163,6 +163,15 @@ namespace Library_BusinessLayer
             return copy.Save() ? copy.BookCopyID : null;         
         }
 
+        public int? GetAvailableBookCopy()
+        {
+            return clsBookCopy.GetAvailableBookCopy(this.BookID);
+        }
+
+        public bool IsBookHasAvailableCopyForBorrowing()
+        {
+            return GetAvailableBookCopy().HasValue;
+        }
 
     }
 }

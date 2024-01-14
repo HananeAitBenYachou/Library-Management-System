@@ -1,6 +1,6 @@
 ﻿using Library_BusinessLayer;
-using LibraryManagementSystem.People.UserControls;
-using LibraryManagementSystem.People;
+using LibraryManagementSystem.Books.UserControls;
+using LibraryManagementSystem.Books;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,15 +11,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LibraryManagementSystem.Books.UserControls
+namespace LibraryManagementSystem.Members.UserControls
 {
-    public partial class ucBookCardWithFilter : UserControl
+    public partial class ucMemberCardWithFilter : UserControl
     {
-        public event EventHandler<int?> BookFound;
+        public event EventHandler<int?> MemberFound;
 
-        protected virtual void OnBookFound(int? bookID)
+        protected virtual void OnMemberFound(int? memberID)
         {
-            BookFound?.Invoke(this, bookID);
+            MemberFound?.Invoke(this, memberID);
         }
 
         private bool _FilterEnabled = true;
@@ -41,73 +41,77 @@ namespace LibraryManagementSystem.Books.UserControls
             }
         }
 
-        public int? BookID => ucBookCard1.BookID;
+        public int? MemberID => ucMemberCard1.MemberID;
 
-        public clsBook Book => ucBookCard1.Book;
+        public clsMember Member => ucMemberCard1.Member;
 
-        public ucBookCardWithFilter()
+        public ucMemberCardWithFilter()
         {
             InitializeComponent();
         }
 
-        public void LoadBookData(int? bookID)
+        public void LoadMemberData(int? memberID)
         {
             FilterEnabled = false;
-            txtFilterValue.Text = bookID.ToString();
-            _FindBook();
+            txtFilterValue.Text = memberID.ToString();
+            _FindMember();
         }
 
-        public void ResetBookData()
+        public void ResetMemberData()
         {
             cbFilterByOptions.SelectedIndex = 0;
             FilterFocus();
-            ucBookCard1.ResetBookData();
+            ucMemberCard1.ResetMemberData();
         }
 
-        private void _FindBook()
+        private void _FindMember()
         {
             switch (cbFilterByOptions.Text)
             {
-                case "Book ID":
-                    ucBookCard1.LoadBookData(int.Parse(txtFilterValue.Text.Trim()));
+                case "Member ID":
+                    ucMemberCard1.LoadMemberData(int.Parse(txtFilterValue.Text.Trim()));
                     break;
-                case "ISBN":
-                    ucBookCard1.LoadBookData(txtFilterValue.Text.Trim());
+
+                case "Person ID":
+                    ucMemberCard1.LoadMemberDataByPersonID(int.Parse(txtFilterValue.Text.Trim()));
+                    break;
+
+                case "LibraryCard No":
+                    ucMemberCard1.LoadMemberData(txtFilterValue.Text.Trim());
                     break;
             }
         }
 
-        private void ucBookCardWithFilter_Load(object sender, EventArgs e)
+        private void ucMemberCardWithFilter_Load(object sender, EventArgs e)
         {
-            FilterFocus();
         }
 
-        private void btnSearchForBook_Click(object sender, EventArgs e)
+        private void btnSearchForMember_Click(object sender, EventArgs e)
         {
             if (!ValidateChildren())
             {
-                MessageBox.Show("Please enter the Book's BookID/ISBN you want to search for !", "Validation Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please enter the Member's MemberID/LibraryCardNo/PersonID you want to search for !", "Validation Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            _FindBook();
+            _FindMember();
 
-            if (FilterEnabled && BookID.HasValue)
-                OnBookFound(ucBookCard1.BookID);
+            if (FilterEnabled && MemberID.HasValue)
+                OnMemberFound(ucMemberCard1.MemberID);
         }
 
-        private void btnAddNewBook_Click(object sender, EventArgs e)
+        private void btnAddNewMember_Click(object sender, EventArgs e)
         {
-            frmAddUpdateBook frm = new frmAddUpdateBook();
-            frm.BookAdded += _HandleNewBookAdded;
+            frmAddUpdateMember frm = new frmAddUpdateMember();
+            frm.MemberAdded += _HandleNewMemberAdded;
             frm.ShowDialog();
         }
 
-        private void _HandleNewBookAdded(object sender, int? bookID)
+        private void _HandleNewMemberAdded(object sender, int? memberID)
         {
             cbFilterByOptions.SelectedIndex = 0;
-            txtFilterValue.Text = bookID.ToString();
-            btnSearchForBook.PerformClick();
+            txtFilterValue.Text = memberID.ToString();
+            btnSearchForMember.PerformClick();
         }
 
         private void txtFilterValue_Validating(object sender, CancelEventArgs e)
@@ -121,14 +125,13 @@ namespace LibraryManagementSystem.Books.UserControls
 
             else
             {
-                e.Cancel = false;
                 errorProvider1.SetError(txtFilterValue, null);
             }
         }
 
         private void txtFilterValue_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (cbFilterByOptions.Text == "Book ID")
+            if (cbFilterByOptions.Text == "Member ID" || cbFilterByOptions.Text == "Person ID")
                 e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
         }
 

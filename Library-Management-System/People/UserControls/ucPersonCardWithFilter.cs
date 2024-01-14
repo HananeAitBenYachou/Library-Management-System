@@ -108,11 +108,6 @@ namespace LibraryManagementSystem.People.UserControls
             btnSearchForPerson.PerformClick();
         }
 
-        private void cbFilterByOptions_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            FilterFocus();
-        }
-
         private void txtFilterValue_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(txtFilterValue.Text.Trim()))

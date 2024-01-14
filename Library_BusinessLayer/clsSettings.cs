@@ -1,25 +1,36 @@
 using Library_DataAccessLayer;
+using System;
 using System.Data;
 
 namespace Library_BusinessLayer
 {
-    public class clsSettings
+    public static class clsSettings
     {
-        public byte? DefaultBorrowDays { get; private set; }
-        public float? DefaultFinePerDay { get; set; }
+        public static byte? DefaultBorrowDays { get; private set; }
+        public static float? DefaultFinePerDay { get; private set; }
 
-        public clsSettings()
+        static clsSettings()
         {
-            DefaultBorrowDays = null;
-            DefaultFinePerDay = null;
+            GetSettings();
         }
 
-        private bool _UpdateSettings()
+        public static void GetSettings()
+        {
+            byte? defaultBorrowDays = null;
+            float? defaultFinePerDay = null;
+
+            clsSettingsData.GetSettingsInfo(ref defaultBorrowDays, ref defaultFinePerDay);
+
+            DefaultBorrowDays = defaultBorrowDays;
+            DefaultFinePerDay = defaultFinePerDay;
+        }
+
+        private static bool _UpdateSettings()
         {
             return clsSettingsData.UpdateSettingsInfo(DefaultBorrowDays, DefaultFinePerDay);
         }
 
-        public bool Save()
+        public static bool Save()
         {
             return _UpdateSettings();
         }

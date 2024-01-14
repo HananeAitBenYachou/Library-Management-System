@@ -1,6 +1,6 @@
-﻿namespace LibraryManagementSystem.People.UserControls
+﻿namespace LibraryManagementSystem.Members.UserControls
 {
-    partial class ucPersonCardWithFilter
+    partial class ucMemberCardWithFilter
     {
         /// <summary> 
         /// Required designer variable.
@@ -29,26 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ucPersonCard1 = new LibraryManagementSystem.People.UserControls.ucPersonCard();
             this.gbFilter = new Guna.UI2.WinForms.Guna2GroupBox();
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnAddNewPerson = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.btnSearchForPerson = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnAddNewMember = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnSearchForMember = new Guna.UI2.WinForms.Guna2ImageButton();
             this.label14 = new System.Windows.Forms.Label();
+            this.ucMemberCard1 = new LibraryManagementSystem.Members.UserControls.ucMemberCard();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ucPersonCard1
-            // 
-            this.ucPersonCard1.BackColor = System.Drawing.Color.Transparent;
-            this.ucPersonCard1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ucPersonCard1.Location = new System.Drawing.Point(0, 142);
-            this.ucPersonCard1.Name = "ucPersonCard1";
-            this.ucPersonCard1.Size = new System.Drawing.Size(983, 325);
-            this.ucPersonCard1.TabIndex = 0;
             // 
             // gbFilter
             // 
@@ -56,8 +47,8 @@
             this.gbFilter.BorderRadius = 25;
             this.gbFilter.Controls.Add(this.cbFilterByOptions);
             this.gbFilter.Controls.Add(this.txtFilterValue);
-            this.gbFilter.Controls.Add(this.btnAddNewPerson);
-            this.gbFilter.Controls.Add(this.btnSearchForPerson);
+            this.gbFilter.Controls.Add(this.btnAddNewMember);
+            this.gbFilter.Controls.Add(this.btnSearchForMember);
             this.gbFilter.Controls.Add(this.label14);
             this.gbFilter.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
             this.gbFilter.Dock = System.Windows.Forms.DockStyle.Top;
@@ -65,8 +56,8 @@
             this.gbFilter.ForeColor = System.Drawing.Color.Black;
             this.gbFilter.Location = new System.Drawing.Point(0, 0);
             this.gbFilter.Name = "gbFilter";
-            this.gbFilter.Size = new System.Drawing.Size(983, 122);
-            this.gbFilter.TabIndex = 202;
+            this.gbFilter.Size = new System.Drawing.Size(984, 122);
+            this.gbFilter.TabIndex = 204;
             this.gbFilter.Text = "Filter";
             // 
             // cbFilterByOptions
@@ -82,8 +73,9 @@
             this.cbFilterByOptions.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.cbFilterByOptions.ItemHeight = 40;
             this.cbFilterByOptions.Items.AddRange(new object[] {
+            "Member ID",
             "Person ID",
-            "National No"});
+            "LibraryCard No"});
             this.cbFilterByOptions.Location = new System.Drawing.Point(154, 56);
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(223, 46);
@@ -117,63 +109,71 @@
             this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             this.txtFilterValue.Validating += new System.ComponentModel.CancelEventHandler(this.txtFilterValue_Validating);
             // 
-            // btnAddNewPerson
+            // btnAddNewMember
             // 
-            this.btnAddNewPerson.CheckedState.ImageSize = new System.Drawing.Size(50, 50);
-            this.btnAddNewPerson.HoverState.ImageSize = new System.Drawing.Size(45, 45);
-            this.btnAddNewPerson.Image = global::LibraryManagementSystem.Properties.Resources.add;
-            this.btnAddNewPerson.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnAddNewPerson.ImageRotate = 0F;
-            this.btnAddNewPerson.ImageSize = new System.Drawing.Size(50, 50);
-            this.btnAddNewPerson.Location = new System.Drawing.Point(802, 52);
-            this.btnAddNewPerson.Name = "btnAddNewPerson";
-            this.btnAddNewPerson.PressedState.ImageSize = new System.Drawing.Size(50, 50);
-            this.btnAddNewPerson.ShadowDecoration.Depth = 10;
-            this.btnAddNewPerson.Size = new System.Drawing.Size(50, 50);
-            this.btnAddNewPerson.TabIndex = 192;
-            this.btnAddNewPerson.Click += new System.EventHandler(this.btnAddNewPerson_Click);
+            this.btnAddNewMember.CheckedState.ImageSize = new System.Drawing.Size(50, 50);
+            this.btnAddNewMember.HoverState.ImageSize = new System.Drawing.Size(45, 45);
+            this.btnAddNewMember.Image = global::LibraryManagementSystem.Properties.Resources.add;
+            this.btnAddNewMember.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnAddNewMember.ImageRotate = 0F;
+            this.btnAddNewMember.ImageSize = new System.Drawing.Size(50, 50);
+            this.btnAddNewMember.Location = new System.Drawing.Point(802, 52);
+            this.btnAddNewMember.Name = "btnAddNewMember";
+            this.btnAddNewMember.PressedState.ImageSize = new System.Drawing.Size(50, 50);
+            this.btnAddNewMember.ShadowDecoration.Depth = 10;
+            this.btnAddNewMember.Size = new System.Drawing.Size(50, 50);
+            this.btnAddNewMember.TabIndex = 192;
+            this.btnAddNewMember.Click += new System.EventHandler(this.btnAddNewMember_Click);
             // 
-            // btnSearchForPerson
+            // btnSearchForMember
             // 
-            this.btnSearchForPerson.CheckedState.ImageSize = new System.Drawing.Size(50, 50);
-            this.btnSearchForPerson.HoverState.ImageSize = new System.Drawing.Size(45, 45);
-            this.btnSearchForPerson.Image = global::LibraryManagementSystem.Properties.Resources.find;
-            this.btnSearchForPerson.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnSearchForPerson.ImageRotate = 0F;
-            this.btnSearchForPerson.ImageSize = new System.Drawing.Size(50, 50);
-            this.btnSearchForPerson.Location = new System.Drawing.Point(738, 52);
-            this.btnSearchForPerson.Name = "btnSearchForPerson";
-            this.btnSearchForPerson.PressedState.ImageSize = new System.Drawing.Size(50, 50);
-            this.btnSearchForPerson.ShadowDecoration.Depth = 10;
-            this.btnSearchForPerson.Size = new System.Drawing.Size(50, 50);
-            this.btnSearchForPerson.TabIndex = 191;
-            this.btnSearchForPerson.Click += new System.EventHandler(this.btnSearchForPerson_Click);
+            this.btnSearchForMember.CheckedState.ImageSize = new System.Drawing.Size(50, 50);
+            this.btnSearchForMember.HoverState.ImageSize = new System.Drawing.Size(45, 45);
+            this.btnSearchForMember.Image = global::LibraryManagementSystem.Properties.Resources.find;
+            this.btnSearchForMember.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnSearchForMember.ImageRotate = 0F;
+            this.btnSearchForMember.ImageSize = new System.Drawing.Size(50, 50);
+            this.btnSearchForMember.Location = new System.Drawing.Point(738, 52);
+            this.btnSearchForMember.Name = "btnSearchForMember";
+            this.btnSearchForMember.PressedState.ImageSize = new System.Drawing.Size(50, 50);
+            this.btnSearchForMember.ShadowDecoration.Depth = 10;
+            this.btnSearchForMember.Size = new System.Drawing.Size(50, 50);
+            this.btnSearchForMember.TabIndex = 191;
+            this.btnSearchForMember.Click += new System.EventHandler(this.btnSearchForMember_Click);
             // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.label14.Location = new System.Drawing.Point(42, 66);
+            this.label14.Location = new System.Drawing.Point(33, 66);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(92, 23);
+            this.label14.Size = new System.Drawing.Size(106, 23);
             this.label14.TabIndex = 190;
-            this.label14.Text = "Person ID :";
+            this.label14.Text = "Member ID :";
+            // 
+            // ucMemberCard1
+            // 
+            this.ucMemberCard1.BackColor = System.Drawing.Color.Transparent;
+            this.ucMemberCard1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.ucMemberCard1.Location = new System.Drawing.Point(0, 147);
+            this.ucMemberCard1.Name = "ucMemberCard1";
+            this.ucMemberCard1.Size = new System.Drawing.Size(984, 477);
+            this.ucMemberCard1.TabIndex = 205;
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // ucPersonCardWithFilter
+            // ucMemberCardWithFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
             this.BackColor = System.Drawing.Color.Transparent;
+            this.Controls.Add(this.ucMemberCard1);
             this.Controls.Add(this.gbFilter);
-            this.Controls.Add(this.ucPersonCard1);
-            this.Name = "ucPersonCardWithFilter";
-            this.Size = new System.Drawing.Size(983, 467);
-            this.Load += new System.EventHandler(this.ucPersonCardWithFilter_Load);
+            this.Name = "ucMemberCardWithFilter";
+            this.Size = new System.Drawing.Size(984, 624);
+            this.Load += new System.EventHandler(this.ucMemberCardWithFilter_Load);
             this.gbFilter.ResumeLayout(false);
             this.gbFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -183,13 +183,13 @@
 
         #endregion
 
-        private ucPersonCard ucPersonCard1;
         private Guna.UI2.WinForms.Guna2GroupBox gbFilter;
-        private System.Windows.Forms.Label label14;
-        private Guna.UI2.WinForms.Guna2ImageButton btnAddNewPerson;
-        private Guna.UI2.WinForms.Guna2ImageButton btnSearchForPerson;
         private Guna.UI2.WinForms.Guna2ComboBox cbFilterByOptions;
         private Guna.UI2.WinForms.Guna2TextBox txtFilterValue;
+        private Guna.UI2.WinForms.Guna2ImageButton btnAddNewMember;
+        private Guna.UI2.WinForms.Guna2ImageButton btnSearchForMember;
+        private System.Windows.Forms.Label label14;
+        private ucMemberCard ucMemberCard1;
         private System.Windows.Forms.ErrorProvider errorProvider1;
     }
 }

@@ -8,6 +8,45 @@ namespace Library_DataAccessLayer
 {
     public class clsSettingsData
     {
+        public static void GetSettingsInfo(ref byte? DefaultBorrowDays, ref float? DefaultFinePerDay)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * 
+                            FROM Settings;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                DefaultBorrowDays = (reader["DefaultBorrowDays"] != DBNull.Value) ? (byte?)reader["DefaultBorrowDays"] : null;
+
+                                if ((reader["DefaultFinePerDay"] != DBNull.Value))
+                                {
+                                    DefaultFinePerDay = Convert.ToSingle(reader["DefaultFinePerDay"]);
+                                }
+                                else
+                                {
+                                    DefaultFinePerDay = null;
+                                }
+
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+        }
+
         public static bool UpdateSettingsInfo(byte? DefaultBorrowDays, float? DefaultFinePerDay)
         {
             int rowsAffected = 0;

@@ -21,6 +21,7 @@ namespace Library_BusinessLayer
             PaymentDate = null;
             CreatedByUserID = null;
         }
+
         private clsPayment(int? PaymentID, int? FineID, DateTime? PaymentDate, int? CreatedByUserID)
         {
             _Mode = enMode.Update;

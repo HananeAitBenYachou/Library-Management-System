@@ -16,6 +16,10 @@ namespace Library_BusinessLayer
         public DateTime? ActualReturnDate { get; set; }
         public int? CreatedByUserID { get; set; }
 
+        public clsBookCopy BookCopyInfo { get; }
+        public clsMember MemberInfo { get; }
+        public clsUser CreatedByUserInfo { get; }
+
         public clsBorrowingRecord()
         {
             _Mode = enMode.AddNew;
@@ -27,7 +31,8 @@ namespace Library_BusinessLayer
             ActualReturnDate = null;
             CreatedByUserID = null;
         }
-        private clsBorrowingRecord(int? BorrowingRecordID, int? MemberID, int? BookCopyID, DateTime? BorrowingDate, DateTime? DueDate, DateTime? ActualReturnDate, int? CreatedByUserID)
+        private clsBorrowingRecord(int? BorrowingRecordID, int? MemberID, int? BookCopyID, DateTime? BorrowingDate, 
+            DateTime? DueDate, DateTime? ActualReturnDate, int? CreatedByUserID)
         {
             _Mode = enMode.Update;
             this.BorrowingRecordID = BorrowingRecordID;
@@ -37,9 +42,13 @@ namespace Library_BusinessLayer
             this.DueDate = DueDate;
             this.ActualReturnDate = ActualReturnDate;
             this.CreatedByUserID = CreatedByUserID;
+
+            this.BookCopyInfo = clsBookCopy.Find(this.BookCopyID);
+            this.MemberInfo = clsMember.Find(this.MemberID);
+            this.CreatedByUserInfo = clsUser.Find(this.CreatedByUserID);
         }
 
-        public static clsBorrowingRecord Find(int BorrowingRecordID)
+        public static clsBorrowingRecord Find(int? BorrowingRecordID)
         {
             int? MemberID = null;
             int? BookCopyID = null;
@@ -56,7 +65,7 @@ namespace Library_BusinessLayer
                 return null;
         }
 
-        public static bool IsBorrowingRecordExist(int BorrowingRecordID)
+        public static bool IsBorrowingRecordExist(int? BorrowingRecordID)
         {
             return clsBorrowingRecordData.IsBorrowingRecordExist(BorrowingRecordID);
         }
@@ -77,7 +86,7 @@ namespace Library_BusinessLayer
             switch (_Mode)
             {
                 case enMode.AddNew:
-                    if (_AddNewBorrowingRecord())
+                    if (_AddNewBorrowingRecord() && clsBookCopy.Find(BookCopyID).Borrow())
                     {
                         _Mode = enMode.Update;
                         return true;
@@ -91,7 +100,7 @@ namespace Library_BusinessLayer
             return false;
         }
 
-        public static bool DeleteBorrowingRecord(int BorrowingRecordID)
+        public static bool DeleteBorrowingRecord(int? BorrowingRecordID)
         {
             return clsBorrowingRecordData.DeleteBorrowingRecord(BorrowingRecordID);
         }

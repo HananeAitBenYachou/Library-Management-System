@@ -25,6 +25,13 @@ namespace LibraryManagementSystem.Members
 
         private clsMember _Member = null;
 
+        public event EventHandler<int?> MemberAdded;
+
+        protected virtual void OnMemberAdded(int? memberID)
+        {
+            MemberAdded?.Invoke(this, memberID);
+        }
+
         public frmAddUpdateMember(int? memberID)
         {
             InitializeComponent();
@@ -82,7 +89,7 @@ namespace LibraryManagementSystem.Members
 
         }
 
-        private void _SaveMemberData()
+        private bool _SaveMemberData()
         {
             _Member.LibraryCardNumber = txtLibraryCardNo.Text.Trim();
             _Member.PersonID = ucPersonCardWithFilter1.PersonID;
@@ -94,12 +101,14 @@ namespace LibraryManagementSystem.Members
                 lblTitle.Text = "Member User";
                 lblMemberD.Text = _Member.MemberID.ToString();
                 ucPersonCardWithFilter1.FilterEnabled = false;
+
+                return true;
             }
 
             else
             {
                 MessageBox.Show("Member data is not saved successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
+                return false;
             }
         }
 
@@ -153,7 +162,8 @@ namespace LibraryManagementSystem.Members
                 return;
             }
 
-            _SaveMemberData();
+            if (_SaveMemberData())
+                OnMemberAdded(_Member.MemberID);
         }
 
         private void btnClose_Click(object sender, EventArgs e)

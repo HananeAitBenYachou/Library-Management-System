@@ -56,6 +56,53 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
+        public static bool GetMemberInfoByPersonID(int? PersonID, ref int? MemberID , ref string LibraryCardNumber)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * 
+                            FROM Members 
+                            WHERE PersonID = @PersonID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                IsFound = true;
+
+                                MemberID = (reader["MemberID"] != DBNull.Value) ? (int?)reader["MemberID"] : null;
+
+                                LibraryCardNumber = (reader["LibraryCardNumber"] != DBNull.Value) ? (string)reader["LibraryCardNumber"] : null;
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                IsFound = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
         public static bool GetMemberInfoByLibraryCardNo(string LibraryCardNumber , ref int? MemberID, ref int? PersonID)
         {
             bool IsFound = false;

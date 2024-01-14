@@ -164,6 +164,38 @@ namespace Library_DataAccessLayer
             return rowsAffected != 0;
         }
 
+        public static bool UpdateBookCopyAvailabilityStatus(int? BookCopyID , bool? AvailabilityStatus)
+        {
+            int rowsAffected = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"UPDATE BookCopies
+                            SET 
+							AvailabilityStatus = @AvailabilityStatus
+                            WHERE BookCopyID = @BookCopyID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@BookCopyID", (object)BookCopyID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@AvailabilityStatus", (object)AvailabilityStatus ?? DBNull.Value);
+
+                        rowsAffected = command.ExecuteNonQuery();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                rowsAffected = 0;
+            }
+            return rowsAffected != 0;
+        }
+
         public static bool DeleteBookCopy(int? BookCopyID)
         {
             int rowsAffected = 0;
@@ -323,6 +355,42 @@ namespace Library_DataAccessLayer
             return CopiesCount;
         }
 
+        public static int? GetAvailableBookCopy(int? BookID)
+        {
+            int? BookCopyID = null;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT TOP 1 BookCopyID
+                                    FROM BookCopies
+                                    WHERE BookID = @BookID AND AvailabilityStatus = 1";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@BookID", (object)BookID ?? DBNull.Value);
+
+                        object copyID = command.ExecuteScalar();
+
+                        if (copyID != null && int.TryParse(copyID.ToString(), out int _copyID))
+                        {
+                            BookCopyID = _copyID;
+                        }
+
+                        else
+                            BookCopyID = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                BookCopyID = null;
+            }
+            return BookCopyID;
+        }
 
     }
 }
