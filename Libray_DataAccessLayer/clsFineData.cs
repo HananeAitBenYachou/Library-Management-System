@@ -38,7 +38,14 @@ namespace Library_DataAccessLayer
 
                                 NumberOfLateDays = (reader["NumberOfLateDays"] != DBNull.Value) ? (short?)reader["NumberOfLateDays"] : null;
 
-                                FineAmount = (reader["FineAmount"] != DBNull.Value) ? (double?)reader["FineAmount"] : null;
+                                if ((reader["FineAmount"] != DBNull.Value))
+                                {
+                                    FineAmount = Convert.ToDouble(reader["FineAmount"]);
+                                }
+                                else
+                                {
+                                    FineAmount = null;
+                                }
 
                                 PaymentStatus = (reader["PaymentStatus"] != DBNull.Value) ? (bool?)reader["PaymentStatus"] : null;
 

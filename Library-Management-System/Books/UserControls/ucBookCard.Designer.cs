@@ -97,7 +97,7 @@
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(980, 373);
             this.guna2GroupBox1.TabIndex = 202;
-            this.guna2GroupBox1.Text = "Book Informations";
+            this.guna2GroupBox1.Text = "Book Information";
             // 
             // guna2ImageButton4
             // 

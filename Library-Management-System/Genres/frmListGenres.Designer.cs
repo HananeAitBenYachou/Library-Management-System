@@ -35,18 +35,18 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dgvGenresList = new Guna.UI2.WinForms.Guna2DataGridView();
-            this.cmsAuthors = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.cmsGenres = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.AddGenretoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnAddGenre = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGenresList)).BeginInit();
-            this.cmsAuthors.SuspendLayout();
+            this.cmsGenres.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,7 +91,7 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvGenresList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvGenresList.ColumnHeadersHeight = 45;
-            this.dgvGenresList.ContextMenuStrip = this.cmsAuthors;
+            this.dgvGenresList.ContextMenuStrip = this.cmsGenres;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(235)))), ((int)(((byte)(230)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
@@ -143,18 +143,58 @@
             this.dgvGenresList.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgvGenresList.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvGenresList_DataBindingComplete);
             // 
-            // cmsAuthors
+            // cmsGenres
             // 
-            this.cmsAuthors.BackColor = System.Drawing.Color.White;
-            this.cmsAuthors.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
-            this.cmsAuthors.ImageScalingSize = new System.Drawing.Size(30, 30);
-            this.cmsAuthors.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.cmsGenres.BackColor = System.Drawing.Color.White;
+            this.cmsGenres.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold);
+            this.cmsGenres.ImageScalingSize = new System.Drawing.Size(30, 30);
+            this.cmsGenres.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.AddGenretoolStripMenuItem,
             this.showDetailsToolStripMenuItem,
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem});
-            this.cmsAuthors.Name = "contextMenuStrip1";
-            this.cmsAuthors.Size = new System.Drawing.Size(201, 148);
+            this.cmsGenres.Name = "contextMenuStrip1";
+            this.cmsGenres.Size = new System.Drawing.Size(201, 148);
+            // 
+            // AddGenretoolStripMenuItem
+            // 
+            this.AddGenretoolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.AddGenretoolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.AddGenretoolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.add2;
+            this.AddGenretoolStripMenuItem.Name = "AddGenretoolStripMenuItem";
+            this.AddGenretoolStripMenuItem.Size = new System.Drawing.Size(200, 36);
+            this.AddGenretoolStripMenuItem.Text = "Add &New Genre";
+            this.AddGenretoolStripMenuItem.Click += new System.EventHandler(this.AddGenretoolStripMenuItem_Click);
+            // 
+            // showDetailsToolStripMenuItem
+            // 
+            this.showDetailsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.showDetailsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.showDetailsToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.information_pamphlet;
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
+            this.showDetailsToolStripMenuItem.Text = "&Show Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            // 
+            // editToolStripMenuItem
+            // 
+            this.editToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.editToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.editToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.note;
+            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
+            this.editToolStripMenuItem.Text = "&Edit";
+            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.deleteToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.delete;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
+            this.deleteToolStripMenuItem.Text = "&Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // label3
             // 
@@ -201,46 +241,6 @@
             this.label1.Size = new System.Drawing.Size(268, 46);
             this.label1.TabIndex = 55;
             this.label1.Text = "Manage Genres";
-            // 
-            // AddGenretoolStripMenuItem
-            // 
-            this.AddGenretoolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.AddGenretoolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.AddGenretoolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.add2;
-            this.AddGenretoolStripMenuItem.Name = "AddGenretoolStripMenuItem";
-            this.AddGenretoolStripMenuItem.Size = new System.Drawing.Size(200, 36);
-            this.AddGenretoolStripMenuItem.Text = "Add &New Genre";
-            this.AddGenretoolStripMenuItem.Click += new System.EventHandler(this.AddGenretoolStripMenuItem_Click);
-            // 
-            // showDetailsToolStripMenuItem
-            // 
-            this.showDetailsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.showDetailsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.showDetailsToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.information_pamphlet;
-            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
-            this.showDetailsToolStripMenuItem.Text = "&Show Details";
-            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
-            // 
-            // editToolStripMenuItem
-            // 
-            this.editToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.editToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.editToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.note;
-            this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
-            this.editToolStripMenuItem.Text = "&Edit";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.deleteToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.delete;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(200, 36);
-            this.deleteToolStripMenuItem.Text = "&Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
             // btnAddGenre
             // 
@@ -291,7 +291,7 @@
             this.Text = "List Genres";
             this.Load += new System.EventHandler(this.frmListGenres_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvGenresList)).EndInit();
-            this.cmsAuthors.ResumeLayout(false);
+            this.cmsGenres.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -302,7 +302,7 @@
 
         private Guna.UI2.WinForms.Guna2ComboBox cbFilterByOptions;
         private Guna.UI2.WinForms.Guna2DataGridView dgvGenresList;
-        private System.Windows.Forms.ContextMenuStrip cmsAuthors;
+        private System.Windows.Forms.ContextMenuStrip cmsGenres;
         private System.Windows.Forms.ToolStripMenuItem AddGenretoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;

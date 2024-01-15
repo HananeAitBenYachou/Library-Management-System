@@ -60,13 +60,13 @@ namespace LibraryManagementSystem.People.UserControls
             pbPersonImage.ImageLocation = _Person.PersonalImagePath ?? null;
         }
 
-        public void LoadPersonData(int? PersonID)
+        public void LoadPersonData(int? personID)
         {
-            _Person = clsPerson.Find(PersonID);
+            _Person = clsPerson.Find(personID);
 
             if (_Person == null)
             {
-                MessageBox.Show($"No person with ID = {PersonID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No person with ID = {personID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ResetPersonData();
                 return;
             }

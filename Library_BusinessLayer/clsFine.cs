@@ -38,7 +38,7 @@ namespace Library_BusinessLayer
             this.CreatedByUserID = CreatedByUserID;
         }
 
-        public static clsFine Find(int FineID)
+        public static clsFine Find(int? FineID)
         {
             int? MemberID = null;
             int? BorrowingRecordID = null;
@@ -55,7 +55,7 @@ namespace Library_BusinessLayer
                 return null;
         }
 
-        public static bool IsFineExist(int FineID)
+        public static bool IsFineExist(int? FineID)
         {
             return clsFineData.IsFineExist(FineID);
         }
@@ -90,7 +90,7 @@ namespace Library_BusinessLayer
             return false;
         }
 
-        public static bool DeleteFine(int FineID)
+        public static bool DeleteFine(int? FineID)
         {
             return clsFineData.DeleteFine(FineID);
         }

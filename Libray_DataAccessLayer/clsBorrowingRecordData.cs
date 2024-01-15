@@ -10,7 +10,7 @@ namespace Library_DataAccessLayer
     {
         public static bool GetBorrowingRecordInfoByID(int? BorrowingRecordID, ref int? MemberID, ref int? BookCopyID,
             ref DateTime? BorrowingDate, ref DateTime? DueDate, ref DateTime? ActualReturnDate,
-            ref int? CreatedByUserID)
+            ref int? CreatedByUserID, ref int? UpdatedByUserID)
         {
             bool IsFound = false;
 
@@ -46,6 +46,67 @@ namespace Library_DataAccessLayer
 
                                 CreatedByUserID = (reader["CreatedByUserID"] != DBNull.Value) ? (int?)reader["CreatedByUserID"] : null;
 
+                                UpdatedByUserID = (reader["UpdatedByUserID"] != DBNull.Value) ? (int?)reader["UpdatedByUserID"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                IsFound = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
+        public static bool GetBorrowingRecordInfoByBookCopyID(int? BookCopyID,ref int? BorrowingRecordID, ref int? MemberID,
+       ref DateTime? BorrowingDate, ref DateTime? DueDate, ref DateTime? ActualReturnDate,
+       ref int? CreatedByUserID, ref int? UpdatedByUserID)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT TOP 1 * FROM BorrowingRecords
+                                    WHERE BookCopyID = @BookCopyID AND ActualReturnDate IS NULL
+                                    ORDER BY BorrowingRecordID DESC;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@BookCopyID", (object)BookCopyID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                IsFound = true;
+
+                                MemberID = (reader["MemberID"] != DBNull.Value) ? (int?)reader["MemberID"] : null;
+
+                                BorrowingRecordID = (reader["BorrowingRecordID"] != DBNull.Value) ? (int?)reader["BorrowingRecordID"] : null;
+
+                                BorrowingDate = (reader["BorrowingDate"] != DBNull.Value) ? (DateTime?)reader["BorrowingDate"] : null;
+
+                                DueDate = (reader["DueDate"] != DBNull.Value) ? (DateTime?)reader["DueDate"] : null;
+
+                                ActualReturnDate = (reader["ActualReturnDate"] != DBNull.Value) ? (DateTime?)reader["ActualReturnDate"] : null;
+
+                                CreatedByUserID = (reader["CreatedByUserID"] != DBNull.Value) ? (int?)reader["CreatedByUserID"] : null;
+
+                                UpdatedByUserID = (reader["UpdatedByUserID"] != DBNull.Value) ? (int?)reader["UpdatedByUserID"] : null;
                             }
 
                             else
@@ -146,7 +207,7 @@ namespace Library_DataAccessLayer
 
         public static bool UpdateBorrowingRecordInfo(int? BorrowingRecordID, int? MemberID,
             int? BookCopyID, DateTime? BorrowingDate, DateTime? DueDate,
-            DateTime? ActualReturnDate, int? CreatedByUserID)
+            DateTime? ActualReturnDate, int? CreatedByUserID,int? UpdatedByUserID)
         {
             int rowsAffected = 0;
 
@@ -162,7 +223,8 @@ namespace Library_DataAccessLayer
 							BorrowingDate = @BorrowingDate,
 							DueDate = @DueDate,
 							ActualReturnDate = @ActualReturnDate,
-							CreatedByUserID = @CreatedByUserID
+							CreatedByUserID = @CreatedByUserID,
+							UpdatedByUserID = @UpdatedByUserID
                             WHERE BorrowingRecordID = @BorrowingRecordID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -175,6 +237,7 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@DueDate", (object)DueDate ?? DBNull.Value);
                         command.Parameters.AddWithValue("@ActualReturnDate", (object)ActualReturnDate ?? DBNull.Value);
                         command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@UpdatedByUserID", (object)UpdatedByUserID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
 
@@ -227,11 +290,23 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM BorrowingRecords;";
+                    string query = @"SELECT BorrowingRecordID AS 'Borrowing ID' , FirstName + ' ' + LastName AS 'Full Name' , 
+                                    LibraryCardNumber AS 'LibraryCard No', Title AS 'Book Title' , BookCopies.BookCopyID AS 'Borrowed Copy ID' ,
+                                    BorrowingDate AS 'Borrowing Date' , 
+                                    DueDate AS 'Due Date' ,  ActualReturnDate AS 'Actual Return Date' ,
+                                    CASE 
+	                                    WHEN AvailabilityStatus = 1 THEN 'Returned'
+	                                    ELSE 'Borrowed'
+	                                    END AS 'Book Copy Status',
+                                    BorrowingRecords.CreatedByUserID AS 'Created By' , UpdatedByUserID AS 'Updated By'
+                                    FROM BorrowingRecords
+                                    INNER JOIN BookCopies ON BookCopies.BookCopyID = BorrowingRecords.BookCopyID
+                                    INNER JOIN Members ON Members.MemberID = BorrowingRecords.MemberID
+                                    INNER JOIN People ON People.PersonID = Members.PersonID 
+                                    INNER JOIN Books ON Books.BookID = BookCopies.BookID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.HasRows)
@@ -239,7 +314,6 @@ namespace Library_DataAccessLayer
                                 Datatable.Load(reader);
                             }
                         }
-
                     }
                 }
             }
@@ -248,6 +322,39 @@ namespace Library_DataAccessLayer
                 clsErrorLogger.LogError(ex);
             }
             return Datatable;
+        }
+
+        public static bool ReturnBorrowedBook(int? BorrowingRecordID, int? UpdatedByUserID)
+        {
+            int rowsAffected = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"UPDATE BorrowingRecords
+                            SET 
+							ActualReturnDate = @ActualReturnDate,
+							UpdatedByUserID = @UpdatedByUserID
+                            WHERE BorrowingRecordID = @BorrowingRecordID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@BorrowingRecordID", (object)BorrowingRecordID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@ActualReturnDate", DateTime.Now);
+                        command.Parameters.AddWithValue("@UpdatedByUserID", (object)UpdatedByUserID ?? DBNull.Value);
+
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                rowsAffected = 0;
+            }
+            return rowsAffected != 0;
         }
 
     }

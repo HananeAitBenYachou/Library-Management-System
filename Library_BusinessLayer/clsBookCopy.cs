@@ -1,4 +1,5 @@
 using Library_DataAccessLayer;
+using System;
 using System.Data;
 
 namespace Library_BusinessLayer
@@ -10,8 +11,16 @@ namespace Library_BusinessLayer
         public int? BookCopyID { get; private set; }
         public int? BookID { get; set; }
         public bool? AvailabilityStatus { get; set; }
+        public string AvailabilityStatusText
+        {
+            get
+            {
+                return AvailabilityStatus.Value ? "Available" : "Borrowed";
+            }
+        }
+        public clsBook BookInfo { get; }
+        public clsBorrowingRecord BorrowingInfo { get; }
 
-        public enum enAvailabilityStatus { Borrowed = 0, Available = 1 }
         public clsBookCopy()
         {
             _Mode = enMode.AddNew;
@@ -19,12 +28,16 @@ namespace Library_BusinessLayer
             BookID = null;
             AvailabilityStatus = null;
         }
+
         private clsBookCopy(int? BookCopyID, int? BookID, bool? AvailabilityStatus)
         {
             _Mode = enMode.Update;
             this.BookCopyID = BookCopyID;
             this.BookID = BookID;
             this.AvailabilityStatus = AvailabilityStatus;
+
+            this.BookInfo = clsBook.Find(BookID);
+            this.BorrowingInfo = clsBorrowingRecord.FindByBookCopyID(BookCopyID);
         }
 
         public static clsBookCopy Find(int? BookCopyID)
@@ -61,8 +74,30 @@ namespace Library_BusinessLayer
             return clsBookCopyData.UpdateBookCopyAvailabilityStatus(BookCopyID, false);
         }
 
-        public bool Return()
+        public bool ReturnBorrowedBookCopy(int? UpdatedByUserID, ref double? FineFees)
         {
+            short NumberOfLateDays = (short)DateTime.Now.Subtract(this.BorrowingInfo.DueDate.Value).Days;
+
+            if(NumberOfLateDays > 0)
+            {
+                clsFine Fine = new clsFine();
+
+                Fine.MemberID = this.BorrowingInfo.MemberID;
+                Fine.BorrowingRecordID = this.BorrowingInfo.BorrowingRecordID;
+                Fine.NumberOfLateDays = (short?)DateTime.Now.Subtract(this.BorrowingInfo.DueDate.Value).Days;
+                Fine.FineAmount = Fine.NumberOfLateDays * clsSettings.DefaultFinePerDay;
+                Fine.PaymentStatus = false;
+                Fine.CreatedByUserID = UpdatedByUserID;
+
+                FineFees = Fine.FineAmount;
+
+                if (!Fine.Save())
+                    return false;
+            }
+            
+            if (!this.BorrowingInfo.ReturnBorrowedBookCopy(UpdatedByUserID))
+                return false;
+
             return clsBookCopyData.UpdateBookCopyAvailabilityStatus(BookCopyID, true);
         }
 

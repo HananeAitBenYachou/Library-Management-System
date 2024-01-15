@@ -82,6 +82,24 @@
     <Compile Include="Authors\UserControls\ucAuthorCard.Designer.cs">
       <DependentUpon>ucAuthorCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Books\BookCopies\frmShowBookCopyDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Books\BookCopies\frmShowBookCopyDetails.Designer.cs">
+      <DependentUpon>frmShowBookCopyDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Books\BookCopies\UserControls\ucBookCopyCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Books\BookCopies\UserControls\ucBookCopyCard.Designer.cs">
+      <DependentUpon>ucBookCopyCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Books\BookCopies\UserControls\ucBookCopyCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Books\BookCopies\UserControls\ucBookCopyCardWithFilter.Designer.cs">
+      <DependentUpon>ucBookCopyCardWithFilter.cs</DependentUpon>
+    </Compile>
     <Compile Include="Books\frmAddUpdateBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -117,6 +135,30 @@
     </Compile>
     <Compile Include="Borrowings&amp;Returns\frmBorrowBook.Designer.cs">
       <DependentUpon>frmBorrowBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmListBorrowings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmListBorrowings.Designer.cs">
+      <DependentUpon>frmListBorrowings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmReturnBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmReturnBook.Designer.cs">
+      <DependentUpon>frmReturnBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmShowBorrowingDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmShowBorrowingDetails.Designer.cs">
+      <DependentUpon>frmShowBorrowingDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\UserControls\ucBorrowingDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\UserControls\ucBorrowingDetails.Designer.cs">
+      <DependentUpon>ucBorrowingDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -259,6 +301,15 @@
     <EmbeddedResource Include="Authors\UserControls\ucAuthorCard.resx">
       <DependentUpon>ucAuthorCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Books\BookCopies\frmShowBookCopyDetails.resx">
+      <DependentUpon>frmShowBookCopyDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Books\BookCopies\UserControls\ucBookCopyCard.resx">
+      <DependentUpon>ucBookCopyCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Books\BookCopies\UserControls\ucBookCopyCardWithFilter.resx">
+      <DependentUpon>ucBookCopyCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Books\frmAddUpdateBook.resx">
       <DependentUpon>frmAddUpdateBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -276,6 +327,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Borrowings&amp;Returns\frmBorrowBook.resx">
       <DependentUpon>frmBorrowBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borrowings&amp;Returns\frmListBorrowings.resx">
+      <DependentUpon>frmListBorrowings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borrowings&amp;Returns\frmReturnBook.resx">
+      <DependentUpon>frmReturnBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borrowings&amp;Returns\frmShowBorrowingDetails.resx">
+      <DependentUpon>frmShowBorrowingDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borrowings&amp;Returns\UserControls\ucBorrowingDetails.resx">
+      <DependentUpon>ucBorrowingDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -590,6 +653,24 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\book %282%291.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\return.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\13_delivering books.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10_borrow book.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

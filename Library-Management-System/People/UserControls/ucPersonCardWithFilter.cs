@@ -48,10 +48,10 @@ namespace LibraryManagementSystem.People.UserControls
             InitializeComponent();
         }
 
-        public void LoadPersonData(int? PersonID)
+        public void LoadPersonData(int? personID)
         {
             FilterEnabled = false;
-            txtFilterValue.Text = PersonID.ToString();
+            txtFilterValue.Text = personID.ToString();
             _FindPerson();
         }
 

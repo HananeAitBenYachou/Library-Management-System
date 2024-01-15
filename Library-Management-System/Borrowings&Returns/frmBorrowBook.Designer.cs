@@ -34,6 +34,7 @@
             this.ucBookCardWithFilter1 = new LibraryManagementSystem.Books.UserControls.ucBookCardWithFilter();
             this.btnToSecondPage = new Guna.UI2.WinForms.Guna2GradientButton();
             this.tpMemberInfo = new System.Windows.Forms.TabPage();
+            this.ucMemberCardWithFilter1 = new LibraryManagementSystem.Members.UserControls.ucMemberCardWithFilter();
             this.btnToLastPage = new Guna.UI2.WinForms.Guna2GradientButton();
             this.tpBorrowingInfo = new System.Windows.Forms.TabPage();
             this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -49,7 +50,6 @@
             this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
             this.lblTitle = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.ucMemberCardWithFilter1 = new LibraryManagementSystem.Members.UserControls.ucMemberCardWithFilter();
             this.tcBorrowingInfo.SuspendLayout();
             this.tpBookInfo.SuspendLayout();
             this.tpMemberInfo.SuspendLayout();
@@ -141,6 +141,15 @@
             this.tpMemberInfo.Size = new System.Drawing.Size(1007, 707);
             this.tpMemberInfo.TabIndex = 1;
             this.tpMemberInfo.Text = "Member Info";
+            // 
+            // ucMemberCardWithFilter1
+            // 
+            this.ucMemberCardWithFilter1.BackColor = System.Drawing.Color.Transparent;
+            this.ucMemberCardWithFilter1.FilterEnabled = true;
+            this.ucMemberCardWithFilter1.Location = new System.Drawing.Point(12, 11);
+            this.ucMemberCardWithFilter1.Name = "ucMemberCardWithFilter1";
+            this.ucMemberCardWithFilter1.Size = new System.Drawing.Size(984, 624);
+            this.ucMemberCardWithFilter1.TabIndex = 168;
             // 
             // btnToLastPage
             // 
@@ -351,22 +360,13 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
             this.lblTitle.Location = new System.Drawing.Point(411, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(189, 46);
+            this.lblTitle.Size = new System.Drawing.Size(231, 46);
             this.lblTitle.TabIndex = 168;
-            this.lblTitle.Text = "Lend Book";
+            this.lblTitle.Text = "Borrow Book";
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // ucMemberCardWithFilter1
-            // 
-            this.ucMemberCardWithFilter1.BackColor = System.Drawing.Color.Transparent;
-            this.ucMemberCardWithFilter1.FilterEnabled = true;
-            this.ucMemberCardWithFilter1.Location = new System.Drawing.Point(12, 11);
-            this.ucMemberCardWithFilter1.Name = "ucMemberCardWithFilter1";
-            this.ucMemberCardWithFilter1.Size = new System.Drawing.Size(984, 624);
-            this.ucMemberCardWithFilter1.TabIndex = 168;
             // 
             // frmBorrowBook
             // 
