@@ -1,4 +1,10 @@
 ﻿using Guna.UI2.WinForms;
+using LibraryManagementSystem.Authors;
+using LibraryManagementSystem.Books;
+using LibraryManagementSystem.Borrowings_Returns;
+using LibraryManagementSystem.Fines;
+using LibraryManagementSystem.Genres;
+using LibraryManagementSystem.Members;
 using LibraryManagementSystem.Users;
 using System;
 using System.Windows.Forms;
@@ -42,6 +48,38 @@ namespace LibraryManagementSystem
         private void btnUsers_Click(object sender, EventArgs e)
         {
             _ShowForm((Guna2Button)sender ,new frmListUsers());
+        }
+
+        private void btnBooks_Click(object sender, EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmListBooks());
+        }
+
+        private void btnGenres_Click(object sender, EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmListGenres());
+        }
+
+        private void btnAuthors_Click(object sender, EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmListAuthors());
+        }
+
+        private void btnMembers_Click(object sender, EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmListMembers());
+        }
+
+        private void btnBorrowings_Click(object sender, EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmListBorrowings());
+
+        }
+
+        private void btnFines_Click(object sender, EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmListFines());
+
         }
 
     }

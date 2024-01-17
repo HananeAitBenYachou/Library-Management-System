@@ -1,4 +1,6 @@
 ﻿using Library_BusinessLayer;
+using LibraryManagementSystem.Authors;
+using LibraryManagementSystem.Genres;
 using LibraryManagementSystem.People;
 using LibraryManagementSystem.People.UserControls;
 using LibraryManagementSystem.Properties;
@@ -33,6 +35,10 @@ namespace LibraryManagementSystem.Books.UserControls
         {
             _BookID = null;
 
+            llbEditBookInfo.Visible = false;
+            llbShowAuthorInfo.Visible = false;
+            llbShowGenreInfo.Visible = false;
+
             lblBookID.Text = "[????]";
             lblTitle.Text = "[????]";
             lblIsbn.Text = "[????]";
@@ -47,9 +53,11 @@ namespace LibraryManagementSystem.Books.UserControls
 
         private void _LoadBookData()
         {
-            llbEditBookInfo.Enabled = true;
-
             _BookID = _Book.BookID;
+
+            llbEditBookInfo.Visible = true;
+            llbShowAuthorInfo.Visible = true;
+            llbShowGenreInfo.Visible = true;
 
             lblBookID.Text = _BookID.ToString();
             lblTitle.Text = _Book.Title;
@@ -97,7 +105,18 @@ namespace LibraryManagementSystem.Books.UserControls
             frmAddUpdateBook form = new frmAddUpdateBook(_BookID);
             form.ShowDialog();
             LoadBookData(_BookID);
+        }
 
+        private void llbShowAuthorInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmShowAuthorDetails form = new frmShowAuthorDetails(_Book.AuthorID);
+            form.ShowDialog();
+        }
+
+        private void llbShowGenreInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmShowGenreDetails form = new frmShowGenreDetails(_Book.GenreID);
+            form.ShowDialog();
         }
     }
 }

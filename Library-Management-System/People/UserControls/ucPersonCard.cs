@@ -30,6 +30,8 @@ namespace LibraryManagementSystem.People.UserControls
         {
             _PersonID = null;
 
+            llbEditPersonInfo.Visible = false; 
+
             lblPersonID.Text = "[????]";
             lblFullName.Text = "[????]";
             lblEmail.Text = "[????]";
@@ -43,9 +45,9 @@ namespace LibraryManagementSystem.People.UserControls
 
         private void _LoadPersonData()
         {
-            llbEditPersonInfo.Enabled = true;
-
             _PersonID = _Person.PersonID;
+
+            llbEditPersonInfo.Visible = true;
 
             lblPersonID.Text = _PersonID.ToString();
             lblFullName.Text = _Person.FullName;

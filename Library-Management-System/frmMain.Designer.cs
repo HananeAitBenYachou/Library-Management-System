@@ -163,6 +163,7 @@
             this.btnFines.Text = "Fines";
             this.btnFines.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnFines.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnFines.Click += new System.EventHandler(this.btnFines_Click);
             // 
             // btnReservations
             // 
@@ -221,6 +222,7 @@
             this.btnBorrowings.Text = "Borrowings";
             this.btnBorrowings.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBorrowings.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnBorrowings.Click += new System.EventHandler(this.btnBorrowings_Click);
             // 
             // btnMembers
             // 
@@ -250,6 +252,7 @@
             this.btnMembers.Text = "Members";
             this.btnMembers.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnMembers.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnMembers.Click += new System.EventHandler(this.btnMembers_Click);
             // 
             // btnAuthors
             // 
@@ -279,6 +282,7 @@
             this.btnAuthors.Text = "Authors";
             this.btnAuthors.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAuthors.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnAuthors.Click += new System.EventHandler(this.btnAuthors_Click);
             // 
             // btnGenres
             // 
@@ -308,6 +312,7 @@
             this.btnGenres.Text = "Genres";
             this.btnGenres.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnGenres.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnGenres.Click += new System.EventHandler(this.btnGenres_Click);
             // 
             // btnBooks
             // 
@@ -337,6 +342,7 @@
             this.btnBooks.Text = "Books";
             this.btnBooks.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBooks.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnBooks.Click += new System.EventHandler(this.btnBooks_Click);
             // 
             // btnDashboard
             // 

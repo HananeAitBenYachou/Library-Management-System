@@ -135,17 +135,17 @@ namespace LibraryManagementSystem.People
             if (!_IsPersonImageHandledSuccessfully())
                 return false;
 
-            _Person.FirstName = txtFirstName.Text;
-            _Person.LastName = txtLastName.Text;
-            _Person.Email = txtEmail.Text;
-            _Person.NationalNo = txtNationalNo.Text;
-            _Person.Phone = txtPhoneNo.Text;
-            _Person.Address = txtAddress.Text;          
+            _Person.FirstName = txtFirstName.Text.Trim();
+            _Person.LastName = txtLastName.Text.Trim();
+            _Person.Email = txtEmail.Text.Trim();
+            _Person.NationalNo = txtNationalNo.Text.Trim();
+            _Person.Phone = txtPhoneNo.Text.Trim();
+            _Person.Address = txtAddress.Text.Trim();          
             _Person.Gender = rbMale.Checked ? 'M' : 'F';
             _Person.BirthDate = dtpBirthDate.Value;
             _Person.NationalityCountryID = clsCountry.Find(cbCountries.Text).CountryID;
             _Person.PersonalImagePath = pbPersonImage.ImageLocation ?? null;
-            _Person.Password = PasswordEditEnabled ? txtPassword.Text : _Person.Password;
+            _Person.Password = PasswordEditEnabled ? txtPassword.Text.Trim() : _Person.Password;
 
             if (_Person.Save())
             {
@@ -163,7 +163,6 @@ namespace LibraryManagementSystem.People
                 MessageBox.Show("Person data is not saved successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
         }
 
         private bool _IsPersonImageHandledSuccessfully()

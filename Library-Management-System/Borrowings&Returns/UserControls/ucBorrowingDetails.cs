@@ -1,4 +1,6 @@
 ﻿using Library_BusinessLayer;
+using LibraryManagementSystem.Books.BookCopies;
+using LibraryManagementSystem.Members;
 using LibraryManagementSystem.Properties;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,8 @@ namespace LibraryManagementSystem.Borrowings_Returns
 
         private clsBorrowingRecord _Borrowing = null;
 
+        public clsBookCopy _BorrowedCopy = null;
+
         public int? BorrowingRecordID => _BorrowingRecordID;
 
         public clsBorrowingRecord Borrowing => _Borrowing;
@@ -30,6 +34,9 @@ namespace LibraryManagementSystem.Borrowings_Returns
         public void ResetBorrowingData()
         {
             _BorrowingRecordID = null;
+
+            llbShowBookCopyInfo.Visible = true;
+            llbShowMemberInfo.Visible = true;
 
             lblBorrowingID.Text = "[????]";
             lblMemberLibCardNo.Text = "[????]";
@@ -56,13 +63,16 @@ namespace LibraryManagementSystem.Borrowings_Returns
 
             _BorrowingRecordID = _Borrowing.BorrowingRecordID;
 
-            clsBookCopy borrowedCopy = clsBookCopy.Find(_Borrowing.BookCopyID);
+            llbShowBookCopyInfo.Visible = true;
+            llbShowMemberInfo.Visible = true;
+
+            _BorrowedCopy = clsBookCopy.Find(_Borrowing.BookCopyID);
 
             lblBorrowingID.Text = _Borrowing.BorrowingRecordID.ToString();
             lblMemberLibCardNo.Text = _Borrowing.MemberInfo.LibraryCardNumber;
-            lblTitle.Text = borrowedCopy.BookInfo.Title;
-            lblBookCopyID.Text = borrowedCopy.BookCopyID.ToString();
-            lblIsBookReturned.Text = borrowedCopy.AvailabilityStatus.Value ? "YES" : "NO";
+            lblTitle.Text = _BorrowedCopy.BookInfo.Title;
+            lblBookCopyID.Text = _BorrowedCopy.BookCopyID.ToString();
+            lblIsBookReturned.Text = _BorrowedCopy.AvailabilityStatus.Value ? "YES" : "NO";
             lblBorrowingDate.Text = _Borrowing.BorrowingDate.Value.ToShortDateString();
             lblReturnDate.Text = _Borrowing.BorrowingDate.Value.ToShortDateString() ?? "Not returned yet !";
             lblDueDate.Text = _Borrowing.DueDate.Value.ToShortDateString();
@@ -70,5 +80,17 @@ namespace LibraryManagementSystem.Borrowings_Returns
             lblUpdatedByUser.Text = _Borrowing.UpdatedByUserInfo.UserName;
         }
 
+        private void llbShowBookCopyInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmShowBookCopyDetails frm = new frmShowBookCopyDetails(_BorrowedCopy.BookCopyID);
+            frm.ShowDialog();
+        }
+
+        private void llbShowMemberInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            frmShowMemberDetails frm = new frmShowMemberDetails(_Borrowing.MemberID);
+            frm.ShowDialog();
+        }
+    
     }
 }

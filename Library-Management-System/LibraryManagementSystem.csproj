@@ -160,6 +160,24 @@
     <Compile Include="Borrowings&amp;Returns\UserControls\ucBorrowingDetails.Designer.cs">
       <DependentUpon>ucBorrowingDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Fines\frmListFines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fines\frmListFines.Designer.cs">
+      <DependentUpon>frmListFines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fines\frmShowFineDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fines\frmShowFineDetails.Designer.cs">
+      <DependentUpon>frmShowFineDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fines\UserControl\ucFineDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Fines\UserControl\ucFineDetails.Designer.cs">
+      <DependentUpon>ucFineDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,6 +357,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Borrowings&amp;Returns\UserControls\ucBorrowingDetails.resx">
       <DependentUpon>ucBorrowingDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fines\frmListFines.resx">
+      <DependentUpon>frmListFines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fines\frmShowFineDetails.resx">
+      <DependentUpon>frmShowFineDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fines\UserControl\ucFineDetails.resx">
+      <DependentUpon>ucFineDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
@@ -671,6 +698,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\book2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fine1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\payment1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\overdue.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -15,6 +15,10 @@ namespace Library_BusinessLayer
         public bool? PaymentStatus { get; set; }
         public int? CreatedByUserID { get; set; }
 
+        public clsBorrowingRecord BorrowingInfo { get; }
+        public clsMember MemberInfo { get;}
+        public clsUser CreatedByUserInfo { get; }
+
         public clsFine()
         {
             _Mode = enMode.AddNew;
@@ -26,7 +30,8 @@ namespace Library_BusinessLayer
             PaymentStatus = null;
             CreatedByUserID = null;
         }
-        private clsFine(int? FineID, int? MemberID, int? BorrowingRecordID, short? NumberOfLateDays, double? FineAmount, bool? PaymentStatus, int? CreatedByUserID)
+        private clsFine(int? FineID, int? MemberID, int? BorrowingRecordID, short? NumberOfLateDays, 
+            double? FineAmount, bool? PaymentStatus, int? CreatedByUserID)
         {
             _Mode = enMode.Update;
             this.FineID = FineID;
@@ -36,6 +41,10 @@ namespace Library_BusinessLayer
             this.FineAmount = FineAmount;
             this.PaymentStatus = PaymentStatus;
             this.CreatedByUserID = CreatedByUserID;
+
+            this.BorrowingInfo = clsBorrowingRecord.Find(this.BorrowingRecordID);
+            this.MemberInfo = clsMember.Find(this.MemberID);
+            this.CreatedByUserInfo = clsUser.Find(this.CreatedByUserID);
         }
 
         public static clsFine Find(int? FineID)
@@ -98,6 +107,11 @@ namespace Library_BusinessLayer
         public static DataTable GetAllFines()
         {
             return clsFineData.GetAllFines();
+        }
+
+        public bool Pay()
+        {
+            return clsFineData.Pay(this.FineID);
         }
 
     }

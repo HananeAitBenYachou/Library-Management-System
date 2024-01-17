@@ -65,14 +65,14 @@
             // llbEditPersonInfo
             // 
             this.llbEditPersonInfo.AutoSize = true;
-            this.llbEditPersonInfo.Enabled = false;
-            this.llbEditPersonInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
+            this.llbEditPersonInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
             this.llbEditPersonInfo.Location = new System.Drawing.Point(794, 56);
             this.llbEditPersonInfo.Name = "llbEditPersonInfo";
-            this.llbEditPersonInfo.Size = new System.Drawing.Size(147, 25);
+            this.llbEditPersonInfo.Size = new System.Drawing.Size(131, 23);
             this.llbEditPersonInfo.TabIndex = 200;
             this.llbEditPersonInfo.TabStop = true;
             this.llbEditPersonInfo.Text = "Edit Person Info";
+            this.llbEditPersonInfo.Visible = false;
             this.llbEditPersonInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbEditPersonInfo_LinkClicked);
             // 
             // lblCountry
@@ -297,7 +297,7 @@
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(974, 325);
             this.guna2GroupBox1.TabIndex = 201;
-            this.guna2GroupBox1.Text = "Personal Informations";
+            this.guna2GroupBox1.Text = "Personal Information";
             // 
             // guna2ImageButton8
             // 

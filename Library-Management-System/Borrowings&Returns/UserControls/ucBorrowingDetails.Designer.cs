@@ -29,6 +29,15 @@
         private void InitializeComponent()
         {
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.guna2ImageButton11 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.lblUpdatedByUser = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.guna2ImageButton9 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.lblBorrowingDate = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.guna2ImageButton7 = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.lblDueDate = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.guna2ImageButton8 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton6 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton10 = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -50,15 +59,8 @@
             this.lblMemberLibCardNo = new System.Windows.Forms.Label();
             this.lblBorrowingID = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.guna2ImageButton7 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.lblDueDate = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.guna2ImageButton9 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.lblBorrowingDate = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.guna2ImageButton11 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.lblUpdatedByUser = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.llbShowMemberInfo = new System.Windows.Forms.LinkLabel();
+            this.llbShowBookCopyInfo = new System.Windows.Forms.LinkLabel();
             this.guna2GroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +68,8 @@
             // 
             this.guna2GroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
             this.guna2GroupBox1.BorderRadius = 25;
+            this.guna2GroupBox1.Controls.Add(this.llbShowBookCopyInfo);
+            this.guna2GroupBox1.Controls.Add(this.llbShowMemberInfo);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton11);
             this.guna2GroupBox1.Controls.Add(this.lblUpdatedByUser);
             this.guna2GroupBox1.Controls.Add(this.label12);
@@ -105,6 +109,105 @@
             this.guna2GroupBox1.Size = new System.Drawing.Size(983, 377);
             this.guna2GroupBox1.TabIndex = 203;
             this.guna2GroupBox1.Text = "Borrowing Details";
+            // 
+            // guna2ImageButton11
+            // 
+            this.guna2ImageButton11.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton11.HoverState.ImageSize = new System.Drawing.Size(25, 25);
+            this.guna2ImageButton11.Image = global::LibraryManagementSystem.Properties.Resources.skill;
+            this.guna2ImageButton11.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton11.ImageRotate = 0F;
+            this.guna2ImageButton11.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton11.Location = new System.Drawing.Point(738, 286);
+            this.guna2ImageButton11.Name = "guna2ImageButton11";
+            this.guna2ImageButton11.Size = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton11.TabIndex = 223;
+            // 
+            // lblUpdatedByUser
+            // 
+            this.lblUpdatedByUser.AutoSize = true;
+            this.lblUpdatedByUser.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Bold);
+            this.lblUpdatedByUser.Location = new System.Drawing.Point(797, 290);
+            this.lblUpdatedByUser.Name = "lblUpdatedByUser";
+            this.lblUpdatedByUser.Size = new System.Drawing.Size(50, 21);
+            this.lblUpdatedByUser.TabIndex = 222;
+            this.lblUpdatedByUser.Text = "[????]";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(564, 287);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(148, 23);
+            this.label12.TabIndex = 221;
+            this.label12.Text = "Updated By User :";
+            // 
+            // guna2ImageButton9
+            // 
+            this.guna2ImageButton9.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton9.HoverState.ImageSize = new System.Drawing.Size(25, 25);
+            this.guna2ImageButton9.Image = global::LibraryManagementSystem.Properties.Resources._3d_calendar;
+            this.guna2ImageButton9.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton9.ImageRotate = 0F;
+            this.guna2ImageButton9.ImageSize = new System.Drawing.Size(28, 28);
+            this.guna2ImageButton9.Location = new System.Drawing.Point(738, 75);
+            this.guna2ImageButton9.Name = "guna2ImageButton9";
+            this.guna2ImageButton9.Size = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton9.TabIndex = 220;
+            // 
+            // lblBorrowingDate
+            // 
+            this.lblBorrowingDate.AutoSize = true;
+            this.lblBorrowingDate.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Bold);
+            this.lblBorrowingDate.Location = new System.Drawing.Point(797, 77);
+            this.lblBorrowingDate.Name = "lblBorrowingDate";
+            this.lblBorrowingDate.Size = new System.Drawing.Size(50, 21);
+            this.lblBorrowingDate.TabIndex = 219;
+            this.lblBorrowingDate.Text = "[????]";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(564, 79);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(139, 23);
+            this.label11.TabIndex = 218;
+            this.label11.Text = "Borrowing Date :";
+            // 
+            // guna2ImageButton7
+            // 
+            this.guna2ImageButton7.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton7.HoverState.ImageSize = new System.Drawing.Size(25, 25);
+            this.guna2ImageButton7.Image = global::LibraryManagementSystem.Properties.Resources._3d_calendar;
+            this.guna2ImageButton7.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton7.ImageRotate = 0F;
+            this.guna2ImageButton7.ImageSize = new System.Drawing.Size(28, 28);
+            this.guna2ImageButton7.Location = new System.Drawing.Point(738, 125);
+            this.guna2ImageButton7.Name = "guna2ImageButton7";
+            this.guna2ImageButton7.Size = new System.Drawing.Size(30, 30);
+            this.guna2ImageButton7.TabIndex = 217;
+            // 
+            // lblDueDate
+            // 
+            this.lblDueDate.AutoSize = true;
+            this.lblDueDate.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Bold);
+            this.lblDueDate.Location = new System.Drawing.Point(797, 128);
+            this.lblDueDate.Name = "lblDueDate";
+            this.lblDueDate.Size = new System.Drawing.Size(50, 21);
+            this.lblDueDate.TabIndex = 216;
+            this.lblDueDate.Text = "[????]";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(564, 131);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(91, 23);
+            this.label9.TabIndex = 215;
+            this.label9.Text = "Due Date :";
             // 
             // guna2ImageButton8
             // 
@@ -338,104 +441,31 @@
             this.label14.TabIndex = 189;
             this.label14.Text = "Borrowing ID :";
             // 
-            // guna2ImageButton7
+            // llbShowMemberInfo
             // 
-            this.guna2ImageButton7.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton7.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2ImageButton7.Image = global::LibraryManagementSystem.Properties.Resources._3d_calendar;
-            this.guna2ImageButton7.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton7.ImageRotate = 0F;
-            this.guna2ImageButton7.ImageSize = new System.Drawing.Size(28, 28);
-            this.guna2ImageButton7.Location = new System.Drawing.Point(738, 125);
-            this.guna2ImageButton7.Name = "guna2ImageButton7";
-            this.guna2ImageButton7.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton7.TabIndex = 217;
+            this.llbShowMemberInfo.AutoSize = true;
+            this.llbShowMemberInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.llbShowMemberInfo.Location = new System.Drawing.Point(804, 337);
+            this.llbShowMemberInfo.Name = "llbShowMemberInfo";
+            this.llbShowMemberInfo.Size = new System.Drawing.Size(158, 23);
+            this.llbShowMemberInfo.TabIndex = 222;
+            this.llbShowMemberInfo.TabStop = true;
+            this.llbShowMemberInfo.Text = "Show Member Info";
+            this.llbShowMemberInfo.Visible = false;
+            this.llbShowMemberInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowMemberInfo_LinkClicked);
             // 
-            // lblDueDate
+            // llbShowBookCopyInfo
             // 
-            this.lblDueDate.AutoSize = true;
-            this.lblDueDate.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Bold);
-            this.lblDueDate.Location = new System.Drawing.Point(797, 128);
-            this.lblDueDate.Name = "lblDueDate";
-            this.lblDueDate.Size = new System.Drawing.Size(50, 21);
-            this.lblDueDate.TabIndex = 216;
-            this.lblDueDate.Text = "[????]";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(564, 131);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(91, 23);
-            this.label9.TabIndex = 215;
-            this.label9.Text = "Due Date :";
-            // 
-            // guna2ImageButton9
-            // 
-            this.guna2ImageButton9.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton9.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2ImageButton9.Image = global::LibraryManagementSystem.Properties.Resources._3d_calendar;
-            this.guna2ImageButton9.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton9.ImageRotate = 0F;
-            this.guna2ImageButton9.ImageSize = new System.Drawing.Size(28, 28);
-            this.guna2ImageButton9.Location = new System.Drawing.Point(738, 75);
-            this.guna2ImageButton9.Name = "guna2ImageButton9";
-            this.guna2ImageButton9.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton9.TabIndex = 220;
-            // 
-            // lblBorrowingDate
-            // 
-            this.lblBorrowingDate.AutoSize = true;
-            this.lblBorrowingDate.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Bold);
-            this.lblBorrowingDate.Location = new System.Drawing.Point(797, 77);
-            this.lblBorrowingDate.Name = "lblBorrowingDate";
-            this.lblBorrowingDate.Size = new System.Drawing.Size(50, 21);
-            this.lblBorrowingDate.TabIndex = 219;
-            this.lblBorrowingDate.Text = "[????]";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(564, 79);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(139, 23);
-            this.label11.TabIndex = 218;
-            this.label11.Text = "Borrowing Date :";
-            // 
-            // guna2ImageButton11
-            // 
-            this.guna2ImageButton11.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton11.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2ImageButton11.Image = global::LibraryManagementSystem.Properties.Resources.skill;
-            this.guna2ImageButton11.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton11.ImageRotate = 0F;
-            this.guna2ImageButton11.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton11.Location = new System.Drawing.Point(738, 286);
-            this.guna2ImageButton11.Name = "guna2ImageButton11";
-            this.guna2ImageButton11.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton11.TabIndex = 223;
-            // 
-            // lblUpdatedByUser
-            // 
-            this.lblUpdatedByUser.AutoSize = true;
-            this.lblUpdatedByUser.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Bold);
-            this.lblUpdatedByUser.Location = new System.Drawing.Point(797, 290);
-            this.lblUpdatedByUser.Name = "lblUpdatedByUser";
-            this.lblUpdatedByUser.Size = new System.Drawing.Size(50, 21);
-            this.lblUpdatedByUser.TabIndex = 222;
-            this.lblUpdatedByUser.Text = "[????]";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(564, 287);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(148, 23);
-            this.label12.TabIndex = 221;
-            this.label12.Text = "Updated By User :";
+            this.llbShowBookCopyInfo.AutoSize = true;
+            this.llbShowBookCopyInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.llbShowBookCopyInfo.Location = new System.Drawing.Point(610, 337);
+            this.llbShowBookCopyInfo.Name = "llbShowBookCopyInfo";
+            this.llbShowBookCopyInfo.Size = new System.Drawing.Size(177, 23);
+            this.llbShowBookCopyInfo.TabIndex = 224;
+            this.llbShowBookCopyInfo.TabStop = true;
+            this.llbShowBookCopyInfo.Text = "Show Book Copy Info";
+            this.llbShowBookCopyInfo.Visible = false;
+            this.llbShowBookCopyInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowBookCopyInfo_LinkClicked);
             // 
             // ucBorrowingDetails
             // 
@@ -484,5 +514,7 @@
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton11;
         private System.Windows.Forms.Label lblUpdatedByUser;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.LinkLabel llbShowMemberInfo;
+        private System.Windows.Forms.LinkLabel llbShowBookCopyInfo;
     }
 }

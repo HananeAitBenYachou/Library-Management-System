@@ -229,7 +229,15 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Fines;";
+                    string query = @"SELECT FineID AS 'Fine ID' , MemberID AS 'Member ID', BorrowingRecordID AS 'Borrowing ID', 
+                                    NumberOfLateDays AS 'Number Of Late Days' , FineAmount AS 'Fine Amount' , 
+                                    CASE 
+	                                    WHEN PaymentStatus = 1 THEN 'Paid'
+	                                    ELSE 'Not Paid'
+                                    END AS 'Payment Status',
+                                    UserName AS 'Created By'
+                                    FROM Fines
+                                    INNER JOIN Users ON Fines.CreatedByUserID = Users.UserID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -250,6 +258,37 @@ namespace Library_DataAccessLayer
                 clsErrorLogger.LogError(ex);
             }
             return Datatable;
+        }
+
+        public static bool Pay(int? FineID)
+        {
+            int rowsAffected = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"UPDATE Fines
+                            SET 
+							PaymentStatus = @PaymentStatus
+                            WHERE FineID = @FineID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@FineID", (object)FineID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@PaymentStatus", true);
+
+                        rowsAffected = command.ExecuteNonQuery();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                rowsAffected = 0;
+            }
+            return rowsAffected != 0;
         }
 
     }

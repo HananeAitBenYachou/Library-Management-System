@@ -55,6 +55,8 @@
             this.pbBookImage = new System.Windows.Forms.PictureBox();
             this.lblBookID = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.llbShowAuthorInfo = new System.Windows.Forms.LinkLabel();
+            this.llbShowGenreInfo = new System.Windows.Forms.LinkLabel();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBookImage)).BeginInit();
             this.SuspendLayout();
@@ -63,6 +65,8 @@
             // 
             this.guna2GroupBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
             this.guna2GroupBox1.BorderRadius = 25;
+            this.guna2GroupBox1.Controls.Add(this.llbShowAuthorInfo);
+            this.guna2GroupBox1.Controls.Add(this.llbShowGenreInfo);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton4);
             this.guna2GroupBox1.Controls.Add(this.lblDetails);
             this.guna2GroupBox1.Controls.Add(this.label7);
@@ -95,7 +99,7 @@
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.Black;
             this.guna2GroupBox1.Location = new System.Drawing.Point(0, 0);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
-            this.guna2GroupBox1.Size = new System.Drawing.Size(980, 373);
+            this.guna2GroupBox1.Size = new System.Drawing.Size(1001, 407);
             this.guna2GroupBox1.TabIndex = 202;
             this.guna2GroupBox1.Text = "Book Information";
             // 
@@ -224,7 +228,6 @@
             // llbEditBookInfo
             // 
             this.llbEditBookInfo.AutoSize = true;
-            this.llbEditBookInfo.Enabled = false;
             this.llbEditBookInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 11F, System.Drawing.FontStyle.Bold);
             this.llbEditBookInfo.Location = new System.Drawing.Point(794, 56);
             this.llbEditBookInfo.Name = "llbEditBookInfo";
@@ -232,6 +235,7 @@
             this.llbEditBookInfo.TabIndex = 200;
             this.llbEditBookInfo.TabStop = true;
             this.llbEditBookInfo.Text = "Edit Book Info";
+            this.llbEditBookInfo.Visible = false;
             this.llbEditBookInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbEditBookInfo_LinkClicked);
             // 
             // label1
@@ -385,6 +389,32 @@
             this.label14.TabIndex = 189;
             this.label14.Text = "Book ID :";
             // 
+            // llbShowAuthorInfo
+            // 
+            this.llbShowAuthorInfo.AutoSize = true;
+            this.llbShowAuthorInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.llbShowAuthorInfo.Location = new System.Drawing.Point(675, 369);
+            this.llbShowAuthorInfo.Name = "llbShowAuthorInfo";
+            this.llbShowAuthorInfo.Size = new System.Drawing.Size(146, 23);
+            this.llbShowAuthorInfo.TabIndex = 226;
+            this.llbShowAuthorInfo.TabStop = true;
+            this.llbShowAuthorInfo.Text = "Show Author Info";
+            this.llbShowAuthorInfo.Visible = false;
+            this.llbShowAuthorInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowAuthorInfo_LinkClicked);
+            // 
+            // llbShowGenreInfo
+            // 
+            this.llbShowGenreInfo.AutoSize = true;
+            this.llbShowGenreInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.llbShowGenreInfo.Location = new System.Drawing.Point(839, 369);
+            this.llbShowGenreInfo.Name = "llbShowGenreInfo";
+            this.llbShowGenreInfo.Size = new System.Drawing.Size(139, 23);
+            this.llbShowGenreInfo.TabIndex = 225;
+            this.llbShowGenreInfo.TabStop = true;
+            this.llbShowGenreInfo.Text = "Show Genre Info";
+            this.llbShowGenreInfo.Visible = false;
+            this.llbShowGenreInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowGenreInfo_LinkClicked);
+            // 
             // ucBookCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -392,7 +422,7 @@
             this.BackColor = System.Drawing.Color.Transparent;
             this.Controls.Add(this.guna2GroupBox1);
             this.Name = "ucBookCard";
-            this.Size = new System.Drawing.Size(980, 373);
+            this.Size = new System.Drawing.Size(1001, 407);
             this.guna2GroupBox1.ResumeLayout(false);
             this.guna2GroupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBookImage)).EndInit();
@@ -429,5 +459,7 @@
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton4;
         private System.Windows.Forms.Label lblDetails;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.LinkLabel llbShowAuthorInfo;
+        private System.Windows.Forms.LinkLabel llbShowGenreInfo;
     }
 }

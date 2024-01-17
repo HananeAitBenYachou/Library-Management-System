@@ -140,7 +140,6 @@ namespace LibraryManagementSystem.Books
                 _Book.PublicationDate = dtpPublicationDate.Value;
             }
 
-
             if (_Book.Save())
             {
                 MessageBox.Show("Book data saved successfully !", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -157,7 +156,6 @@ namespace LibraryManagementSystem.Books
                 MessageBox.Show("Book data is not saved successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
         }
 
         private bool _IsBookImageHandledSuccessfully()
