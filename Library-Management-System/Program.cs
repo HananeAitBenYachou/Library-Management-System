@@ -20,7 +20,7 @@ namespace LibraryManagementSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           Application.Run(new frmMain());
+           Application.Run(new frmShowMemberBorrowingsHistory(1));
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

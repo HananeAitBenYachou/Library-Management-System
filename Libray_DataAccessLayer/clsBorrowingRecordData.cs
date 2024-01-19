@@ -324,6 +324,52 @@ namespace Library_DataAccessLayer
             return Datatable;
         }
 
+        public static DataTable GetMemberBorrowingRecords(int? MemberID)
+        {
+            DataTable Datatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT BorrowingRecordID AS 'Borrowing ID' , FirstName + ' ' + LastName AS 'Full Name' , 
+                                    LibraryCardNumber AS 'LibraryCard No', Title AS 'Book Title' , BookCopies.BookCopyID AS 'Borrowed Copy ID' ,
+                                    BorrowingDate AS 'Borrowing Date' , 
+                                    DueDate AS 'Due Date' ,  ActualReturnDate AS 'Actual Return Date' ,
+                                    CASE 
+	                                    WHEN AvailabilityStatus = 1 THEN 'Returned'
+	                                    ELSE 'Borrowed'
+	                                    END AS 'Book Copy Status',
+                                    BorrowingRecords.CreatedByUserID AS 'Created By' , UpdatedByUserID AS 'Updated By'
+                                    FROM BorrowingRecords
+                                    INNER JOIN BookCopies ON BookCopies.BookCopyID = BorrowingRecords.BookCopyID
+                                    INNER JOIN Members ON Members.MemberID = BorrowingRecords.MemberID
+                                    INNER JOIN People ON People.PersonID = Members.PersonID 
+                                    INNER JOIN Books ON Books.BookID = BookCopies.BookID
+                                    WHERE Members.MemberID = @MemberID";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@MemberID", (object)MemberID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                Datatable.Load(reader);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return Datatable;
+        }
+
         public static bool ReturnBorrowedBook(int? BorrowingRecordID, int? UpdatedByUserID)
         {
             int rowsAffected = 0;

@@ -138,6 +138,11 @@ namespace Library_BusinessLayer
             return clsBorrowingRecordData.GetAllBorrowingRecords();
         }
 
+        public static DataTable GetMemberBorrowingRecords(int? MemberID)
+        {
+            return clsBorrowingRecordData.GetMemberBorrowingRecords(MemberID);
+        }
+
         public bool ReturnBorrowedBookCopy(int? ReturnedByUserID)
         {
             return clsBorrowingRecordData.ReturnBorrowedBook(this.BorrowingRecordID,ReturnedByUserID);

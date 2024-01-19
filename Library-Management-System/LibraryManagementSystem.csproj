@@ -154,6 +154,12 @@
     <Compile Include="Borrowings&amp;Returns\frmShowBorrowingDetails.Designer.cs">
       <DependentUpon>frmShowBorrowingDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmShowMemberBorrowingsHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmShowMemberBorrowingsHistory.Designer.cs">
+      <DependentUpon>frmShowMemberBorrowingsHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Borrowings&amp;Returns\UserControls\ucBorrowingDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -378,6 +384,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Borrowings&amp;Returns\frmShowBorrowingDetails.resx">
       <DependentUpon>frmShowBorrowingDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Borrowings&amp;Returns\frmShowMemberBorrowingsHistory.resx">
+      <DependentUpon>frmShowMemberBorrowingsHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Borrowings&amp;Returns\UserControls\ucBorrowingDetails.resx">
       <DependentUpon>ucBorrowingDetails.cs</DependentUpon>
