@@ -14,6 +14,10 @@ namespace Library_BusinessLayer
         public DateTime? ReservationDate { get; set; }
         public int? CreatedByUserID { get; set; }
 
+        public clsMember MemberInfo { get;}
+        public clsBookCopy BookCopyInfo { get; }
+        public clsUser CreatedByUserInfo { get; }
+
         public clsReservation()
         {
             _Mode = enMode.AddNew;
@@ -31,9 +35,13 @@ namespace Library_BusinessLayer
             this.BookCopyID = BookCopyID;
             this.ReservationDate = ReservationDate;
             this.CreatedByUserID = CreatedByUserID;
+
+            this.MemberInfo = clsMember.Find(this.MemberID);
+            this.BookCopyInfo = clsBookCopy.Find(this.BookCopyID);
+            this.CreatedByUserInfo = clsUser.Find(this.CreatedByUserID);
         }
 
-        public static clsReservation Find(int ReservationID)
+        public static clsReservation Find(int? ReservationID)
         {
             int? MemberID = null;
             int? BookCopyID = null;
@@ -48,7 +56,7 @@ namespace Library_BusinessLayer
                 return null;
         }
 
-        public static bool IsReservationExist(int ReservationID)
+        public static bool IsReservationExist(int? ReservationID)
         {
             return clsReservationData.IsReservationExist(ReservationID);
         }
@@ -83,7 +91,7 @@ namespace Library_BusinessLayer
             return false;
         }
 
-        public static bool DeleteReservation(int ReservationID)
+        public static bool DeleteReservation(int? ReservationID)
         {
             return clsReservationData.DeleteReservation(ReservationID);
         }

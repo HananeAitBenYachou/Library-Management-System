@@ -212,7 +212,14 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = "SELECT * FROM Reservations;";
+                    string query = @"SELECT ReservationID AS 'Reservation ID' , FirstName + ' ' + LastName AS 'Full Name' ,
+                                    LibraryCardNumber AS 'LibraryCard No', Title AS 'Book Title' , BookCopies.BookCopyID AS 'Copy ID' ,
+                                    ReservationDate AS 'Reservation Date' , Reservations.CreatedByUserID AS 'Created By' 
+                                    FROM Reservations
+                                    INNER JOIN Members ON Members.MemberID = Reservations.MemberID
+                                    INNER JOIN People ON People.PersonID = Members.PersonID 
+                                    INNER JOIN BookCopies ON BookCopies.BookCopyID = Reservations.BookCopyID
+                                    INNER JOIN Books ON Books.BookID = BookCopies.BookID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {

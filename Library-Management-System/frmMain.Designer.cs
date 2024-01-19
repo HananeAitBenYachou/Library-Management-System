@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.sPanel1 = new Sipaa.Framework.SPanel();
             this.btnUsers = new Guna.UI2.WinForms.Guna2Button();
@@ -387,10 +388,10 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::LibraryManagementSystem.Properties.Resources.bookrworm_library_high_resolution_logo_transparent;
-            this.pictureBox1.Location = new System.Drawing.Point(9, 12);
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1, 12);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(254, 89);
+            this.pictureBox1.Size = new System.Drawing.Size(262, 96);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;

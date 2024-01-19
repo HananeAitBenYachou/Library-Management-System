@@ -103,7 +103,7 @@
             // 
             this.ucBookCardWithFilter1.BackColor = System.Drawing.Color.Transparent;
             this.ucBookCardWithFilter1.FilterEnabled = true;
-            this.ucBookCardWithFilter1.Location = new System.Drawing.Point(11, 37);
+            this.ucBookCardWithFilter1.Location = new System.Drawing.Point(11, 74);
             this.ucBookCardWithFilter1.Name = "ucBookCardWithFilter1";
             this.ucBookCardWithFilter1.Size = new System.Drawing.Size(983, 517);
             this.ucBookCardWithFilter1.TabIndex = 167;
@@ -358,7 +358,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
-            this.lblTitle.Location = new System.Drawing.Point(411, 9);
+            this.lblTitle.Location = new System.Drawing.Point(399, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(231, 46);
             this.lblTitle.TabIndex = 168;

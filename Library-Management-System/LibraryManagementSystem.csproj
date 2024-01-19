@@ -277,6 +277,30 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reservations\frmAddUpdateReservation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservations\frmAddUpdateReservation.Designer.cs">
+      <DependentUpon>frmAddUpdateReservation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservations\frmListReservations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservations\frmListReservations.Designer.cs">
+      <DependentUpon>frmListReservations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservations\frmShowReservationDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservations\frmShowReservationDetails.Designer.cs">
+      <DependentUpon>frmShowReservationDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservations\UserControls\ucReservationDetails.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reservations\UserControls\ucReservationDetails.Designer.cs">
+      <DependentUpon>ucReservationDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\frmAddUpdateUser.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -419,6 +443,18 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservations\frmAddUpdateReservation.resx">
+      <DependentUpon>frmAddUpdateReservation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservations\frmListReservations.resx">
+      <DependentUpon>frmListReservations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservations\frmShowReservationDetails.resx">
+      <DependentUpon>frmShowReservationDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservations\UserControls\ucReservationDetails.resx">
+      <DependentUpon>ucReservationDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmAddUpdateUser.resx">
       <DependentUpon>frmAddUpdateUser.cs</DependentUpon>

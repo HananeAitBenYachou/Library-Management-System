@@ -27,7 +27,7 @@ namespace LibraryManagementSystem.Books
             {
                 foreach (DataRow row in clsGenre.GetAllGenres().Rows)
                 {
-                    cbGenre.Invoke((Action)(() => cbGenre.Items.Add((string)row["GenreName"])));
+                    cbGenre.Invoke((Action)(() => cbGenre.Items.Add((string)row["Genre Name"])));
                 }
 
             });                 

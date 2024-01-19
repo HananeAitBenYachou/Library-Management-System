@@ -392,5 +392,43 @@ namespace Library_DataAccessLayer
             return BookCopyID;
         }
 
+        public static int? GetBorrowedBookCopy(int? BookID)
+        {
+            int? BookCopyID = null;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+
+                    string query = @"SELECT TOP 1 BookCopyID
+                                    FROM BookCopies
+                                    WHERE BookID = @BookID AND AvailabilityStatus = 0";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@BookID", (object)BookID ?? DBNull.Value);
+
+                        object copyID = command.ExecuteScalar();
+
+                        if (copyID != null && int.TryParse(copyID.ToString(), out int _copyID))
+                        {
+                            BookCopyID = _copyID;
+                        }
+
+                        else
+                            BookCopyID = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                BookCopyID = null;
+            }
+            return BookCopyID;
+        }
+
     }
 }

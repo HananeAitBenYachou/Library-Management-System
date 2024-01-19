@@ -144,5 +144,11 @@ namespace Library_BusinessLayer
         {
             return clsBookCopyData.GetAvailableBookCopy(BookID);
         }
+
+        public static int? GetBorrowedBookCopy(int? BookID)
+        {
+            return clsBookCopyData.GetBorrowedBookCopy(BookID);
+        }
+
     }
 }
