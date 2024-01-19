@@ -295,6 +295,12 @@
     <Compile Include="Reservations\frmListReservations.Designer.cs">
       <DependentUpon>frmListReservations.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reservations\frmShowMemberReservationsHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservations\frmShowMemberReservationsHistory.Designer.cs">
+      <DependentUpon>frmShowMemberReservationsHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reservations\frmShowReservationDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -458,6 +464,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reservations\frmListReservations.resx">
       <DependentUpon>frmListReservations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservations\frmShowMemberReservationsHistory.resx">
+      <DependentUpon>frmShowMemberReservationsHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reservations\frmShowReservationDetails.resx">
       <DependentUpon>frmShowReservationDetails.cs</DependentUpon>

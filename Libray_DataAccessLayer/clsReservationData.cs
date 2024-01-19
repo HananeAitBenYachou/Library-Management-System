@@ -162,7 +162,6 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
-
                     }
                 }
             }
@@ -242,5 +241,45 @@ namespace Library_DataAccessLayer
             return Datatable;
         }
 
+        public static DataTable GetMemberReservations(int? MemberID)
+        {
+            DataTable Datatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT ReservationID AS 'Reservation ID' , FirstName + ' ' + LastName AS 'Full Name' ,
+                                    LibraryCardNumber AS 'LibraryCard No', Title AS 'Book Title' , BookCopies.BookCopyID AS 'Copy ID' ,
+                                    ReservationDate AS 'Reservation Date' , Reservations.CreatedByUserID AS 'Created By' 
+                                    FROM Reservations
+                                    INNER JOIN Members ON Members.MemberID = Reservations.MemberID
+                                    INNER JOIN People ON People.PersonID = Members.PersonID 
+                                    INNER JOIN BookCopies ON BookCopies.BookCopyID = Reservations.BookCopyID
+                                    INNER JOIN Books ON Books.BookID = BookCopies.BookID
+                                    WHERE Members.MemberID = @MemberID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@MemberID", (object)MemberID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                Datatable.Load(reader);
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return Datatable;
+        }
     }
 }
