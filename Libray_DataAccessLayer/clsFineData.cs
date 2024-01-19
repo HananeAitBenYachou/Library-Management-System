@@ -260,6 +260,48 @@ namespace Library_DataAccessLayer
             return Datatable;
         }
 
+        public static DataTable GetMemberFines(int? MemberID)
+        {
+            DataTable Datatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT FineID AS 'Fine ID' , MemberID AS 'Member ID', BorrowingRecordID AS 'Borrowing ID', 
+                                    NumberOfLateDays AS 'Number Of Late Days' , FineAmount AS 'Fine Amount' , 
+                                    CASE 
+	                                    WHEN PaymentStatus = 1 THEN 'Paid'
+	                                    ELSE 'Not Paid'
+                                    END AS 'Payment Status',
+                                    UserName AS 'Created By'
+                                    FROM Fines
+                                    INNER JOIN Users ON Fines.CreatedByUserID = Users.UserID
+                                    WHERE MemberID = @MemberID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@MemberID", (object)MemberID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                Datatable.Load(reader);
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return Datatable;
+        }
+
         public static bool Pay(int? FineID)
         {
             int rowsAffected = 0;

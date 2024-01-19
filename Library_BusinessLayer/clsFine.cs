@@ -109,6 +109,11 @@ namespace Library_BusinessLayer
             return clsFineData.GetAllFines();
         }
 
+        public static DataTable GetMemberFines(int? MemberID)
+        {
+            return clsFineData.GetMemberFines(MemberID);
+        }
+
         public bool Pay()
         {
             return clsFineData.Pay(this.FineID);
