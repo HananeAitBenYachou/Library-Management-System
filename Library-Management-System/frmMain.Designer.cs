@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.sPanel1 = new Sipaa.Framework.SPanel();
             this.btnUsers = new Guna.UI2.WinForms.Guna2Button();
@@ -135,6 +134,7 @@
             this.btnPayments.Text = "Payments";
             this.btnPayments.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnPayments.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
             // 
             // btnFines
             // 
@@ -194,6 +194,7 @@
             this.btnReservations.Text = "Reservations";
             this.btnReservations.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnReservations.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnReservations.Click += new System.EventHandler(this.btnReservations_Click);
             // 
             // btnBorrowings
             // 
@@ -388,7 +389,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::LibraryManagementSystem.Properties.Resources.bookworm_high_resolution_logo_transparent__1_;
             this.pictureBox1.Location = new System.Drawing.Point(1, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(262, 96);

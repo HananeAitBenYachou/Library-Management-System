@@ -112,6 +112,12 @@
     <Compile Include="Books\frmListBooks.Designer.cs">
       <DependentUpon>frmListBooks.cs</DependentUpon>
     </Compile>
+    <Compile Include="Books\frmShowBookCopies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Books\frmShowBookCopies.Designer.cs">
+      <DependentUpon>frmShowBookCopies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Books\frmShowBookDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,12 @@
     </Compile>
     <Compile Include="Fines\frmShowFineDetails.Designer.cs">
       <DependentUpon>frmShowFineDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Fines\frmShowMemberFinesHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Fines\frmShowMemberFinesHistory.Designer.cs">
+      <DependentUpon>frmShowMemberFinesHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="Fines\UserControl\ucFineDetails.cs">
       <SubType>UserControl</SubType>
@@ -370,6 +382,9 @@
     <EmbeddedResource Include="Books\frmListBooks.resx">
       <DependentUpon>frmListBooks.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Books\frmShowBookCopies.resx">
+      <DependentUpon>frmShowBookCopies.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Books\frmShowBookDetails.resx">
       <DependentUpon>frmShowBookDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -402,6 +417,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Fines\frmShowFineDetails.resx">
       <DependentUpon>frmShowFineDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Fines\frmShowMemberFinesHistory.resx">
+      <DependentUpon>frmShowMemberFinesHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Fines\UserControl\ucFineDetails.resx">
       <DependentUpon>ucFineDetails.cs</DependentUpon>
@@ -578,9 +596,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\profit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\bookrworm-library-high-resolution-logo-transparent.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\folder.png" />
@@ -761,6 +776,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\overdue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bookworm-high-resolution-logo-transparent %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -253,9 +253,9 @@ namespace LibraryManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap bookrworm_library_high_resolution_logo_transparent {
+        internal static System.Drawing.Bitmap bookworm_high_resolution_logo_transparent__1_ {
             get {
-                object obj = ResourceManager.GetObject("bookrworm-library-high-resolution-logo-transparent", resourceCulture);
+                object obj = ResourceManager.GetObject("bookworm-high-resolution-logo-transparent (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

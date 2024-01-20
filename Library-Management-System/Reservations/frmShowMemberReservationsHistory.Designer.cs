@@ -53,7 +53,7 @@
             this.guna2GroupBox1.CustomBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
             this.guna2GroupBox1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox1.ForeColor = System.Drawing.Color.White;
-            this.guna2GroupBox1.Location = new System.Drawing.Point(12, 556);
+            this.guna2GroupBox1.Location = new System.Drawing.Point(9, 553);
             this.guna2GroupBox1.Name = "guna2GroupBox1";
             this.guna2GroupBox1.Size = new System.Drawing.Size(979, 224);
             this.guna2GroupBox1.TabIndex = 294;
@@ -144,7 +144,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
-            this.lblTitle.Location = new System.Drawing.Point(316, 12);
+            this.lblTitle.Location = new System.Drawing.Point(313, 9);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(349, 46);
             this.lblTitle.TabIndex = 292;
@@ -153,7 +153,7 @@
             // ucMemberCard1
             // 
             this.ucMemberCard1.BackColor = System.Drawing.Color.Transparent;
-            this.ucMemberCard1.Location = new System.Drawing.Point(15, 61);
+            this.ucMemberCard1.Location = new System.Drawing.Point(12, 58);
             this.ucMemberCard1.Name = "ucMemberCard1";
             this.ucMemberCard1.Size = new System.Drawing.Size(979, 477);
             this.ucMemberCard1.TabIndex = 291;
@@ -183,7 +183,7 @@
             this.btnClose.Image = global::LibraryManagementSystem.Properties.Resources.folder__1_;
             this.btnClose.ImageSize = new System.Drawing.Size(30, 30);
             this.btnClose.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnClose.Location = new System.Drawing.Point(817, 797);
+            this.btnClose.Location = new System.Drawing.Point(814, 794);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(177, 54);
             this.btnClose.TabIndex = 293;

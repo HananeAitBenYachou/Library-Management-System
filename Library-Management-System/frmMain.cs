@@ -5,6 +5,7 @@ using LibraryManagementSystem.Borrowings_Returns;
 using LibraryManagementSystem.Fines;
 using LibraryManagementSystem.Genres;
 using LibraryManagementSystem.Members;
+using LibraryManagementSystem.Reservations;
 using LibraryManagementSystem.Users;
 using System;
 using System.Windows.Forms;
@@ -82,5 +83,14 @@ namespace LibraryManagementSystem
 
         }
 
+        private void btnReservations_Click(object sender, EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmListReservations());
+        }
+
+        private void btnPayments_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
