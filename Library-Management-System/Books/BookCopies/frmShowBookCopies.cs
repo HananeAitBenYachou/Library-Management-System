@@ -56,9 +56,15 @@ namespace LibraryManagementSystem.Books
             }
         }
 
-        private void showCopyReservationsHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        private void showCopyBorrowingsHistoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmShowBookCopyBorrowingsHistory frm = new frmShowBookCopyBorrowingsHistory((int)dgvBookCopiesList.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+        }
+
+        private void showCopyReservationsHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowBookCopyReservationsHistory frm = new frmShowBookCopyReservationsHistory((int)dgvBookCopiesList.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
         }
     }

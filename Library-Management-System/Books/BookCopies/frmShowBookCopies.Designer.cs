@@ -37,6 +37,7 @@
             this.dgvBookCopiesList = new Guna.UI2.WinForms.Guna2DataGridView();
             this.cmsBookCopies = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showCopyBorrowingsHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnClose = new Guna.UI2.WinForms.Guna2GradientButton();
             this.lblTitle = new System.Windows.Forms.Label();
             this.ucBookCard1 = new LibraryManagementSystem.Books.UserControls.ucBookCard();
@@ -137,9 +138,10 @@
             this.cmsBookCopies.ImageScalingSize = new System.Drawing.Size(30, 30);
             this.cmsBookCopies.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showDetailsToolStripMenuItem,
+            this.showCopyBorrowingsHistoryToolStripMenuItem,
             this.showCopyReservationsHistoryToolStripMenuItem});
             this.cmsBookCopies.Name = "contextMenuStrip1";
-            this.cmsBookCopies.Size = new System.Drawing.Size(314, 104);
+            this.cmsBookCopies.Size = new System.Drawing.Size(308, 140);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -147,9 +149,18 @@
             this.showDetailsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.showDetailsToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.information_pamphlet;
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(313, 36);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(307, 36);
             this.showDetailsToolStripMenuItem.Text = "&Show Copy Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            // 
+            // showCopyBorrowingsHistoryToolStripMenuItem
+            // 
+            this.showCopyBorrowingsHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.showCopyBorrowingsHistoryToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources._3d_calendar;
+            this.showCopyBorrowingsHistoryToolStripMenuItem.Name = "showCopyBorrowingsHistoryToolStripMenuItem";
+            this.showCopyBorrowingsHistoryToolStripMenuItem.Size = new System.Drawing.Size(307, 36);
+            this.showCopyBorrowingsHistoryToolStripMenuItem.Text = "Show Copy Borrowings History";
+            this.showCopyBorrowingsHistoryToolStripMenuItem.Click += new System.EventHandler(this.showCopyBorrowingsHistoryToolStripMenuItem_Click);
             // 
             // btnClose
             // 
@@ -197,8 +208,8 @@
             this.showCopyReservationsHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
             this.showCopyReservationsHistoryToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources._3d_calendar;
             this.showCopyReservationsHistoryToolStripMenuItem.Name = "showCopyReservationsHistoryToolStripMenuItem";
-            this.showCopyReservationsHistoryToolStripMenuItem.Size = new System.Drawing.Size(313, 36);
-            this.showCopyReservationsHistoryToolStripMenuItem.Text = "Show Copy Reservations History";
+            this.showCopyReservationsHistoryToolStripMenuItem.Size = new System.Drawing.Size(307, 36);
+            this.showCopyReservationsHistoryToolStripMenuItem.Text = "Show Copy Reservation History";
             this.showCopyReservationsHistoryToolStripMenuItem.Click += new System.EventHandler(this.showCopyReservationsHistoryToolStripMenuItem_Click);
             // 
             // frmShowBookCopies
@@ -233,6 +244,7 @@
         private Guna.UI2.WinForms.Guna2GradientButton btnClose;
         private System.Windows.Forms.Label lblTitle;
         private UserControls.ucBookCard ucBookCard1;
+        private System.Windows.Forms.ToolStripMenuItem showCopyBorrowingsHistoryToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showCopyReservationsHistoryToolStripMenuItem;
     }
 }

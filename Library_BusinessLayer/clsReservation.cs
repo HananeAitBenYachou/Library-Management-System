@@ -106,5 +106,10 @@ namespace Library_BusinessLayer
             return clsReservationData.GetMemberReservations(MemberID);
         }
 
+        public static DataTable GetBookCopyReservations(int? BookCopyID)
+        {
+            return clsReservationData.GetBookCopyReservations(BookCopyID);
+        }
+
     }
 }

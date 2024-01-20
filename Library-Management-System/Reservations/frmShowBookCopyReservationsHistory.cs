@@ -1,5 +1,4 @@
 ﻿using Library_BusinessLayer;
-using LibraryManagementSystem.Books.UserControls;
 using LibraryManagementSystem.Borrowings_Returns;
 using System;
 using System.Collections.Generic;
@@ -11,13 +10,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LibraryManagementSystem.Books.BookCopies
+namespace LibraryManagementSystem.Reservations
 {
-    public partial class frmShowBookCopyBorrowingsHistory : Form
+    public partial class frmShowBookCopyReservationsHistory : Form
     {
         private int? _BookCopyID = null;
 
-        public frmShowBookCopyBorrowingsHistory(int? bookcopyID)
+        public frmShowBookCopyReservationsHistory(int? bookcopyID)
         {
             InitializeComponent();
             _BookCopyID = bookcopyID;
@@ -33,7 +32,7 @@ namespace LibraryManagementSystem.Books.BookCopies
             }
 
             ucBookCopyCard1.LoadBookCopyData(_BookCopyID);
-            dgvBorrowingsList.DataSource = clsBorrowingRecord.GetBookCopyBorrowingRecords(_BookCopyID);
+            dgvReservationsList.DataSource = clsReservation.GetBookCopyReservations(_BookCopyID);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -43,9 +42,9 @@ namespace LibraryManagementSystem.Books.BookCopies
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmShowBorrowingDetails frm = new frmShowBorrowingDetails((int)dgvBorrowingsList.CurrentRow.Cells[0].Value);
+            frmShowReservationDetails frm = new frmShowReservationDetails((int)dgvReservationsList.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
         }
-      
+
     }
 }
