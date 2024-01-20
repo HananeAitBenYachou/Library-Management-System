@@ -82,6 +82,12 @@
     <Compile Include="Authors\UserControls\ucAuthorCard.Designer.cs">
       <DependentUpon>ucAuthorCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmShowBookCopyBorrowingsHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Borrowings&amp;Returns\frmShowBookCopyBorrowingsHistory.Designer.cs">
+      <DependentUpon>frmShowBookCopyBorrowingsHistory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Books\BookCopies\frmShowBookCopyDetails.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,10 +118,10 @@
     <Compile Include="Books\frmListBooks.Designer.cs">
       <DependentUpon>frmListBooks.cs</DependentUpon>
     </Compile>
-    <Compile Include="Books\frmShowBookCopies.cs">
+    <Compile Include="Books\BookCopies\frmShowBookCopies.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Books\frmShowBookCopies.Designer.cs">
+    <Compile Include="Books\BookCopies\frmShowBookCopies.Designer.cs">
       <DependentUpon>frmShowBookCopies.cs</DependentUpon>
     </Compile>
     <Compile Include="Books\frmShowBookDetails.cs">
@@ -367,6 +373,9 @@
     <EmbeddedResource Include="Authors\UserControls\ucAuthorCard.resx">
       <DependentUpon>ucAuthorCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Borrowings&amp;Returns\frmShowBookCopyBorrowingsHistory.resx">
+      <DependentUpon>frmShowBookCopyBorrowingsHistory.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Books\BookCopies\frmShowBookCopyDetails.resx">
       <DependentUpon>frmShowBookCopyDetails.cs</DependentUpon>
     </EmbeddedResource>
@@ -382,7 +391,7 @@
     <EmbeddedResource Include="Books\frmListBooks.resx">
       <DependentUpon>frmListBooks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Books\frmShowBookCopies.resx">
+    <EmbeddedResource Include="Books\BookCopies\frmShowBookCopies.resx">
       <DependentUpon>frmShowBookCopies.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Books\frmShowBookDetails.resx">

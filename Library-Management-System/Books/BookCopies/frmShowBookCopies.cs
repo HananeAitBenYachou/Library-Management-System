@@ -55,5 +55,11 @@ namespace LibraryManagementSystem.Books
                 column.Width = 300;
             }
         }
+
+        private void showCopyReservationsHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowBookCopyBorrowingsHistory frm = new frmShowBookCopyBorrowingsHistory((int)dgvBookCopiesList.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+        }
     }
 }
