@@ -80,7 +80,6 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
-
         public static bool GetPersonInfoByNationalNo(string NationalNo , ref int? PersonID, ref string FirstName, ref string LastName,
             ref char? Gender, ref DateTime? BirthDate, ref string Address, ref string Phone,
             ref string Email, ref int? NationalityCountryID, ref string PersonalImagePath, ref string Password)
@@ -152,6 +151,77 @@ namespace Library_DataAccessLayer
             }
             return IsFound;
         }
+
+        public static bool GetPersonByEmailAndPassword(string Email , string Password, 
+                ref string NationalNo, ref int? PersonID, ref string FirstName, ref string LastName,
+                ref char? Gender, ref DateTime? BirthDate, ref string Address, ref string Phone,
+                ref int? NationalityCountryID, ref string PersonalImagePath)
+                    {
+                        bool IsFound = false;
+
+                        try
+                        {
+                            using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                            {
+                                connection.Open();
+                                string query = @"SELECT * 
+                                        FROM People 
+                                        WHERE Email = @Email AND Password = @Password;";
+
+                                using (SqlCommand command = new SqlCommand(query, connection))
+                                {
+                                    command.Parameters.AddWithValue("@Password", (object)Password ?? DBNull.Value);
+                                    command.Parameters.AddWithValue("@Email", (object)Email ?? DBNull.Value);
+
+                                    using (SqlDataReader reader = command.ExecuteReader())
+                                    {
+                                        if (reader.Read())
+                                        {
+                                            // The record was found successfully !
+                                            IsFound = true;
+
+                                            PersonID = (reader["PersonID"] != DBNull.Value) ? (int?)reader["PersonID"] : null;
+
+                                            FirstName = (reader["FirstName"] != DBNull.Value) ? (string)reader["FirstName"] : null;
+
+                                            LastName = (reader["LastName"] != DBNull.Value) ? (string)reader["LastName"] : null;
+
+                                            if ((reader["Gender"] != DBNull.Value))
+                                                Gender = char.Parse((string)reader["Gender"]);
+
+                                            else
+                                                Gender = null;
+
+                                            BirthDate = (reader["BirthDate"] != DBNull.Value) ? (DateTime?)reader["BirthDate"] : null;
+
+                                            Address = (reader["Address"] != DBNull.Value) ? (string)reader["Address"] : null;
+
+                                            Phone = (reader["Phone"] != DBNull.Value) ? (string)reader["Phone"] : null;
+
+                                            NationalNo = (reader["NationalNo"] != DBNull.Value) ? (string)reader["NationalNo"] : null;
+
+                                            NationalityCountryID = (reader["NationalityCountryID"] != DBNull.Value) ? (int?)reader["NationalityCountryID"] : null;
+
+                                            PersonalImagePath = (reader["PersonalImagePath"] != DBNull.Value) ? (string)reader["PersonalImagePath"] : null;
+                                        }
+
+                                        else
+                                        {
+                                            // The record wasn't found !
+                                            IsFound = false;
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            clsErrorLogger.LogError(ex);
+                            IsFound = false;
+                        }
+                        return IsFound;
+                    }
 
         public static bool IsPersonExist(int? PersonID)
         {
@@ -244,6 +314,46 @@ namespace Library_DataAccessLayer
                 IsFound = false;
             }
             return IsFound;
+        }
+
+        public static int? GetPersonType(int? PersonID)
+        {
+            int? PersonType = null;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT 
+	                                CASE 
+		                                WHEN EXISTS (SELECT 1 FROM Users WHERE PersonID = @PersonID) THEN '1'
+		                                WHEN EXISTS (SELECT 1 FROM Members WHERE PersonID = @PersonID ) THEN '2'
+		                                ELSE '3'
+	                                END AS 'Person Type';";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        if (reader != null && int.TryParse(reader.ToString(), out int InsertedID))
+                        {
+                            PersonType = InsertedID;
+                        }
+
+                        else
+                            PersonType = null;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                PersonType = null;
+            }
+            return PersonType;
         }
 
         public static int? AddNewPerson(string FirstName, string LastName, string NationalNo,

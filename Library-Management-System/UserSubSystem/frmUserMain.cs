@@ -14,11 +14,14 @@ namespace LibraryManagementSystem
 {
     public partial class frmMain : Form
     {
+        private Form _LoginForm = null;
+
         private Guna2Button _CurrentActiveButton = new Guna2Button(); 
 
-        public frmMain()
+        public frmMain(Form loginForm)
         {
             InitializeComponent();
+            _LoginForm = loginForm;
         }
 
         private void _ShowForm(Guna2Button activeBtn , Form frm)
@@ -91,6 +94,13 @@ namespace LibraryManagementSystem
         private void btnPayments_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            _LoginForm.Show();
+            this.Close();
         }
     }
 }

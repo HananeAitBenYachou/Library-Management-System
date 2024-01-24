@@ -24,8 +24,11 @@ namespace Library_BusinessLayer
         {
             get { return FirstName+ " " + LastName; }
         }
-
         public clsCountry CountryInfo { get; }
+
+        public enum enPersonType { User = 1 , Member = 2 , NotSpecified };
+
+        public enPersonType PersonType { get; }
 
         public clsPerson()
         {
@@ -43,7 +46,8 @@ namespace Library_BusinessLayer
             PersonalImagePath = null;
             Password = null;
         }
-        private clsPerson(int? PersonID, string FirstName, string LastName, string NationalNo, char? Gender, DateTime? BirthDate, string Address, string Phone, string Email, int? NationalityCountryID, string PersonalImagePath, string Password)
+        private clsPerson(int? PersonID, string FirstName, string LastName, string NationalNo, char? Gender, DateTime? BirthDate, string Address,
+            string Phone, string Email, int? NationalityCountryID, string PersonalImagePath, string Password)
         {
             _Mode = enMode.Update;
             this.PersonID = PersonID;
@@ -60,6 +64,7 @@ namespace Library_BusinessLayer
             this.Password = Password;
 
             CountryInfo = clsCountry.Find(NationalityCountryID);
+            PersonType = (enPersonType)clsPersonData.GetPersonType(this.PersonID);
         }
 
         public static clsPerson Find(int? PersonID)
@@ -99,6 +104,28 @@ namespace Library_BusinessLayer
             string Password = null;
 
             bool IsFound = clsPersonData.GetPersonInfoByNationalNo(NationalNo , ref PersonID, ref FirstName, ref LastName, ref Gender, ref BirthDate, ref Address, ref Phone, ref Email, ref NationalityCountryID, ref PersonalImagePath, ref Password);
+
+            if (IsFound)
+                return new clsPerson(PersonID, FirstName, LastName, NationalNo, Gender, BirthDate, Address, Phone, Email, NationalityCountryID, PersonalImagePath, Password);
+            else
+                return null;
+        }
+
+        public static clsPerson Find(string Email , string Password)
+        {
+            int? PersonID = null;
+            string FirstName = null;
+            string LastName = null;
+            char? Gender = null;
+            DateTime? BirthDate = null;
+            string Address = null;
+            string NationalNo = null;
+            string Phone = null;
+            int? NationalityCountryID = null;
+            string PersonalImagePath = null;
+
+            bool IsFound = clsPersonData.GetPersonByEmailAndPassword(Email , Password , ref NationalNo, ref PersonID, ref FirstName, ref LastName, ref Gender,
+                ref BirthDate, ref Address, ref Phone,ref NationalityCountryID, ref PersonalImagePath);
 
             if (IsFound)
                 return new clsPerson(PersonID, FirstName, LastName, NationalNo, Gender, BirthDate, Address, Phone, Email, NationalityCountryID, PersonalImagePath, Password);

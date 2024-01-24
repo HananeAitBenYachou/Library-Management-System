@@ -76,6 +76,21 @@ namespace Library_BusinessLayer
                 return null;
         }
 
+        public static clsUser FindByPersonID(int? PersonID)
+        {
+            string UserName = null;
+            int? UserID = null;
+            short? Permissions = null;
+            bool? IsActive = null;
+
+            bool IsFound = clsUserData.GetUserInfoByPersonID(PersonID , ref UserName, ref PersonID, ref Permissions, ref IsActive);
+
+            if (IsFound)
+                return new clsUser(UserID, PersonID, UserName, Permissions, IsActive);
+            else
+                return null;
+        }
+
         public static bool IsUserExist(int? UserID)
         {
             return clsUserData.IsUserExist(UserID);

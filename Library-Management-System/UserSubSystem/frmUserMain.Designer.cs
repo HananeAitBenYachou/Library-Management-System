@@ -43,6 +43,7 @@
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
             this.pnlContainer = new Sipaa.Framework.SPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.sPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -60,6 +61,7 @@
             this.sPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
             this.sPanel1.BorderRadius = 80;
             this.sPanel1.BorderSize = 0;
+            this.sPanel1.Controls.Add(this.btnLogout);
             this.sPanel1.Controls.Add(this.btnUsers);
             this.sPanel1.Controls.Add(this.btnPayments);
             this.sPanel1.Controls.Add(this.btnFines);
@@ -397,6 +399,36 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // btnLogout
+            // 
+            this.btnLogout.BorderRadius = 23;
+            this.btnLogout.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnLogout.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
+            this.btnLogout.CheckedState.Image = global::LibraryManagementSystem.Properties.Resources.profile;
+            this.btnLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.HoverState.FillColor = System.Drawing.Color.White;
+            this.btnLogout.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
+            this.btnLogout.HoverState.Image = global::LibraryManagementSystem.Properties.Resources.profile;
+            this.btnLogout.Image = global::LibraryManagementSystem.Properties.Resources.profile__1_;
+            this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogout.ImageOffset = new System.Drawing.Point(25, 0);
+            this.btnLogout.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLogout.Location = new System.Drawing.Point(83, 739);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
+            this.btnLogout.Size = new System.Drawing.Size(219, 52);
+            this.btnLogout.TabIndex = 15;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogout.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -433,6 +465,7 @@
         private Guna.UI2.WinForms.Guna2Button btnGenres;
         private Guna.UI2.WinForms.Guna2Button btnBooks;
         private Sipaa.Framework.SPanel pnlContainer;
+        private Guna.UI2.WinForms.Guna2Button btnLogout;
     }
 }
 

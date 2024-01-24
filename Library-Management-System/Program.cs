@@ -22,7 +22,7 @@ namespace LibraryManagementSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           Application.Run(new frmShowBookCopyBorrowingsHistory(2));
+           Application.Run(new frmLogin());
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

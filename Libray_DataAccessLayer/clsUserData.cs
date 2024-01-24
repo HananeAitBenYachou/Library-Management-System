@@ -112,6 +112,58 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
+        public static bool GetUserInfoByPersonID(int? PersonID , ref string UserName, ref int? UserID, ref short? Permissions, ref bool? IsActive)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT * 
+                            FROM Users 
+                            WHERE PersonID = @PersonID;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@PersonID", (object)PersonID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                // The record was found successfully !
+                                IsFound = true;
+
+                                UserName = (reader["UserName"] != DBNull.Value) ? (string)reader["UserName"] : null;
+
+                                UserID = (reader["UserID"] != DBNull.Value) ? (int?)reader["UserID"] : null;
+
+                                Permissions = (reader["Permissions"] != DBNull.Value) ? (short?)reader["Permissions"] : null;
+
+                                IsActive = (reader["IsActive"] != DBNull.Value) ? (bool?)reader["IsActive"] : null;
+
+                            }
+
+                            else
+                            {
+                                // The record wasn't found !
+                                IsFound = false;
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
+        }
+
         public static bool IsUserExist(int? UserID)
         {
             bool IsFound = false;
