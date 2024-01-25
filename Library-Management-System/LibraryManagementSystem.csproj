@@ -245,6 +245,12 @@
       <DependentUpon>ucGenreCard.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobalClasses\clsGlobal.cs" />
+    <Compile Include="UserSubSystem\Global\frmAccessDenied.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserSubSystem\Global\frmAccessDenied.Designer.cs">
+      <DependentUpon>frmAccessDenied.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserSubSystem\Members\frmAddUpdateMember.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -471,6 +477,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserSubSystem\Genres\UserControls\ucGenreCard.resx">
       <DependentUpon>ucGenreCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserSubSystem\Global\frmAccessDenied.resx">
+      <DependentUpon>frmAccessDenied.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserSubSystem\Members\frmAddUpdateMember.resx">
       <DependentUpon>frmAddUpdateMember.cs</DependentUpon>
@@ -830,6 +839,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Knowledge-cuate.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\warning.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

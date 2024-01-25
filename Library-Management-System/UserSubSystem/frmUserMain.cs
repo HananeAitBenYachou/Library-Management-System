@@ -1,12 +1,15 @@
 ﻿using Guna.UI2.WinForms;
+using Library_BusinessLayer;
 using LibraryManagementSystem.Authors;
 using LibraryManagementSystem.Books;
 using LibraryManagementSystem.Borrowings_Returns;
 using LibraryManagementSystem.Fines;
 using LibraryManagementSystem.Genres;
+using LibraryManagementSystem.GlobalClasses;
 using LibraryManagementSystem.Members;
 using LibraryManagementSystem.Reservations;
 using LibraryManagementSystem.Users;
+using LibraryManagementSystem.UserSubSystem.Global;
 using System;
 using System.Windows.Forms;
 
@@ -22,6 +25,18 @@ namespace LibraryManagementSystem
         {
             InitializeComponent();
             _LoginForm = loginForm;
+        }
+        
+        private bool _CheckUserPermissions(clsUser.enPermissions permission)
+        {
+            if (!clsGlobal.CurrentUser.CheckAccessPermissions(permission))
+            {
+                frmAccessDenied frm = new frmAccessDenied();
+                frm.ShowDialog();
+                return false;
+            }
+
+            return true;
         }
 
         private void _ShowForm(Guna2Button activeBtn , Form frm)
@@ -51,12 +66,14 @@ namespace LibraryManagementSystem
 
         private void btnUsers_Click(object sender, EventArgs e)
         {
-            _ShowForm((Guna2Button)sender ,new frmListUsers());
+            if(_CheckUserPermissions(clsUser.enPermissions.enManageUsers))
+                _ShowForm((Guna2Button)sender ,new frmListUsers());
         }
 
         private void btnBooks_Click(object sender, EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmListBooks());
+            if (_CheckUserPermissions(clsUser.enPermissions.enManageBooks))
+                _ShowForm((Guna2Button)sender, new frmListBooks());
         }
 
         private void btnGenres_Click(object sender, EventArgs e)
@@ -71,24 +88,26 @@ namespace LibraryManagementSystem
 
         private void btnMembers_Click(object sender, EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmListMembers());
+            if (_CheckUserPermissions(clsUser.enPermissions.enManageMemebers))
+                _ShowForm((Guna2Button)sender, new frmListMembers());
         }
 
         private void btnBorrowings_Click(object sender, EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmListBorrowings());
-
+            if (_CheckUserPermissions(clsUser.enPermissions.enManageBooksBorrowings))
+                _ShowForm((Guna2Button)sender, new frmListBorrowings());
         }
 
         private void btnFines_Click(object sender, EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmListFines());
-
+            if (_CheckUserPermissions(clsUser.enPermissions.enManageFines))
+                _ShowForm((Guna2Button)sender, new frmListFines());
         }
 
         private void btnReservations_Click(object sender, EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmListReservations());
+            if (_CheckUserPermissions(clsUser.enPermissions.enManageBooksReservations))
+                _ShowForm((Guna2Button)sender, new frmListReservations());
         }
 
         private void btnPayments_Click(object sender, EventArgs e)

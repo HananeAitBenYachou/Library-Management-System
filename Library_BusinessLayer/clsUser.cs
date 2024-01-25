@@ -21,7 +21,7 @@ namespace Library_BusinessLayer
             enManageMemebers = 2,
             enManageBooks = 4,
             enManageBooksBorrowings = 8,
-            enManageBooksReturn = 16,
+            enManageBooksReservations = 16,
             enManageFines = 32,
             eAll = -1
         }
@@ -83,7 +83,7 @@ namespace Library_BusinessLayer
             short? Permissions = null;
             bool? IsActive = null;
 
-            bool IsFound = clsUserData.GetUserInfoByPersonID(PersonID , ref UserName, ref PersonID, ref Permissions, ref IsActive);
+            bool IsFound = clsUserData.GetUserInfoByPersonID(PersonID , ref UserName, ref UserID, ref Permissions, ref IsActive);
 
             if (IsFound)
                 return new clsUser(UserID, PersonID, UserName, Permissions, IsActive);
@@ -151,7 +151,7 @@ namespace Library_BusinessLayer
             if (Permissions == -1)
                 return true;
 
-            if (((short?)permissions & Permissions) == (short?)(permissions))
+            if (((short)permissions & Permissions) == (short)(permissions))
                 return true;
 
             return false;

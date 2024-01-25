@@ -35,6 +35,7 @@
             this.lblUserID = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tpPersonalInfo = new System.Windows.Forms.TabPage();
+            this.ucPersonCardWithFilter1 = new LibraryManagementSystem.People.UserControls.ucPersonCardWithFilter();
             this.btnNext = new Guna.UI2.WinForms.Guna2GradientButton();
             this.tpAccountInfo = new System.Windows.Forms.TabPage();
             this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -62,7 +63,6 @@
             this.tcUserInfo = new Guna.UI2.WinForms.Guna2TabControl();
             this.btnSave = new Guna.UI2.WinForms.Guna2GradientButton();
             this.btnClose = new Guna.UI2.WinForms.Guna2GradientButton();
-            this.ucPersonCardWithFilter1 = new LibraryManagementSystem.People.UserControls.ucPersonCardWithFilter();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tpPersonalInfo.SuspendLayout();
             this.tpAccountInfo.SuspendLayout();
@@ -139,6 +139,16 @@
             this.tpPersonalInfo.Size = new System.Drawing.Size(1007, 549);
             this.tpPersonalInfo.TabIndex = 0;
             this.tpPersonalInfo.Text = "Personal Info";
+            // 
+            // ucPersonCardWithFilter1
+            // 
+            this.ucPersonCardWithFilter1.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
+            this.ucPersonCardWithFilter1.BackColor = System.Drawing.Color.Transparent;
+            this.ucPersonCardWithFilter1.FilterEnabled = true;
+            this.ucPersonCardWithFilter1.Location = new System.Drawing.Point(11, 13);
+            this.ucPersonCardWithFilter1.Name = "ucPersonCardWithFilter1";
+            this.ucPersonCardWithFilter1.Size = new System.Drawing.Size(983, 467);
+            this.ucPersonCardWithFilter1.TabIndex = 167;
             // 
             // btnNext
             // 
@@ -257,9 +267,9 @@
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(38, 219);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(140, 23);
+            this.label8.Size = new System.Drawing.Size(180, 23);
             this.label8.TabIndex = 202;
-            this.label8.Text = "Manage Returns";
+            this.label8.Text = "Manage Reservations";
             // 
             // label7
             // 
@@ -571,16 +581,6 @@
             this.btnClose.TabIndex = 165;
             this.btnClose.Text = "Close";
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // ucPersonCardWithFilter1
-            // 
-            this.ucPersonCardWithFilter1.AutoValidate = System.Windows.Forms.AutoValidate.EnableAllowFocusChange;
-            this.ucPersonCardWithFilter1.BackColor = System.Drawing.Color.Transparent;
-            this.ucPersonCardWithFilter1.FilterEnabled = true;
-            this.ucPersonCardWithFilter1.Location = new System.Drawing.Point(11, 13);
-            this.ucPersonCardWithFilter1.Name = "ucPersonCardWithFilter1";
-            this.ucPersonCardWithFilter1.Size = new System.Drawing.Size(983, 467);
-            this.ucPersonCardWithFilter1.TabIndex = 167;
             // 
             // frmAddUpdateUser
             // 

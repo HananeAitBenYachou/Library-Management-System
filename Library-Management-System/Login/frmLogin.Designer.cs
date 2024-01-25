@@ -111,15 +111,15 @@
             // 
             // btnExit
             // 
-            this.btnExit.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
-            this.btnExit.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnExit.CheckedState.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnExit.HoverState.ImageSize = new System.Drawing.Size(40, 40);
             this.btnExit.Image = global::LibraryManagementSystem.Properties.Resources.power;
             this.btnExit.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnExit.ImageRotate = 0F;
             this.btnExit.ImageSize = new System.Drawing.Size(40, 40);
             this.btnExit.Location = new System.Drawing.Point(1117, 0);
             this.btnExit.Name = "btnExit";
-            this.btnExit.PressedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.btnExit.PressedState.ImageSize = new System.Drawing.Size(40, 40);
             this.btnExit.Size = new System.Drawing.Size(45, 45);
             this.btnExit.TabIndex = 169;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
