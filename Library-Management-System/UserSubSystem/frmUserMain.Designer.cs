@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.sPanel1 = new Sipaa.Framework.SPanel();
-            this.btnUsers = new Guna.UI2.WinForms.Guna2Button();
-            this.btnPayments = new Guna.UI2.WinForms.Guna2Button();
             this.btnFines = new Guna.UI2.WinForms.Guna2Button();
+            this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
+            this.btnUsers = new Guna.UI2.WinForms.Guna2Button();
             this.btnReservations = new Guna.UI2.WinForms.Guna2Button();
             this.btnBorrowings = new Guna.UI2.WinForms.Guna2Button();
             this.btnMembers = new Guna.UI2.WinForms.Guna2Button();
@@ -43,7 +43,6 @@
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
             this.pnlContainer = new Sipaa.Framework.SPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.sPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -61,10 +60,9 @@
             this.sPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
             this.sPanel1.BorderRadius = 80;
             this.sPanel1.BorderSize = 0;
+            this.sPanel1.Controls.Add(this.btnFines);
             this.sPanel1.Controls.Add(this.btnLogout);
             this.sPanel1.Controls.Add(this.btnUsers);
-            this.sPanel1.Controls.Add(this.btnPayments);
-            this.sPanel1.Controls.Add(this.btnFines);
             this.sPanel1.Controls.Add(this.btnReservations);
             this.sPanel1.Controls.Add(this.btnBorrowings);
             this.sPanel1.Controls.Add(this.btnMembers);
@@ -77,6 +75,66 @@
             this.sPanel1.Name = "sPanel1";
             this.sPanel1.Size = new System.Drawing.Size(350, 868);
             this.sPanel1.TabIndex = 1;
+            // 
+            // btnFines
+            // 
+            this.btnFines.BorderRadius = 23;
+            this.btnFines.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnFines.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
+            this.btnFines.CheckedState.Image = global::LibraryManagementSystem.Properties.Resources.penalty;
+            this.btnFines.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnFines.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnFines.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnFines.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnFines.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
+            this.btnFines.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnFines.ForeColor = System.Drawing.Color.White;
+            this.btnFines.HoverState.FillColor = System.Drawing.Color.White;
+            this.btnFines.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
+            this.btnFines.HoverState.Image = global::LibraryManagementSystem.Properties.Resources.penalty;
+            this.btnFines.Image = global::LibraryManagementSystem.Properties.Resources.penalty__1_;
+            this.btnFines.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnFines.ImageOffset = new System.Drawing.Point(20, 0);
+            this.btnFines.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnFines.Location = new System.Drawing.Point(83, 489);
+            this.btnFines.Name = "btnFines";
+            this.btnFines.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
+            this.btnFines.Size = new System.Drawing.Size(219, 52);
+            this.btnFines.TabIndex = 16;
+            this.btnFines.Text = "Fines";
+            this.btnFines.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnFines.TextOffset = new System.Drawing.Point(25, 0);
+            this.btnFines.Click += new System.EventHandler(this.btnFines_Click);
+            // 
+            // btnLogout
+            // 
+            this.btnLogout.BorderRadius = 23;
+            this.btnLogout.CheckedState.FillColor = System.Drawing.Color.White;
+            this.btnLogout.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
+            this.btnLogout.CheckedState.Image = global::LibraryManagementSystem.Properties.Resources.logout__1_;
+            this.btnLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnLogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.HoverState.FillColor = System.Drawing.Color.White;
+            this.btnLogout.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
+            this.btnLogout.HoverState.Image = global::LibraryManagementSystem.Properties.Resources.logout__1_;
+            this.btnLogout.Image = global::LibraryManagementSystem.Properties.Resources.logout;
+            this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogout.ImageOffset = new System.Drawing.Point(25, 0);
+            this.btnLogout.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnLogout.Location = new System.Drawing.Point(83, 739);
+            this.btnLogout.Name = "btnLogout";
+            this.btnLogout.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
+            this.btnLogout.Size = new System.Drawing.Size(219, 52);
+            this.btnLogout.TabIndex = 15;
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
+            this.btnLogout.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnUsers
             // 
@@ -98,7 +156,7 @@
             this.btnUsers.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnUsers.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnUsers.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnUsers.Location = new System.Drawing.Point(80, 615);
+            this.btnUsers.Location = new System.Drawing.Point(80, 551);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnUsers.Size = new System.Drawing.Size(219, 52);
@@ -107,66 +165,6 @@
             this.btnUsers.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnUsers.TextOffset = new System.Drawing.Point(40, 0);
             this.btnUsers.Click += new System.EventHandler(this.btnUsers_Click);
-            // 
-            // btnPayments
-            // 
-            this.btnPayments.BorderRadius = 23;
-            this.btnPayments.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnPayments.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnPayments.CheckedState.Image = global::LibraryManagementSystem.Properties.Resources.profit__1_;
-            this.btnPayments.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnPayments.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnPayments.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnPayments.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnPayments.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnPayments.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnPayments.ForeColor = System.Drawing.Color.White;
-            this.btnPayments.HoverState.FillColor = System.Drawing.Color.White;
-            this.btnPayments.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnPayments.HoverState.Image = global::LibraryManagementSystem.Properties.Resources.profit;
-            this.btnPayments.Image = global::LibraryManagementSystem.Properties.Resources.profit__1_;
-            this.btnPayments.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnPayments.ImageOffset = new System.Drawing.Point(25, 0);
-            this.btnPayments.ImageSize = new System.Drawing.Size(26, 26);
-            this.btnPayments.Location = new System.Drawing.Point(80, 552);
-            this.btnPayments.Name = "btnPayments";
-            this.btnPayments.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
-            this.btnPayments.Size = new System.Drawing.Size(219, 52);
-            this.btnPayments.TabIndex = 13;
-            this.btnPayments.Text = "Payments";
-            this.btnPayments.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnPayments.TextOffset = new System.Drawing.Point(40, 0);
-            this.btnPayments.Click += new System.EventHandler(this.btnPayments_Click);
-            // 
-            // btnFines
-            // 
-            this.btnFines.BorderRadius = 23;
-            this.btnFines.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnFines.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnFines.CheckedState.Image = global::LibraryManagementSystem.Properties.Resources.penalty__1_;
-            this.btnFines.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnFines.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnFines.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnFines.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFines.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnFines.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnFines.ForeColor = System.Drawing.Color.White;
-            this.btnFines.HoverState.FillColor = System.Drawing.Color.White;
-            this.btnFines.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnFines.HoverState.Image = global::LibraryManagementSystem.Properties.Resources.penalty;
-            this.btnFines.Image = global::LibraryManagementSystem.Properties.Resources.penalty__1_;
-            this.btnFines.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnFines.ImageOffset = new System.Drawing.Point(25, 0);
-            this.btnFines.ImageSize = new System.Drawing.Size(38, 38);
-            this.btnFines.Location = new System.Drawing.Point(80, 489);
-            this.btnFines.Name = "btnFines";
-            this.btnFines.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
-            this.btnFines.Size = new System.Drawing.Size(219, 52);
-            this.btnFines.TabIndex = 12;
-            this.btnFines.Text = "Fines";
-            this.btnFines.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnFines.TextOffset = new System.Drawing.Point(40, 0);
-            this.btnFines.Click += new System.EventHandler(this.btnFines_Click);
             // 
             // btnReservations
             // 
@@ -399,36 +397,6 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // btnLogout
-            // 
-            this.btnLogout.BorderRadius = 23;
-            this.btnLogout.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnLogout.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnLogout.CheckedState.Image = global::LibraryManagementSystem.Properties.Resources.profile;
-            this.btnLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.HoverState.FillColor = System.Drawing.Color.White;
-            this.btnLogout.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnLogout.HoverState.Image = global::LibraryManagementSystem.Properties.Resources.profile;
-            this.btnLogout.Image = global::LibraryManagementSystem.Properties.Resources.profile__1_;
-            this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogout.ImageOffset = new System.Drawing.Point(25, 0);
-            this.btnLogout.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLogout.Location = new System.Drawing.Point(83, 739);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
-            this.btnLogout.Size = new System.Drawing.Size(219, 52);
-            this.btnLogout.TabIndex = 15;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogout.TextOffset = new System.Drawing.Point(40, 0);
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -456,8 +424,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private Guna.UI2.WinForms.Guna2Button btnDashboard;
         private Guna.UI2.WinForms.Guna2Button btnUsers;
-        private Guna.UI2.WinForms.Guna2Button btnPayments;
-        private Guna.UI2.WinForms.Guna2Button btnFines;
         private Guna.UI2.WinForms.Guna2Button btnReservations;
         private Guna.UI2.WinForms.Guna2Button btnBorrowings;
         private Guna.UI2.WinForms.Guna2Button btnMembers;
@@ -466,6 +432,7 @@
         private Guna.UI2.WinForms.Guna2Button btnBooks;
         private Sipaa.Framework.SPanel pnlContainer;
         private Guna.UI2.WinForms.Guna2Button btnLogout;
+        private Guna.UI2.WinForms.Guna2Button btnFines;
     }
 }
 

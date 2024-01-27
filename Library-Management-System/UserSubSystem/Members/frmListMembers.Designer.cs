@@ -41,6 +41,8 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.changePasswordtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showMemberBorrowingsHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.showReservationsHistoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label3 = new System.Windows.Forms.Label();
             this.cbGender = new Guna.UI2.WinForms.Guna2ComboBox();
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
@@ -87,7 +89,6 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
             this.dgvMembersList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMembersList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
-            this.dgvMembersList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
@@ -159,9 +160,11 @@
             this.showDetailsToolStripMenuItem,
             this.editToolStripMenuItem,
             this.deleteToolStripMenuItem,
-            this.changePasswordtoolStripMenuItem});
+            this.changePasswordtoolStripMenuItem,
+            this.showMemberBorrowingsHistoryToolStripMenuItem,
+            this.showReservationsHistoryToolStripMenuItem});
             this.cmsMembers.Name = "contextMenuStrip1";
-            this.cmsMembers.Size = new System.Drawing.Size(218, 184);
+            this.cmsMembers.Size = new System.Drawing.Size(275, 256);
             // 
             // AddMembertoolStripMenuItem
             // 
@@ -169,7 +172,7 @@
             this.AddMembertoolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.AddMembertoolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.add;
             this.AddMembertoolStripMenuItem.Name = "AddMembertoolStripMenuItem";
-            this.AddMembertoolStripMenuItem.Size = new System.Drawing.Size(217, 36);
+            this.AddMembertoolStripMenuItem.Size = new System.Drawing.Size(274, 36);
             this.AddMembertoolStripMenuItem.Text = "Add &New Member";
             this.AddMembertoolStripMenuItem.Click += new System.EventHandler(this.AddMembertoolStripMenuItem_Click);
             // 
@@ -179,7 +182,7 @@
             this.showDetailsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.showDetailsToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.information_pamphlet;
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(217, 36);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(274, 36);
             this.showDetailsToolStripMenuItem.Text = "&Show Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
@@ -189,7 +192,7 @@
             this.editToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.editToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.note;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(217, 36);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(274, 36);
             this.editToolStripMenuItem.Text = "&Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -199,7 +202,7 @@
             this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.deleteToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.delete;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(217, 36);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(274, 36);
             this.deleteToolStripMenuItem.Text = "&Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -209,9 +212,27 @@
             this.changePasswordtoolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.changePasswordtoolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.padlock;
             this.changePasswordtoolStripMenuItem.Name = "changePasswordtoolStripMenuItem";
-            this.changePasswordtoolStripMenuItem.Size = new System.Drawing.Size(217, 36);
+            this.changePasswordtoolStripMenuItem.Size = new System.Drawing.Size(274, 36);
             this.changePasswordtoolStripMenuItem.Text = "Change &Password";
             this.changePasswordtoolStripMenuItem.Click += new System.EventHandler(this.changePasswordtoolStripMenuItem_Click);
+            // 
+            // showMemberBorrowingsHistoryToolStripMenuItem
+            // 
+            this.showMemberBorrowingsHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.showMemberBorrowingsHistoryToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources._3d_calendar;
+            this.showMemberBorrowingsHistoryToolStripMenuItem.Name = "showMemberBorrowingsHistoryToolStripMenuItem";
+            this.showMemberBorrowingsHistoryToolStripMenuItem.Size = new System.Drawing.Size(274, 36);
+            this.showMemberBorrowingsHistoryToolStripMenuItem.Text = "Show Borrowings History";
+            this.showMemberBorrowingsHistoryToolStripMenuItem.Click += new System.EventHandler(this.showMemberBorrowingsHistoryToolStripMenuItem_Click);
+            // 
+            // showReservationsHistoryToolStripMenuItem
+            // 
+            this.showReservationsHistoryToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.showReservationsHistoryToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources._3d_calendar;
+            this.showReservationsHistoryToolStripMenuItem.Name = "showReservationsHistoryToolStripMenuItem";
+            this.showReservationsHistoryToolStripMenuItem.Size = new System.Drawing.Size(274, 36);
+            this.showReservationsHistoryToolStripMenuItem.Text = "Show Reservations History";
+            this.showReservationsHistoryToolStripMenuItem.Click += new System.EventHandler(this.showReservationsHistoryToolStripMenuItem_Click);
             // 
             // label3
             // 
@@ -354,5 +375,7 @@
         private Guna.UI2.WinForms.Guna2ImageButton btnAddMember;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem showMemberBorrowingsHistoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem showReservationsHistoryToolStripMenuItem;
     }
 }

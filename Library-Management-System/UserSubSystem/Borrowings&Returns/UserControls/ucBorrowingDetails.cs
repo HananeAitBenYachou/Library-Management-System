@@ -77,7 +77,7 @@ namespace LibraryManagementSystem.Borrowings_Returns
             lblReturnDate.Text = _Borrowing.BorrowingDate.Value.ToShortDateString() ?? "Not returned yet !";
             lblDueDate.Text = _Borrowing.DueDate.Value.ToShortDateString();
             lblCreatedByUser.Text = _Borrowing.CreatedByUserInfo.UserName;
-            lblUpdatedByUser.Text = _Borrowing.UpdatedByUserInfo.UserName;
+            lblUpdatedByUser.Text = _Borrowing.UpdatedByUserInfo != null ? _Borrowing.UpdatedByUserInfo.UserName : "Not updated yet !";
         }
 
         private void llbShowBookCopyInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

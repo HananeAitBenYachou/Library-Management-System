@@ -195,5 +195,13 @@ namespace LibraryManagementSystem.Books
             else
                 MessageBox.Show("Error occured during this operation", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
+        private void showBookCopiesListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowBookCopies frm = new frmShowBookCopies((int)dgvBooksList.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+            _RefreshBooksList();
+        }
+
     }
 }

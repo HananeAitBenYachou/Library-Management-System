@@ -1,4 +1,5 @@
 ﻿using Library_BusinessLayer;
+using LibraryManagementSystem.GlobalClasses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -164,5 +165,9 @@ namespace LibraryManagementSystem.Users
             frm.ShowDialog();
         }
 
+        private void cmsUsers_Opening(object sender, CancelEventArgs e)
+        {
+            deleteToolStripMenuItem.Enabled = (clsGlobal.CurrentUser.UserID != (int)dgvUsersList.CurrentRow.Cells[0].Value);
+        }
     }
 }

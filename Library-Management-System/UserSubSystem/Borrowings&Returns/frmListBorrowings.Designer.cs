@@ -36,14 +36,14 @@
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dgvBorrowingsList = new Guna.UI2.WinForms.Guna2DataGridView();
             this.cmsBorrowings = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cbBorrowedCopyStatus = new Guna.UI2.WinForms.Guna2ComboBox();
             this.AddBorrowingtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.returnBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbBorrowedCopyStatus = new Guna.UI2.WinForms.Guna2ComboBox();
             this.btnAddBorrowing = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowingsList)).BeginInit();
@@ -86,7 +86,6 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
             this.dgvBorrowingsList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBorrowingsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
-            this.dgvBorrowingsList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
@@ -160,6 +159,46 @@
             this.returnBookToolStripMenuItem});
             this.cmsBorrowings.Name = "contextMenuStrip1";
             this.cmsBorrowings.Size = new System.Drawing.Size(256, 148);
+            this.cmsBorrowings.Opening += new System.ComponentModel.CancelEventHandler(this.cmsBorrowings_Opening);
+            // 
+            // AddBorrowingtoolStripMenuItem
+            // 
+            this.AddBorrowingtoolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.AddBorrowingtoolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.AddBorrowingtoolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.add2;
+            this.AddBorrowingtoolStripMenuItem.Name = "AddBorrowingtoolStripMenuItem";
+            this.AddBorrowingtoolStripMenuItem.Size = new System.Drawing.Size(255, 36);
+            this.AddBorrowingtoolStripMenuItem.Text = "&Borrow Book";
+            this.AddBorrowingtoolStripMenuItem.Click += new System.EventHandler(this.AddBorrowingtoolStripMenuItem_Click);
+            // 
+            // showDetailsToolStripMenuItem
+            // 
+            this.showDetailsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.showDetailsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.showDetailsToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.information_pamphlet;
+            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(255, 36);
+            this.showDetailsToolStripMenuItem.Text = "&Show Borrowing Details";
+            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
+            // 
+            // deleteToolStripMenuItem
+            // 
+            this.deleteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
+            this.deleteToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.delete;
+            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(255, 36);
+            this.deleteToolStripMenuItem.Text = "&Delete";
+            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
+            // 
+            // returnBookToolStripMenuItem
+            // 
+            this.returnBookToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.returnBookToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.book2;
+            this.returnBookToolStripMenuItem.Name = "returnBookToolStripMenuItem";
+            this.returnBookToolStripMenuItem.Size = new System.Drawing.Size(255, 36);
+            this.returnBookToolStripMenuItem.Text = "Return Book";
+            this.returnBookToolStripMenuItem.Click += new System.EventHandler(this.returnBookToolStripMenuItem_Click);
             // 
             // label3
             // 
@@ -227,45 +266,6 @@
             this.cbBorrowedCopyStatus.TabIndex = 70;
             this.cbBorrowedCopyStatus.Visible = false;
             this.cbBorrowedCopyStatus.SelectedIndexChanged += new System.EventHandler(this.cbBorrowedCopyStatus_SelectedIndexChanged);
-            // 
-            // AddBorrowingtoolStripMenuItem
-            // 
-            this.AddBorrowingtoolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.AddBorrowingtoolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.AddBorrowingtoolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.add2;
-            this.AddBorrowingtoolStripMenuItem.Name = "AddBorrowingtoolStripMenuItem";
-            this.AddBorrowingtoolStripMenuItem.Size = new System.Drawing.Size(255, 36);
-            this.AddBorrowingtoolStripMenuItem.Text = "&Borrow Book";
-            this.AddBorrowingtoolStripMenuItem.Click += new System.EventHandler(this.AddBorrowingtoolStripMenuItem_Click);
-            // 
-            // showDetailsToolStripMenuItem
-            // 
-            this.showDetailsToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.showDetailsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.showDetailsToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.information_pamphlet;
-            this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(255, 36);
-            this.showDetailsToolStripMenuItem.Text = "&Show Borrowing Details";
-            this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
-            // 
-            // deleteToolStripMenuItem
-            // 
-            this.deleteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.deleteToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.delete;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(255, 36);
-            this.deleteToolStripMenuItem.Text = "&Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // returnBookToolStripMenuItem
-            // 
-            this.returnBookToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.returnBookToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.book2;
-            this.returnBookToolStripMenuItem.Name = "returnBookToolStripMenuItem";
-            this.returnBookToolStripMenuItem.Size = new System.Drawing.Size(255, 36);
-            this.returnBookToolStripMenuItem.Text = "Return Book";
-            this.returnBookToolStripMenuItem.Click += new System.EventHandler(this.returnBookToolStripMenuItem_Click);
             // 
             // btnAddBorrowing
             // 

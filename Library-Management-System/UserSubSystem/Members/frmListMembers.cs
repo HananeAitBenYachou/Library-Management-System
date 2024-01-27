@@ -1,4 +1,6 @@
 ﻿using Library_BusinessLayer;
+using LibraryManagementSystem.Borrowings_Returns;
+using LibraryManagementSystem.Reservations;
 using LibraryManagementSystem.Users;
 using System;
 using System.Collections.Generic;
@@ -160,5 +162,16 @@ namespace LibraryManagementSystem.Members
             frm.ShowDialog();
         }
 
+        private void showMemberBorrowingsHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowMemberBorrowingsHistory frm = new frmShowMemberBorrowingsHistory((int)dgvMembersList.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+        }
+
+        private void showReservationsHistoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmShowMemberReservationsHistory frm = new frmShowMemberReservationsHistory((int)dgvMembersList.CurrentRow.Cells[0].Value);
+            frm.ShowDialog();
+        }
     }
 }

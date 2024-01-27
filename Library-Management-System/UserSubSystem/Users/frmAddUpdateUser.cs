@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using Library_BusinessLayer;
+using LibraryManagementSystem.GlobalClasses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TheArtOfDevHtmlRenderer.Adapters;
+using static Library_BusinessLayer.clsUser;
 
 namespace LibraryManagementSystem.Users
 {
@@ -123,8 +125,9 @@ namespace LibraryManagementSystem.Users
             txtUserName.Text = _User.UserName;
             chbIsActive.Checked = _User.IsActive.Value;
 
-            _LoadUserPermissions();
-           
+            gbPermissions.Enabled = clsGlobal.CurrentUser.UserID != _User.UserID;
+
+            _LoadUserPermissions();       
         }
 
         private short? _SetUserPermissions()

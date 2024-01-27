@@ -36,14 +36,14 @@
             this.cbFilterByOptions = new Guna.UI2.WinForms.Guna2ComboBox();
             this.dgvReservationsList = new Guna.UI2.WinForms.Guna2DataGridView();
             this.cmsReservations = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.AddBorrowingtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnAddBorrowing = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.label1 = new System.Windows.Forms.Label();
+            this.btnAddReservation = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservationsList)).BeginInit();
             this.cmsReservations.SuspendLayout();
@@ -84,7 +84,6 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
             this.dgvReservationsList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvReservationsList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
-            this.dgvReservationsList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
@@ -159,6 +158,52 @@
             this.cmsReservations.Name = "contextMenuStrip1";
             this.cmsReservations.Size = new System.Drawing.Size(256, 148);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(28, 306);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(81, 23);
+            this.label3.TabIndex = 77;
+            this.label3.Text = "Filter By :";
+            // 
+            // txtFilterValue
+            // 
+            this.txtFilterValue.BorderRadius = 22;
+            this.txtFilterValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtFilterValue.DefaultText = "";
+            this.txtFilterValue.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
+            this.txtFilterValue.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
+            this.txtFilterValue.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFilterValue.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
+            this.txtFilterValue.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFilterValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.txtFilterValue.ForeColor = System.Drawing.Color.Black;
+            this.txtFilterValue.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.txtFilterValue.Location = new System.Drawing.Point(383, 291);
+            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFilterValue.Name = "txtFilterValue";
+            this.txtFilterValue.PasswordChar = '\0';
+            this.txtFilterValue.PlaceholderText = "Search ...";
+            this.txtFilterValue.SelectedText = "";
+            this.txtFilterValue.Size = new System.Drawing.Size(295, 49);
+            this.txtFilterValue.TabIndex = 76;
+            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
+            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
+            this.label1.Location = new System.Drawing.Point(449, 148);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(360, 46);
+            this.label1.TabIndex = 71;
+            this.label1.Text = "Manage Reservations";
+            // 
             // AddBorrowingtoolStripMenuItem
             // 
             this.AddBorrowingtoolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
@@ -198,74 +243,28 @@
             this.editToolStripMenuItem.Text = "Edit Reservation";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
-            // label3
+            // btnAddReservation
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(28, 306);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(81, 23);
-            this.label3.TabIndex = 77;
-            this.label3.Text = "Filter By :";
-            // 
-            // txtFilterValue
-            // 
-            this.txtFilterValue.BorderRadius = 22;
-            this.txtFilterValue.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtFilterValue.DefaultText = "";
-            this.txtFilterValue.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtFilterValue.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtFilterValue.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtFilterValue.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtFilterValue.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFilterValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.txtFilterValue.ForeColor = System.Drawing.Color.Black;
-            this.txtFilterValue.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFilterValue.Location = new System.Drawing.Point(383, 291);
-            this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFilterValue.Name = "txtFilterValue";
-            this.txtFilterValue.PasswordChar = '\0';
-            this.txtFilterValue.PlaceholderText = "Search ...";
-            this.txtFilterValue.SelectedText = "";
-            this.txtFilterValue.Size = new System.Drawing.Size(295, 49);
-            this.txtFilterValue.TabIndex = 76;
-            this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
-            this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
-            // 
-            // btnAddBorrowing
-            // 
-            this.btnAddBorrowing.AnimatedGIF = true;
-            this.btnAddBorrowing.CheckedState.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnAddBorrowing.HoverState.ImageSize = new System.Drawing.Size(45, 45);
-            this.btnAddBorrowing.Image = global::LibraryManagementSystem.Properties.Resources._10_borrow_book;
-            this.btnAddBorrowing.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnAddBorrowing.ImageRotate = 0F;
-            this.btnAddBorrowing.ImageSize = new System.Drawing.Size(75, 75);
-            this.btnAddBorrowing.Location = new System.Drawing.Point(1176, 274);
-            this.btnAddBorrowing.Name = "btnAddBorrowing";
-            this.btnAddBorrowing.PressedState.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnAddBorrowing.ShadowDecoration.BorderRadius = 0;
-            this.btnAddBorrowing.ShadowDecoration.Depth = 0;
-            this.btnAddBorrowing.ShadowDecoration.Enabled = true;
-            this.btnAddBorrowing.Size = new System.Drawing.Size(65, 65);
-            this.btnAddBorrowing.TabIndex = 75;
-            this.btnAddBorrowing.Click += new System.EventHandler(this.btnAddReservation_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
-            this.label1.Location = new System.Drawing.Point(449, 148);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(360, 46);
-            this.label1.TabIndex = 71;
-            this.label1.Text = "Manage Reservations";
+            this.btnAddReservation.AnimatedGIF = true;
+            this.btnAddReservation.CheckedState.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnAddReservation.HoverState.ImageSize = new System.Drawing.Size(45, 45);
+            this.btnAddReservation.Image = global::LibraryManagementSystem.Properties.Resources.reservation__1_;
+            this.btnAddReservation.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnAddReservation.ImageRotate = 0F;
+            this.btnAddReservation.ImageSize = new System.Drawing.Size(75, 75);
+            this.btnAddReservation.Location = new System.Drawing.Point(1176, 274);
+            this.btnAddReservation.Name = "btnAddReservation";
+            this.btnAddReservation.PressedState.ImageSize = new System.Drawing.Size(40, 40);
+            this.btnAddReservation.ShadowDecoration.BorderRadius = 0;
+            this.btnAddReservation.ShadowDecoration.Depth = 0;
+            this.btnAddReservation.ShadowDecoration.Enabled = true;
+            this.btnAddReservation.Size = new System.Drawing.Size(65, 65);
+            this.btnAddReservation.TabIndex = 75;
+            this.btnAddReservation.Click += new System.EventHandler(this.btnAddReservation_Click);
             // 
             // guna2PictureBox1
             // 
-            this.guna2PictureBox1.Image = global::LibraryManagementSystem.Properties.Resources._13_delivering_books;
+            this.guna2PictureBox1.Image = global::LibraryManagementSystem.Properties.Resources.reservation;
             this.guna2PictureBox1.ImageRotate = 0F;
             this.guna2PictureBox1.Location = new System.Drawing.Point(508, 14);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
@@ -284,7 +283,7 @@
             this.Controls.Add(this.dgvReservationsList);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtFilterValue);
-            this.Controls.Add(this.btnAddBorrowing);
+            this.Controls.Add(this.btnAddReservation);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2PictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -311,7 +310,7 @@
         private System.Windows.Forms.ToolStripMenuItem editToolStripMenuItem;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2TextBox txtFilterValue;
-        private Guna.UI2.WinForms.Guna2ImageButton btnAddBorrowing;
+        private Guna.UI2.WinForms.Guna2ImageButton btnAddReservation;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }

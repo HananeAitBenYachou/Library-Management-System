@@ -49,7 +49,6 @@
     <Compile Include="clsFine.cs" />
     <Compile Include="clsGenre.cs" />
     <Compile Include="clsMember.cs" />
-    <Compile Include="clsPayment.cs" />
     <Compile Include="clsPerson.cs" />
     <Compile Include="clsReservation.cs" />
     <Compile Include="clsSettings.cs" />

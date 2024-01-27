@@ -51,7 +51,6 @@
     <Compile Include="clsFineData.cs" />
     <Compile Include="clsGenreData.cs" />
     <Compile Include="clsMemberData.cs" />
-    <Compile Include="clsPaymentData.cs" />
     <Compile Include="clsPersonData.cs" />
     <Compile Include="clsReservationData.cs" />
     <Compile Include="clsSettingsData.cs" />

@@ -86,7 +86,6 @@
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
             this.dgvUsersList.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvUsersList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.None;
-            this.dgvUsersList.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(160)))), ((int)(((byte)(133)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
@@ -160,7 +159,8 @@
             this.deleteToolStripMenuItem,
             this.changePasswordtoolStripMenuItem});
             this.cmsUsers.Name = "contextMenuStrip1";
-            this.cmsUsers.Size = new System.Drawing.Size(213, 184);
+            this.cmsUsers.Size = new System.Drawing.Size(225, 212);
+            this.cmsUsers.Opening += new System.ComponentModel.CancelEventHandler(this.cmsUsers_Opening);
             // 
             // AddUsertoolStripMenuItem
             // 
@@ -168,7 +168,7 @@
             this.AddUsertoolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.AddUsertoolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.add;
             this.AddUsertoolStripMenuItem.Name = "AddUsertoolStripMenuItem";
-            this.AddUsertoolStripMenuItem.Size = new System.Drawing.Size(212, 36);
+            this.AddUsertoolStripMenuItem.Size = new System.Drawing.Size(224, 36);
             this.AddUsertoolStripMenuItem.Text = "Add &New User";
             this.AddUsertoolStripMenuItem.Click += new System.EventHandler(this.AddUsertoolStripMenuItem_Click);
             // 
@@ -178,7 +178,7 @@
             this.showDetailsToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.showDetailsToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.information_pamphlet;
             this.showDetailsToolStripMenuItem.Name = "showDetailsToolStripMenuItem";
-            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(212, 36);
+            this.showDetailsToolStripMenuItem.Size = new System.Drawing.Size(224, 36);
             this.showDetailsToolStripMenuItem.Text = "&Show Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
@@ -188,7 +188,7 @@
             this.editToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.editToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.note;
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(212, 36);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(224, 36);
             this.editToolStripMenuItem.Text = "&Edit";
             this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
@@ -198,7 +198,7 @@
             this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.deleteToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.delete;
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(212, 36);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(224, 36);
             this.deleteToolStripMenuItem.Text = "&Delete";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
             // 
@@ -208,7 +208,7 @@
             this.changePasswordtoolStripMenuItem.ForeColor = System.Drawing.Color.Black;
             this.changePasswordtoolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.padlock;
             this.changePasswordtoolStripMenuItem.Name = "changePasswordtoolStripMenuItem";
-            this.changePasswordtoolStripMenuItem.Size = new System.Drawing.Size(212, 36);
+            this.changePasswordtoolStripMenuItem.Size = new System.Drawing.Size(224, 36);
             this.changePasswordtoolStripMenuItem.Text = "Change &Password";
             this.changePasswordtoolStripMenuItem.Click += new System.EventHandler(this.changePasswordtoolStripMenuItem_Click);
             // 

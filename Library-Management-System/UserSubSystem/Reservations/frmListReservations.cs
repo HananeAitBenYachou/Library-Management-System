@@ -88,7 +88,7 @@ namespace LibraryManagementSystem.Reservations
 
         private void AddReservationtoolStripMenuItem_Click(object sender, EventArgs e)
         {
-            btnAddBorrowing.PerformClick();
+            btnAddReservation.PerformClick();
         }
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)

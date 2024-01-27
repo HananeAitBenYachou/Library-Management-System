@@ -134,7 +134,7 @@ namespace LibraryManagementSystem.Borrowings_Returns
 
         private void returnBookToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmReturnBook frm = new frmReturnBook();
+            frmReturnBook frm = new frmReturnBook((int)dgvBorrowingsList.CurrentRow.Cells["Borrowed Copy ID"].Value);
             frm.ShowDialog();
             _RefreshBorrowingsist();
         }
@@ -142,6 +142,12 @@ namespace LibraryManagementSystem.Borrowings_Returns
         private void cbBorrowedCopyStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             _BorrowingsDataView.RowFilter = string.Format("[{0}] LIKE '%{1}%'", cbFilterByOptions.Text, cbBorrowedCopyStatus.Text);
+        }
+
+        private void cmsBorrowings_Opening(object sender, CancelEventArgs e)
+        {
+            clsBookCopy bookCopy = clsBookCopy.Find((int)dgvBorrowingsList.CurrentRow.Cells["Borrowed Copy ID"].Value);
+            returnBookToolStripMenuItem.Enabled = !bookCopy.AvailabilityStatus.Value;
         }
     }
 }
