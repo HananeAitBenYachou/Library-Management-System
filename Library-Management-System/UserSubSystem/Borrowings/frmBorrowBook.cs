@@ -21,9 +21,16 @@ namespace LibraryManagementSystem.Borrowings_Returns
             InitializeComponent();
         }
 
+        public frmBorrowBook(int? MemberID)
+        {
+            InitializeComponent();
+            _MemberID = MemberID;
+            ucMemberCardWithFilter1.LoadMemberData(MemberID);
+        }
+
         private void _ResetDefaultValues()
-        {          
-            ucMemberCardWithFilter1.MemberFound += HandleMemberFound;
+        {
+           ucMemberCardWithFilter1.MemberFound += HandleMemberFound;
 
             ucBookCardWithFilter1.BookFound += HandleBookFound;
 
@@ -38,9 +45,9 @@ namespace LibraryManagementSystem.Borrowings_Returns
             ucBookCardWithFilter1.FilterFocus();
 
             btnToSecondPage.Enabled = false;
-            btnToLastPage.Enabled = false;
+            btnToLastPage.Enabled = (_MemberID.HasValue);
 
-            tpMemberInfo.Enabled = btnToSecondPage.Enabled;
+            tpMemberInfo.Enabled = (_MemberID.HasValue);
 
             btnSave.Enabled = btnToSecondPage.Enabled && btnToLastPage.Enabled;
         }
@@ -51,7 +58,6 @@ namespace LibraryManagementSystem.Borrowings_Returns
             _Borrowing.MemberID = ucMemberCardWithFilter1.MemberID;
             _Borrowing.BorrowingDate = dtpBorrowingDate.Value;
             _Borrowing.DueDate = dtpDueDate.Value;
-            _Borrowing.CreatedByUserID = clsGlobal.CurrentUser.UserID;
            
             if (_Borrowing.Save())
             {
@@ -128,7 +134,8 @@ namespace LibraryManagementSystem.Borrowings_Returns
             {
                 tpMemberInfo.Enabled = true;
                 tcBorrowingInfo.SelectedTab = tpMemberInfo;
-                ucMemberCardWithFilter1.FilterFocus();
+                if(!_MemberID.HasValue)
+                    ucMemberCardWithFilter1.FilterFocus();
             }
 
         }

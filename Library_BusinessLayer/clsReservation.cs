@@ -12,11 +12,9 @@ namespace Library_BusinessLayer
         public int? MemberID { get; set; }
         public int? BookCopyID { get; set; }
         public DateTime? ReservationDate { get; set; }
-        public int? CreatedByUserID { get; set; }
 
         public clsMember MemberInfo { get;}
         public clsBookCopy BookCopyInfo { get; }
-        public clsUser CreatedByUserInfo { get; }
 
         public clsReservation()
         {
@@ -25,20 +23,17 @@ namespace Library_BusinessLayer
             MemberID = null;
             BookCopyID = null;
             ReservationDate = null;
-            CreatedByUserID = null;
         }
-        private clsReservation(int? ReservationID, int? MemberID, int? BookCopyID, DateTime? ReservationDate, int? CreatedByUserID)
+        private clsReservation(int? ReservationID, int? MemberID, int? BookCopyID, DateTime? ReservationDate)
         {
             _Mode = enMode.Update;
             this.ReservationID = ReservationID;
             this.MemberID = MemberID;
             this.BookCopyID = BookCopyID;
             this.ReservationDate = ReservationDate;
-            this.CreatedByUserID = CreatedByUserID;
 
             this.MemberInfo = clsMember.Find(this.MemberID);
             this.BookCopyInfo = clsBookCopy.Find(this.BookCopyID);
-            this.CreatedByUserInfo = clsUser.Find(this.CreatedByUserID);
         }
 
         public static clsReservation Find(int? ReservationID)
@@ -46,12 +41,11 @@ namespace Library_BusinessLayer
             int? MemberID = null;
             int? BookCopyID = null;
             DateTime? ReservationDate = null;
-            int? CreatedByUserID = null;
 
-            bool IsFound = clsReservationData.GetReservationInfoByID(ReservationID, ref MemberID, ref BookCopyID, ref ReservationDate, ref CreatedByUserID);
+            bool IsFound = clsReservationData.GetReservationInfoByID(ReservationID, ref MemberID, ref BookCopyID, ref ReservationDate);
 
             if (IsFound)
-                return new clsReservation(ReservationID, MemberID, BookCopyID, ReservationDate, CreatedByUserID);
+                return new clsReservation(ReservationID, MemberID, BookCopyID, ReservationDate);
             else
                 return null;
         }
@@ -63,13 +57,13 @@ namespace Library_BusinessLayer
 
         private bool _AddNewReservation()
         {
-            ReservationID = clsReservationData.AddNewReservation(MemberID, BookCopyID, ReservationDate, CreatedByUserID);
+            ReservationID = clsReservationData.AddNewReservation(MemberID, BookCopyID, ReservationDate);
             return ReservationID.HasValue;
         }
 
         private bool _UpdateReservation()
         {
-            return clsReservationData.UpdateReservationInfo(ReservationID, MemberID, BookCopyID, ReservationDate, CreatedByUserID);
+            return clsReservationData.UpdateReservationInfo(ReservationID, MemberID, BookCopyID, ReservationDate);
         }
 
         public bool Save()

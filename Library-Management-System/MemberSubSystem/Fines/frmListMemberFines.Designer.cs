@@ -1,6 +1,6 @@
-﻿namespace LibraryManagementSystem.Fines
+﻿namespace LibraryManagementSystem.MemberSubSystem.Fines
 {
-    partial class frmListFines
+    partial class frmListMemberFines
     {
         /// <summary>
         /// Required designer variable.
@@ -37,8 +37,7 @@
             this.dgvFinesList = new Guna.UI2.WinForms.Guna2DataGridView();
             this.cmsFines = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.showDetailsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.returnBookToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.payFineToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cbPaymentStatus = new Guna.UI2.WinForms.Guna2ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtFilterValue = new Guna.UI2.WinForms.Guna2TextBox();
@@ -70,7 +69,7 @@
             this.cbFilterByOptions.Location = new System.Drawing.Point(121, 297);
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(231, 41);
-            this.cbFilterByOptions.TabIndex = 74;
+            this.cbFilterByOptions.TabIndex = 82;
             this.cbFilterByOptions.SelectedIndexChanged += new System.EventHandler(this.cbFilterByOptions_SelectedIndexChanged);
             // 
             // dgvFinesList
@@ -119,7 +118,7 @@
             this.dgvFinesList.RowHeadersWidth = 50;
             this.dgvFinesList.RowTemplate.Height = 35;
             this.dgvFinesList.Size = new System.Drawing.Size(1213, 329);
-            this.dgvFinesList.TabIndex = 73;
+            this.dgvFinesList.TabIndex = 81;
             this.dgvFinesList.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.GreenSea;
             this.dgvFinesList.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
             this.dgvFinesList.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -151,10 +150,9 @@
             this.cmsFines.ImageScalingSize = new System.Drawing.Size(30, 30);
             this.cmsFines.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.showDetailsToolStripMenuItem,
-            this.deleteToolStripMenuItem,
-            this.returnBookToolStripMenuItem});
+            this.payFineToolStripMenuItem});
             this.cmsFines.Name = "contextMenuStrip1";
-            this.cmsFines.Size = new System.Drawing.Size(213, 112);
+            this.cmsFines.Size = new System.Drawing.Size(213, 76);
             // 
             // showDetailsToolStripMenuItem
             // 
@@ -166,24 +164,14 @@
             this.showDetailsToolStripMenuItem.Text = "&Show Fine Details";
             this.showDetailsToolStripMenuItem.Click += new System.EventHandler(this.showDetailsToolStripMenuItem_Click);
             // 
-            // deleteToolStripMenuItem
+            // payFineToolStripMenuItem
             // 
-            this.deleteToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.deleteToolStripMenuItem.ForeColor = System.Drawing.Color.Black;
-            this.deleteToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.delete;
-            this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(212, 36);
-            this.deleteToolStripMenuItem.Text = "&Delete";
-            this.deleteToolStripMenuItem.Click += new System.EventHandler(this.deleteToolStripMenuItem_Click);
-            // 
-            // returnBookToolStripMenuItem
-            // 
-            this.returnBookToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.returnBookToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.payment1;
-            this.returnBookToolStripMenuItem.Name = "returnBookToolStripMenuItem";
-            this.returnBookToolStripMenuItem.Size = new System.Drawing.Size(212, 36);
-            this.returnBookToolStripMenuItem.Text = "&Pay";
-            this.returnBookToolStripMenuItem.Click += new System.EventHandler(this.payFineToolStripMenuItem_Click);
+            this.payFineToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
+            this.payFineToolStripMenuItem.Image = global::LibraryManagementSystem.Properties.Resources.payment1;
+            this.payFineToolStripMenuItem.Name = "payFineToolStripMenuItem";
+            this.payFineToolStripMenuItem.Size = new System.Drawing.Size(212, 36);
+            this.payFineToolStripMenuItem.Text = "&Pay";
+            this.payFineToolStripMenuItem.Click += new System.EventHandler(this.payFineToolStripMenuItem_Click);
             // 
             // cbPaymentStatus
             // 
@@ -202,7 +190,7 @@
             this.cbPaymentStatus.Location = new System.Drawing.Point(383, 293);
             this.cbPaymentStatus.Name = "cbPaymentStatus";
             this.cbPaymentStatus.Size = new System.Drawing.Size(231, 46);
-            this.cbPaymentStatus.TabIndex = 78;
+            this.cbPaymentStatus.TabIndex = 85;
             this.cbPaymentStatus.Visible = false;
             this.cbPaymentStatus.SelectedIndexChanged += new System.EventHandler(this.cbPaymentStatus_SelectedIndexChanged);
             // 
@@ -214,7 +202,7 @@
             this.label3.Location = new System.Drawing.Point(28, 306);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 23);
-            this.label3.TabIndex = 77;
+            this.label3.TabIndex = 84;
             this.label3.Text = "Filter By :";
             // 
             // txtFilterValue
@@ -237,7 +225,7 @@
             this.txtFilterValue.PlaceholderText = "Search ...";
             this.txtFilterValue.SelectedText = "";
             this.txtFilterValue.Size = new System.Drawing.Size(295, 49);
-            this.txtFilterValue.TabIndex = 76;
+            this.txtFilterValue.TabIndex = 83;
             this.txtFilterValue.TextChanged += new System.EventHandler(this.txtFilterValue_TextChanged);
             this.txtFilterValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtFilterValue_KeyPress);
             // 
@@ -249,7 +237,7 @@
             this.label1.Location = new System.Drawing.Point(520, 148);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(240, 46);
-            this.label1.TabIndex = 71;
+            this.label1.TabIndex = 79;
             this.label1.Text = "Manage Fines";
             // 
             // guna2PictureBox1
@@ -260,10 +248,10 @@
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(241, 131);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.guna2PictureBox1.TabIndex = 72;
+            this.guna2PictureBox1.TabIndex = 80;
             this.guna2PictureBox1.TabStop = false;
             // 
-            // frmListFines
+            // frmListMemberFines
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -277,9 +265,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2PictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmListFines";
+            this.Name = "frmListMemberFines";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "List Fines";
+            this.Text = "List Member Fines";
             this.Load += new System.EventHandler(this.frmListFines_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFinesList)).EndInit();
             this.cmsFines.ResumeLayout(false);
@@ -295,8 +283,7 @@
         private Guna.UI2.WinForms.Guna2DataGridView dgvFinesList;
         private System.Windows.Forms.ContextMenuStrip cmsFines;
         private System.Windows.Forms.ToolStripMenuItem showDetailsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem deleteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem returnBookToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem payFineToolStripMenuItem;
         private Guna.UI2.WinForms.Guna2ComboBox cbPaymentStatus;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2TextBox txtFilterValue;

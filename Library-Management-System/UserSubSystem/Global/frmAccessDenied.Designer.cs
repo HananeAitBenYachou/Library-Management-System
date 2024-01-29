@@ -90,7 +90,7 @@
             this.btnClose.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(81)))), ((int)(((byte)(82)))));
             this.btnClose.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClose.ForeColor = System.Drawing.Color.White;
-            this.btnClose.Location = new System.Drawing.Point(154, 305);
+            this.btnClose.Location = new System.Drawing.Point(160, 303);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(111, 43);
             this.btnClose.TabIndex = 3;
@@ -108,7 +108,7 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Access Denied !";
             // 
-            // Form1
+            // frmAccessDenied
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -119,7 +119,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "frmAccessDenied";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Form1";
             this.guna2Panel1.ResumeLayout(false);

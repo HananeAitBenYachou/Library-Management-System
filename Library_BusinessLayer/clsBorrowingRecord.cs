@@ -14,12 +14,7 @@ namespace Library_BusinessLayer
         public DateTime? BorrowingDate { get; set; }
         public DateTime? DueDate { get; set; }
         public DateTime? ActualReturnDate { get; set; }
-        public int? CreatedByUserID { get; set; }
-        public int? UpdatedByUserID { get; set; }
-
         public clsMember MemberInfo { get; }
-        public clsUser CreatedByUserInfo { get; }
-        public clsUser UpdatedByUserInfo { get; }
 
         public clsBorrowingRecord()
         {
@@ -30,12 +25,10 @@ namespace Library_BusinessLayer
             BorrowingDate = null;
             DueDate = null;
             ActualReturnDate = null;
-            CreatedByUserID = null;
-            UpdatedByUserID = null;
         }
 
         private clsBorrowingRecord(int? BorrowingRecordID, int? MemberID, int? BookCopyID, DateTime? BorrowingDate, 
-            DateTime? DueDate, DateTime? ActualReturnDate, int? CreatedByUserID , int? UpdatedByUserID)
+            DateTime? DueDate, DateTime? ActualReturnDate)
         {
             _Mode = enMode.Update;
             this.BorrowingRecordID = BorrowingRecordID;
@@ -44,12 +37,8 @@ namespace Library_BusinessLayer
             this.BorrowingDate = BorrowingDate;
             this.DueDate = DueDate;
             this.ActualReturnDate = ActualReturnDate;
-            this.CreatedByUserID = CreatedByUserID;
-            this.UpdatedByUserID = UpdatedByUserID;
-
-            this.MemberInfo = clsMember.Find(this.MemberID);
-            this.CreatedByUserInfo = clsUser.Find(this.CreatedByUserID);
-            this.UpdatedByUserInfo = clsUser.Find(this.UpdatedByUserID);
+           
+            this.MemberInfo = clsMember.Find(this.MemberID);        
         }
 
         public static clsBorrowingRecord Find(int? BorrowingRecordID)
@@ -59,15 +48,13 @@ namespace Library_BusinessLayer
             DateTime? BorrowingDate = null;
             DateTime? DueDate = null;
             DateTime? ActualReturnDate = null;
-            int? CreatedByUserID = null;
-            int? UpdatedByUserID = null;
 
             bool IsFound = clsBorrowingRecordData.GetBorrowingRecordInfoByID(BorrowingRecordID, ref MemberID, ref BookCopyID, ref BorrowingDate, ref DueDate, 
-                ref ActualReturnDate, ref CreatedByUserID, ref UpdatedByUserID);
+                ref ActualReturnDate);
 
             if (IsFound)
                 return new clsBorrowingRecord(BorrowingRecordID, MemberID, BookCopyID, BorrowingDate, DueDate, 
-                    ActualReturnDate, CreatedByUserID, UpdatedByUserID);
+                    ActualReturnDate);
             else
                 return null;
         }
@@ -79,15 +66,13 @@ namespace Library_BusinessLayer
             DateTime? BorrowingDate = null;
             DateTime? DueDate = null;
             DateTime? ActualReturnDate = null;
-            int? CreatedByUserID = null;
-            int? UpdatedByUserID = null;
 
             bool IsFound = clsBorrowingRecordData.GetBorrowingRecordInfoByBookCopyID(BookCopyID,ref BorrowingRecordID, ref MemberID,ref BorrowingDate,
-                ref DueDate, ref ActualReturnDate, ref CreatedByUserID,ref UpdatedByUserID);
+                ref DueDate, ref ActualReturnDate);
 
             if (IsFound)
                 return new clsBorrowingRecord(BorrowingRecordID, MemberID, BookCopyID, BorrowingDate, DueDate, 
-                    ActualReturnDate, CreatedByUserID, UpdatedByUserID);
+                    ActualReturnDate);
             else
                 return null;
         }
@@ -99,14 +84,14 @@ namespace Library_BusinessLayer
 
         private bool _AddNewBorrowingRecord()
         {
-            BorrowingRecordID = clsBorrowingRecordData.AddNewBorrowingRecord(MemberID, BookCopyID, BorrowingDate, DueDate, ActualReturnDate, CreatedByUserID);
+            BorrowingRecordID = clsBorrowingRecordData.AddNewBorrowingRecord(MemberID, BookCopyID, BorrowingDate, DueDate, ActualReturnDate);
             return BorrowingRecordID.HasValue;
         }
 
         private bool _UpdateBorrowingRecord()
         {
             return clsBorrowingRecordData.UpdateBorrowingRecordInfo(BorrowingRecordID, MemberID, 
-                BookCopyID, BorrowingDate, DueDate, ActualReturnDate, CreatedByUserID, UpdatedByUserID);
+                BookCopyID, BorrowingDate, DueDate, ActualReturnDate);
         }
 
         public bool Save()
@@ -148,9 +133,9 @@ namespace Library_BusinessLayer
             return clsBorrowingRecordData.GetBookCopyBorrowingRecords(BookCopyID);
         }
 
-        public bool ReturnBorrowedBookCopy(int? ReturnedByUserID)
+        public bool ReturnBorrowedBookCopy()
         {
-            return clsBorrowingRecordData.ReturnBorrowedBook(this.BorrowingRecordID,ReturnedByUserID);
+            return clsBorrowingRecordData.ReturnBorrowedBook(this.BorrowingRecordID);
         }
 
     }

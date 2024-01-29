@@ -29,9 +29,8 @@
         private void InitializeComponent()
         {
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
-            this.guna2ImageButton11 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.lblUpdatedByUser = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.llbShowBookCopyInfo = new System.Windows.Forms.LinkLabel();
+            this.llbShowMemberInfo = new System.Windows.Forms.LinkLabel();
             this.guna2ImageButton9 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.lblBorrowingDate = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -39,14 +38,12 @@
             this.lblDueDate = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.guna2ImageButton8 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton6 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton10 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton2 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblCreatedByUser = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblReturnDate = new System.Windows.Forms.Label();
@@ -55,12 +52,9 @@
             this.lblBookCopyID = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.lblMemberLibCardNo = new System.Windows.Forms.Label();
             this.lblBorrowingID = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.llbShowMemberInfo = new System.Windows.Forms.LinkLabel();
-            this.llbShowBookCopyInfo = new System.Windows.Forms.LinkLabel();
             this.guna2GroupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -70,9 +64,6 @@
             this.guna2GroupBox1.BorderRadius = 25;
             this.guna2GroupBox1.Controls.Add(this.llbShowBookCopyInfo);
             this.guna2GroupBox1.Controls.Add(this.llbShowMemberInfo);
-            this.guna2GroupBox1.Controls.Add(this.guna2ImageButton11);
-            this.guna2GroupBox1.Controls.Add(this.lblUpdatedByUser);
-            this.guna2GroupBox1.Controls.Add(this.label12);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton9);
             this.guna2GroupBox1.Controls.Add(this.lblBorrowingDate);
             this.guna2GroupBox1.Controls.Add(this.label11);
@@ -80,14 +71,12 @@
             this.guna2GroupBox1.Controls.Add(this.lblDueDate);
             this.guna2GroupBox1.Controls.Add(this.label9);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton8);
-            this.guna2GroupBox1.Controls.Add(this.guna2ImageButton6);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton10);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton5);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton3);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton2);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton1);
             this.guna2GroupBox1.Controls.Add(this.label1);
-            this.guna2GroupBox1.Controls.Add(this.lblCreatedByUser);
             this.guna2GroupBox1.Controls.Add(this.label2);
             this.guna2GroupBox1.Controls.Add(this.label3);
             this.guna2GroupBox1.Controls.Add(this.lblReturnDate);
@@ -96,7 +85,6 @@
             this.guna2GroupBox1.Controls.Add(this.lblBookCopyID);
             this.guna2GroupBox1.Controls.Add(this.label6);
             this.guna2GroupBox1.Controls.Add(this.lblTitle);
-            this.guna2GroupBox1.Controls.Add(this.label8);
             this.guna2GroupBox1.Controls.Add(this.lblMemberLibCardNo);
             this.guna2GroupBox1.Controls.Add(this.lblBorrowingID);
             this.guna2GroupBox1.Controls.Add(this.label14);
@@ -110,38 +98,31 @@
             this.guna2GroupBox1.TabIndex = 203;
             this.guna2GroupBox1.Text = "Borrowing Details";
             // 
-            // guna2ImageButton11
+            // llbShowBookCopyInfo
             // 
-            this.guna2ImageButton11.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton11.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2ImageButton11.Image = global::LibraryManagementSystem.Properties.Resources.skill;
-            this.guna2ImageButton11.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton11.ImageRotate = 0F;
-            this.guna2ImageButton11.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton11.Location = new System.Drawing.Point(738, 286);
-            this.guna2ImageButton11.Name = "guna2ImageButton11";
-            this.guna2ImageButton11.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton11.TabIndex = 223;
+            this.llbShowBookCopyInfo.AutoSize = true;
+            this.llbShowBookCopyInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.llbShowBookCopyInfo.Location = new System.Drawing.Point(610, 337);
+            this.llbShowBookCopyInfo.Name = "llbShowBookCopyInfo";
+            this.llbShowBookCopyInfo.Size = new System.Drawing.Size(177, 23);
+            this.llbShowBookCopyInfo.TabIndex = 224;
+            this.llbShowBookCopyInfo.TabStop = true;
+            this.llbShowBookCopyInfo.Text = "Show Book Copy Info";
+            this.llbShowBookCopyInfo.Visible = false;
+            this.llbShowBookCopyInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowBookCopyInfo_LinkClicked);
             // 
-            // lblUpdatedByUser
+            // llbShowMemberInfo
             // 
-            this.lblUpdatedByUser.AutoSize = true;
-            this.lblUpdatedByUser.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Bold);
-            this.lblUpdatedByUser.Location = new System.Drawing.Point(797, 290);
-            this.lblUpdatedByUser.Name = "lblUpdatedByUser";
-            this.lblUpdatedByUser.Size = new System.Drawing.Size(50, 21);
-            this.lblUpdatedByUser.TabIndex = 222;
-            this.lblUpdatedByUser.Text = "[????]";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(564, 287);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(148, 23);
-            this.label12.TabIndex = 221;
-            this.label12.Text = "Updated By User :";
+            this.llbShowMemberInfo.AutoSize = true;
+            this.llbShowMemberInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.llbShowMemberInfo.Location = new System.Drawing.Point(804, 337);
+            this.llbShowMemberInfo.Name = "llbShowMemberInfo";
+            this.llbShowMemberInfo.Size = new System.Drawing.Size(158, 23);
+            this.llbShowMemberInfo.TabIndex = 222;
+            this.llbShowMemberInfo.TabStop = true;
+            this.llbShowMemberInfo.Text = "Show Member Info";
+            this.llbShowMemberInfo.Visible = false;
+            this.llbShowMemberInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowMemberInfo_LinkClicked);
             // 
             // guna2ImageButton9
             // 
@@ -222,19 +203,6 @@
             this.guna2ImageButton8.Size = new System.Drawing.Size(30, 30);
             this.guna2ImageButton8.TabIndex = 211;
             // 
-            // guna2ImageButton6
-            // 
-            this.guna2ImageButton6.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton6.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2ImageButton6.Image = global::LibraryManagementSystem.Properties.Resources.skill;
-            this.guna2ImageButton6.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton6.ImageRotate = 0F;
-            this.guna2ImageButton6.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton6.Location = new System.Drawing.Point(738, 234);
-            this.guna2ImageButton6.Name = "guna2ImageButton6";
-            this.guna2ImageButton6.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton6.TabIndex = 210;
-            // 
             // guna2ImageButton10
             // 
             this.guna2ImageButton10.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
@@ -309,16 +277,6 @@
             this.label1.Size = new System.Drawing.Size(206, 23);
             this.label1.TabIndex = 172;
             this.label1.Text = "Member LibraryCard No :";
-            // 
-            // lblCreatedByUser
-            // 
-            this.lblCreatedByUser.AutoSize = true;
-            this.lblCreatedByUser.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Bold);
-            this.lblCreatedByUser.Location = new System.Drawing.Point(797, 238);
-            this.lblCreatedByUser.Name = "lblCreatedByUser";
-            this.lblCreatedByUser.Size = new System.Drawing.Size(50, 21);
-            this.lblCreatedByUser.TabIndex = 199;
-            this.lblCreatedByUser.Text = "[????]";
             // 
             // label2
             // 
@@ -400,16 +358,6 @@
             this.lblTitle.TabIndex = 193;
             this.lblTitle.Text = "[????]";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(564, 235);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(142, 23);
-            this.label8.TabIndex = 180;
-            this.label8.Text = "Created By User :";
-            // 
             // lblMemberLibCardNo
             // 
             this.lblMemberLibCardNo.AutoSize = true;
@@ -441,32 +389,6 @@
             this.label14.TabIndex = 189;
             this.label14.Text = "Borrowing ID :";
             // 
-            // llbShowMemberInfo
-            // 
-            this.llbShowMemberInfo.AutoSize = true;
-            this.llbShowMemberInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.llbShowMemberInfo.Location = new System.Drawing.Point(804, 337);
-            this.llbShowMemberInfo.Name = "llbShowMemberInfo";
-            this.llbShowMemberInfo.Size = new System.Drawing.Size(158, 23);
-            this.llbShowMemberInfo.TabIndex = 222;
-            this.llbShowMemberInfo.TabStop = true;
-            this.llbShowMemberInfo.Text = "Show Member Info";
-            this.llbShowMemberInfo.Visible = false;
-            this.llbShowMemberInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowMemberInfo_LinkClicked);
-            // 
-            // llbShowBookCopyInfo
-            // 
-            this.llbShowBookCopyInfo.AutoSize = true;
-            this.llbShowBookCopyInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.llbShowBookCopyInfo.Location = new System.Drawing.Point(610, 337);
-            this.llbShowBookCopyInfo.Name = "llbShowBookCopyInfo";
-            this.llbShowBookCopyInfo.Size = new System.Drawing.Size(177, 23);
-            this.llbShowBookCopyInfo.TabIndex = 224;
-            this.llbShowBookCopyInfo.TabStop = true;
-            this.llbShowBookCopyInfo.Text = "Show Book Copy Info";
-            this.llbShowBookCopyInfo.Visible = false;
-            this.llbShowBookCopyInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowBookCopyInfo_LinkClicked);
-            // 
             // ucBorrowingDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -485,14 +407,12 @@
 
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton8;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton6;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton10;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton5;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton3;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton2;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblCreatedByUser;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblReturnDate;
@@ -501,7 +421,6 @@
         private System.Windows.Forms.Label lblBookCopyID;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblMemberLibCardNo;
         private System.Windows.Forms.Label lblBorrowingID;
         private System.Windows.Forms.Label label14;
@@ -511,9 +430,6 @@
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton7;
         private System.Windows.Forms.Label lblDueDate;
         private System.Windows.Forms.Label label9;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton11;
-        private System.Windows.Forms.Label lblUpdatedByUser;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.LinkLabel llbShowMemberInfo;
         private System.Windows.Forms.LinkLabel llbShowBookCopyInfo;
     }

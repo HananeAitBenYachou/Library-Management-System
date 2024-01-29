@@ -9,8 +9,8 @@ namespace Library_DataAccessLayer
     public class clsBorrowingRecordData
     {
         public static bool GetBorrowingRecordInfoByID(int? BorrowingRecordID, ref int? MemberID, ref int? BookCopyID,
-            ref DateTime? BorrowingDate, ref DateTime? DueDate, ref DateTime? ActualReturnDate,
-            ref int? CreatedByUserID, ref int? UpdatedByUserID)
+            ref DateTime? BorrowingDate, ref DateTime? DueDate, ref DateTime? ActualReturnDate
+            )
         {
             bool IsFound = false;
 
@@ -43,11 +43,6 @@ namespace Library_DataAccessLayer
                                 DueDate = (reader["DueDate"] != DBNull.Value) ? (DateTime?)reader["DueDate"] : null;
 
                                 ActualReturnDate = (reader["ActualReturnDate"] != DBNull.Value) ? (DateTime?)reader["ActualReturnDate"] : null;
-
-                                CreatedByUserID = (reader["CreatedByUserID"] != DBNull.Value) ? (int?)reader["CreatedByUserID"] : null;
-
-                                UpdatedByUserID = (reader["UpdatedByUserID"] != DBNull.Value) ? (int?)reader["UpdatedByUserID"] : null;
-
                             }
 
                             else
@@ -69,8 +64,7 @@ namespace Library_DataAccessLayer
         }
 
         public static bool GetBorrowingRecordInfoByBookCopyID(int? BookCopyID,ref int? BorrowingRecordID, ref int? MemberID,
-       ref DateTime? BorrowingDate, ref DateTime? DueDate, ref DateTime? ActualReturnDate,
-       ref int? CreatedByUserID, ref int? UpdatedByUserID)
+       ref DateTime? BorrowingDate, ref DateTime? DueDate, ref DateTime? ActualReturnDate)
         {
             bool IsFound = false;
 
@@ -104,9 +98,6 @@ namespace Library_DataAccessLayer
 
                                 ActualReturnDate = (reader["ActualReturnDate"] != DBNull.Value) ? (DateTime?)reader["ActualReturnDate"] : null;
 
-                                CreatedByUserID = (reader["CreatedByUserID"] != DBNull.Value) ? (int?)reader["CreatedByUserID"] : null;
-
-                                UpdatedByUserID = (reader["UpdatedByUserID"] != DBNull.Value) ? (int?)reader["UpdatedByUserID"] : null;
                             }
 
                             else
@@ -159,7 +150,7 @@ namespace Library_DataAccessLayer
         }
 
         public static int? AddNewBorrowingRecord(int? MemberID, int? BookCopyID, DateTime? BorrowingDate,
-            DateTime? DueDate, DateTime? ActualReturnDate, int? CreatedByUserID)
+            DateTime? DueDate, DateTime? ActualReturnDate)
         {
             int? BorrowingRecordID = null;
 
@@ -168,8 +159,8 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO BorrowingRecords (MemberID,BookCopyID,BorrowingDate,DueDate,ActualReturnDate,CreatedByUserID)
-                            VALUES (@MemberID,@BookCopyID,@BorrowingDate,@DueDate,@ActualReturnDate,@CreatedByUserID);
+                    string query = @"INSERT INTO BorrowingRecords (MemberID,BookCopyID,BorrowingDate,DueDate,ActualReturnDate)
+                            VALUES (@MemberID,@BookCopyID,@BorrowingDate,@DueDate,@ActualReturnDate);
                             SELECT SCOPE_IDENTITY();";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -180,8 +171,6 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@BorrowingDate", (object)BorrowingDate ?? DBNull.Value);
                         command.Parameters.AddWithValue("@DueDate", (object)DueDate ?? DBNull.Value);
                         command.Parameters.AddWithValue("@ActualReturnDate", (object)ActualReturnDate ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
-
                         object InsertedRowID = command.ExecuteScalar();
 
                         //Check if the new BorrowingRecordID was successfully inserted
@@ -207,7 +196,7 @@ namespace Library_DataAccessLayer
 
         public static bool UpdateBorrowingRecordInfo(int? BorrowingRecordID, int? MemberID,
             int? BookCopyID, DateTime? BorrowingDate, DateTime? DueDate,
-            DateTime? ActualReturnDate, int? CreatedByUserID,int? UpdatedByUserID)
+            DateTime? ActualReturnDate)
         {
             int rowsAffected = 0;
 
@@ -222,9 +211,7 @@ namespace Library_DataAccessLayer
 							BookCopyID = @BookCopyID,
 							BorrowingDate = @BorrowingDate,
 							DueDate = @DueDate,
-							ActualReturnDate = @ActualReturnDate,
-							CreatedByUserID = @CreatedByUserID,
-							UpdatedByUserID = @UpdatedByUserID
+							ActualReturnDate = @ActualReturnDate
                             WHERE BorrowingRecordID = @BorrowingRecordID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -236,8 +223,6 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@BorrowingDate", (object)BorrowingDate ?? DBNull.Value);
                         command.Parameters.AddWithValue("@DueDate", (object)DueDate ?? DBNull.Value);
                         command.Parameters.AddWithValue("@ActualReturnDate", (object)ActualReturnDate ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@UpdatedByUserID", (object)UpdatedByUserID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
 
@@ -297,8 +282,7 @@ namespace Library_DataAccessLayer
                                     CASE 
 	                                    WHEN AvailabilityStatus = 1 THEN 'Returned'
 	                                    ELSE 'Borrowed'
-	                                    END AS 'Book Copy Status',
-                                    BorrowingRecords.CreatedByUserID AS 'Created By' , UpdatedByUserID AS 'Updated By'
+	                                    END AS 'Book Copy Status'
                                     FROM BorrowingRecords
                                     INNER JOIN BookCopies ON BookCopies.BookCopyID = BorrowingRecords.BookCopyID
                                     INNER JOIN Members ON Members.MemberID = BorrowingRecords.MemberID
@@ -340,8 +324,7 @@ namespace Library_DataAccessLayer
                                     CASE 
 	                                    WHEN AvailabilityStatus = 1 THEN 'Returned'
 	                                    ELSE 'Borrowed'
-	                                    END AS 'Book Copy Status',
-                                    BorrowingRecords.CreatedByUserID AS 'Created By' , UpdatedByUserID AS 'Updated By'
+	                                    END AS 'Book Copy Status'
                                     FROM BorrowingRecords
                                     INNER JOIN BookCopies ON BookCopies.BookCopyID = BorrowingRecords.BookCopyID
                                     INNER JOIN Members ON Members.MemberID = BorrowingRecords.MemberID
@@ -386,8 +369,7 @@ namespace Library_DataAccessLayer
                                     CASE 
 	                                    WHEN AvailabilityStatus = 1 THEN 'Returned'
 	                                    ELSE 'Borrowed'
-	                                    END AS 'Book Copy Status',
-                                    BorrowingRecords.CreatedByUserID AS 'Created By' , UpdatedByUserID AS 'Updated By'
+	                                    END AS 'Book Copy Status'
                                     FROM BorrowingRecords
                                     INNER JOIN BookCopies ON BookCopies.BookCopyID = BorrowingRecords.BookCopyID
                                     INNER JOIN Members ON Members.MemberID = BorrowingRecords.MemberID
@@ -416,7 +398,7 @@ namespace Library_DataAccessLayer
             return Datatable;
         }
 
-        public static bool ReturnBorrowedBook(int? BorrowingRecordID, int? UpdatedByUserID)
+        public static bool ReturnBorrowedBook(int? BorrowingRecordID)
         {
             int rowsAffected = 0;
 
@@ -427,15 +409,13 @@ namespace Library_DataAccessLayer
                     connection.Open();
                     string query = @"UPDATE BorrowingRecords
                             SET 
-							ActualReturnDate = @ActualReturnDate,
-							UpdatedByUserID = @UpdatedByUserID
+							ActualReturnDate = @ActualReturnDate                            
                             WHERE BorrowingRecordID = @BorrowingRecordID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
                         command.Parameters.AddWithValue("@BorrowingRecordID", (object)BorrowingRecordID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@ActualReturnDate", DateTime.Now);
-                        command.Parameters.AddWithValue("@UpdatedByUserID", (object)UpdatedByUserID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
                     }

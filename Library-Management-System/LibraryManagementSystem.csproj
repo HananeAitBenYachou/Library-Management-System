@@ -58,6 +58,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MemberSubSystem\Borrowings\frmListMemberBorrowings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberSubSystem\Borrowings\frmListMemberBorrowings.Designer.cs">
+      <DependentUpon>frmListMemberBorrowings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberSubSystem\Fines\frmListMemberFines.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberSubSystem\Fines\frmListMemberFines.Designer.cs">
+      <DependentUpon>frmListMemberFines.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberSubSystem\Reservations\frmListMemberReservations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberSubSystem\Reservations\frmListMemberReservations.Designer.cs">
+      <DependentUpon>frmListMemberReservations.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserSubSystem\Authors\frmAddUpdateAuthor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,10 +100,10 @@
     <Compile Include="UserSubSystem\Authors\UserControls\ucAuthorCard.Designer.cs">
       <DependentUpon>ucAuthorCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmShowBookCopyBorrowingsHistory.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmShowBookCopyBorrowingsHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmShowBookCopyBorrowingsHistory.Designer.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmShowBookCopyBorrowingsHistory.Designer.cs">
       <DependentUpon>frmShowBookCopyBorrowingsHistory.cs</DependentUpon>
     </Compile>
     <Compile Include="UserSubSystem\Books\BookCopies\frmShowBookCopyDetails.cs">
@@ -142,40 +160,40 @@
     <Compile Include="UserSubSystem\Books\UserControls\ucBookCardWithFilter.Designer.cs">
       <DependentUpon>ucBookCardWithFilter.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmBorrowBook.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmBorrowBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmBorrowBook.Designer.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmBorrowBook.Designer.cs">
       <DependentUpon>frmBorrowBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmListBorrowings.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmListBorrowings.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmListBorrowings.Designer.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmListBorrowings.Designer.cs">
       <DependentUpon>frmListBorrowings.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmReturnBook.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmReturnBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmReturnBook.Designer.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmReturnBook.Designer.cs">
       <DependentUpon>frmReturnBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmShowBorrowingDetails.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmShowBorrowingDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmShowBorrowingDetails.Designer.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmShowBorrowingDetails.Designer.cs">
       <DependentUpon>frmShowBorrowingDetails.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmShowMemberBorrowingsHistory.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmShowMemberBorrowingsHistory.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\frmShowMemberBorrowingsHistory.Designer.cs">
+    <Compile Include="UserSubSystem\Borrowings\frmShowMemberBorrowingsHistory.Designer.cs">
       <DependentUpon>frmShowMemberBorrowingsHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\UserControls\ucBorrowingDetails.cs">
+    <Compile Include="UserSubSystem\Borrowings\UserControls\ucBorrowingDetails.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserSubSystem\Borrowings&amp;Returns\UserControls\ucBorrowingDetails.Designer.cs">
+    <Compile Include="UserSubSystem\Borrowings\UserControls\ucBorrowingDetails.Designer.cs">
       <DependentUpon>ucBorrowingDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="UserSubSystem\Fines\frmListFines.cs">
@@ -385,6 +403,15 @@
     <Compile Include="UserSubSystem\Users\UserControls\ucUserCard.Designer.cs">
       <DependentUpon>ucUserCard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MemberSubSystem\Borrowings\frmListMemberBorrowings.resx">
+      <DependentUpon>frmListMemberBorrowings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberSubSystem\Fines\frmListMemberFines.resx">
+      <DependentUpon>frmListMemberFines.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberSubSystem\Reservations\frmListMemberReservations.resx">
+      <DependentUpon>frmListMemberReservations.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserSubSystem\Authors\frmAddUpdateAuthor.resx">
       <DependentUpon>frmAddUpdateAuthor.cs</DependentUpon>
     </EmbeddedResource>
@@ -397,7 +424,7 @@
     <EmbeddedResource Include="UserSubSystem\Authors\UserControls\ucAuthorCard.resx">
       <DependentUpon>ucAuthorCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserSubSystem\Borrowings&amp;Returns\frmShowBookCopyBorrowingsHistory.resx">
+    <EmbeddedResource Include="UserSubSystem\Borrowings\frmShowBookCopyBorrowingsHistory.resx">
       <DependentUpon>frmShowBookCopyBorrowingsHistory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserSubSystem\Books\BookCopies\frmShowBookCopyDetails.resx">
@@ -427,22 +454,22 @@
     <EmbeddedResource Include="UserSubSystem\Books\UserControls\ucBookCardWithFilter.resx">
       <DependentUpon>ucBookCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserSubSystem\Borrowings&amp;Returns\frmBorrowBook.resx">
+    <EmbeddedResource Include="UserSubSystem\Borrowings\frmBorrowBook.resx">
       <DependentUpon>frmBorrowBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserSubSystem\Borrowings&amp;Returns\frmListBorrowings.resx">
+    <EmbeddedResource Include="UserSubSystem\Borrowings\frmListBorrowings.resx">
       <DependentUpon>frmListBorrowings.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserSubSystem\Borrowings&amp;Returns\frmReturnBook.resx">
+    <EmbeddedResource Include="UserSubSystem\Borrowings\frmReturnBook.resx">
       <DependentUpon>frmReturnBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserSubSystem\Borrowings&amp;Returns\frmShowBorrowingDetails.resx">
+    <EmbeddedResource Include="UserSubSystem\Borrowings\frmShowBorrowingDetails.resx">
       <DependentUpon>frmShowBorrowingDetails.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserSubSystem\Borrowings&amp;Returns\frmShowMemberBorrowingsHistory.resx">
+    <EmbeddedResource Include="UserSubSystem\Borrowings\frmShowMemberBorrowingsHistory.resx">
       <DependentUpon>frmShowMemberBorrowingsHistory.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserSubSystem\Borrowings&amp;Returns\UserControls\ucBorrowingDetails.resx">
+    <EmbeddedResource Include="UserSubSystem\Borrowings\UserControls\ucBorrowingDetails.resx">
       <DependentUpon>ucBorrowingDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserSubSystem\Fines\frmListFines.resx">
@@ -858,5 +885,6 @@
   <ItemGroup>
     <None Include="Resources\logout %281%29.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

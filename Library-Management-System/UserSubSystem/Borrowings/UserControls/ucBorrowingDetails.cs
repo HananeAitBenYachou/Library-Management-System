@@ -46,8 +46,7 @@ namespace LibraryManagementSystem.Borrowings_Returns
             lblBorrowingDate.Text = "[????]";
             lblReturnDate.Text = "[????]";
             lblDueDate.Text = "[????]";
-            lblCreatedByUser.Text = "[????]";
-            lblUpdatedByUser.Text = "[????]";
+
         }
 
         public void LoadBorrowingDetails(int? borrowingID)
@@ -76,8 +75,6 @@ namespace LibraryManagementSystem.Borrowings_Returns
             lblBorrowingDate.Text = _Borrowing.BorrowingDate.Value.ToShortDateString();
             lblReturnDate.Text = _Borrowing.BorrowingDate.Value.ToShortDateString() ?? "Not returned yet !";
             lblDueDate.Text = _Borrowing.DueDate.Value.ToShortDateString();
-            lblCreatedByUser.Text = _Borrowing.CreatedByUserInfo.UserName;
-            lblUpdatedByUser.Text = _Borrowing.UpdatedByUserInfo != null ? _Borrowing.UpdatedByUserInfo.UserName : "Not updated yet !";
         }
 
         private void llbShowBookCopyInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

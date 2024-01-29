@@ -11,7 +11,7 @@ namespace LibraryManagementSystem.GlobalClasses
     public static class clsGlobal
     {
         public static clsUser CurrentUser;
-        public static clsMember CurrentMember;
+        public static clsMember CurrentMember = clsMember.Find(2);
 
         public static bool StorePersonCredentials(string Email ,string Password)
         {

@@ -1,10 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
-using LibraryManagementSystem.Books;
-using LibraryManagementSystem.Books.BookCopies;
-using LibraryManagementSystem.Borrowings_Returns;
-using LibraryManagementSystem.Genres;
-using LibraryManagementSystem.Members;
+using LibraryManagementSystem.MemberSubSystem;
 
 namespace LibraryManagementSystem
 {
@@ -22,7 +18,7 @@ namespace LibraryManagementSystem
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-           Application.Run(new frmLogin());
+           Application.Run(new frmListMemberBorrowings());
         }
 
         [System.Runtime.InteropServices.DllImport("user32.dll")]

@@ -39,7 +39,6 @@ namespace LibraryManagementSystem.Fines
             lblLateDaysNo.Text = "[????]";
             lblFineAmount.Text = "[????]";
             lblPaymentStatus.Text = "[????]";
-            lblCreatedByUser.Text = "[????]";
         }
 
         public void LoadFineDetails(int? fineID)
@@ -61,7 +60,6 @@ namespace LibraryManagementSystem.Fines
             lblLateDaysNo.Text = _Fine.NumberOfLateDays.ToString() + " Days"; 
             lblFineAmount.Text = _Fine.FineAmount.ToString();
             lblPaymentStatus.Text = _Fine.PaymentStatus.Value ? "Paid" : "Not paid yet";
-            lblCreatedByUser.Text = _Fine.CreatedByUserInfo.UserName;
 
             llbShowBorrowingInfo.Visible = true;
         }

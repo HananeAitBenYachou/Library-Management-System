@@ -14,7 +14,6 @@ namespace Library_BusinessLayer
         public int? GenreID { get; set; }
         public string AdditionalDetails { get; set; }
         public int? AuthorID { get; set; }
-        public int? CreatedByUserID { get; set; }
         public DateTime? PublicationDate { get; set; }
         public string BookImagePath { get; set; }
 
@@ -31,13 +30,12 @@ namespace Library_BusinessLayer
             GenreID = null;
             AdditionalDetails = null;
             AuthorID = null;
-            CreatedByUserID = null;
             PublicationDate = null;
             BookImagePath = null;
         }
         private clsBook(int? BookID, string Title, string ISBN, 
             int? GenreID, string AdditionalDetails, int? AuthorID,
-            int? CreatedByUserID, DateTime? PublicationDate, string BookImagePath)
+            DateTime? PublicationDate, string BookImagePath)
         {
             _Mode = enMode.Update;
             this.BookID = BookID;
@@ -46,11 +44,9 @@ namespace Library_BusinessLayer
             this.GenreID = GenreID;
             this.AdditionalDetails = AdditionalDetails;
             this.AuthorID = AuthorID;
-            this.CreatedByUserID = CreatedByUserID;
             this.PublicationDate = PublicationDate;
             this.BookImagePath = BookImagePath;
 
-            this.UserInfo = clsUser.Find(CreatedByUserID);
             this.AuthorInfo = clsAuthor.Find(AuthorID);
             this.GenreInfo = clsGenre.Find(GenreID);
         }
@@ -62,14 +58,13 @@ namespace Library_BusinessLayer
             int? GenreID = null;
             string AdditionalDetails = null;
             int? AuthorID = null;
-            int? CreatedByUserID = null;
             DateTime? PublicationDate = null;
             string BookImagePath = null;
 
-            bool IsFound = clsBookData.GetBookInfoByID(BookID, ref Title, ref ISBN, ref GenreID, ref AdditionalDetails, ref AuthorID, ref CreatedByUserID, ref PublicationDate, ref BookImagePath);
+            bool IsFound = clsBookData.GetBookInfoByID(BookID, ref Title, ref ISBN, ref GenreID, ref AdditionalDetails, ref AuthorID,ref PublicationDate, ref BookImagePath);
 
             if (IsFound)
-                return new clsBook(BookID, Title, ISBN, GenreID, AdditionalDetails, AuthorID, CreatedByUserID, PublicationDate, BookImagePath);
+                return new clsBook(BookID, Title, ISBN, GenreID, AdditionalDetails, AuthorID, PublicationDate, BookImagePath);
             else
                 return null;
         }
@@ -81,14 +76,13 @@ namespace Library_BusinessLayer
             int? GenreID = null;
             string AdditionalDetails = null;
             int? AuthorID = null;
-            int? CreatedByUserID = null;
             DateTime? PublicationDate = null;
             string BookImagePath = null;
 
-            bool IsFound = clsBookData.GetBookInfoByISBN(ISBN , ref BookID, ref Title, ref GenreID, ref AdditionalDetails, ref AuthorID, ref CreatedByUserID, ref PublicationDate, ref BookImagePath);
+            bool IsFound = clsBookData.GetBookInfoByISBN(ISBN , ref BookID, ref Title, ref GenreID, ref AdditionalDetails, ref AuthorID, ref PublicationDate, ref BookImagePath);
 
             if (IsFound)
-                return new clsBook(BookID, Title, ISBN, GenreID, AdditionalDetails, AuthorID, CreatedByUserID, PublicationDate, BookImagePath);
+                return new clsBook(BookID, Title, ISBN, GenreID, AdditionalDetails, AuthorID, PublicationDate, BookImagePath);
             else
                 return null;
         }
@@ -110,13 +104,13 @@ namespace Library_BusinessLayer
 
         private bool _AddNewBook()
         {
-            BookID = clsBookData.AddNewBook(Title, ISBN, GenreID, AdditionalDetails, AuthorID, CreatedByUserID, PublicationDate, BookImagePath);
+            BookID = clsBookData.AddNewBook(Title, ISBN, GenreID, AdditionalDetails, AuthorID,PublicationDate, BookImagePath);
             return BookID.HasValue;
         }
 
         private bool _UpdateBook()
         {
-            return clsBookData.UpdateBookInfo(BookID, Title, ISBN, GenreID, AdditionalDetails, AuthorID, CreatedByUserID, PublicationDate, BookImagePath);
+            return clsBookData.UpdateBookInfo(BookID, Title, ISBN, GenreID, AdditionalDetails, AuthorID,PublicationDate, BookImagePath);
         }
 
         public bool Save()

@@ -46,7 +46,6 @@ namespace LibraryManagementSystem.Books.UserControls
             lblAuthor.Text = "[????]";
             lblDetails.Text = "[????]";
             lblPublicationDate.Text = "[????]";
-            lblCreatedByUser.Text = "[????]";
 
             pbBookImage.Image = Resources.book1;
         }
@@ -66,7 +65,6 @@ namespace LibraryManagementSystem.Books.UserControls
             lblAuthor.Text = _Book.AuthorInfo.FullName;
             lblDetails.Text = _Book.AdditionalDetails ?? "No Additional Details";
             lblPublicationDate.Text = _Book.PublicationDate.Value.ToShortDateString();
-            lblCreatedByUser.Text = _Book.UserInfo.UserName;
 
             pbBookImage.ImageLocation = _Book.BookImagePath ?? null;
         }

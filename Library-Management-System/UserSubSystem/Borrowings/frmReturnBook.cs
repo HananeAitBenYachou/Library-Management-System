@@ -80,7 +80,7 @@ namespace LibraryManagementSystem.Borrowings_Returns
 
             double? FineFees = 0;
 
-            if(!ucBookCopyCardWithFilter1.BookCopy.ReturnBorrowedBookCopy(clsGlobal.CurrentUser.UserID,ref FineFees))
+            if(!ucBookCopyCardWithFilter1.BookCopy.ReturnBorrowedBookCopy(ref FineFees))
             {
                 MessageBox.Show("Error : Failed to return this borrowed bookcopy ", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;

@@ -8,7 +8,8 @@ namespace Library_DataAccessLayer
 {
     public class clsFineData
     {
-        public static bool GetFineInfoByID(int? FineID, ref int? MemberID, ref int? BorrowingRecordID, ref short? NumberOfLateDays, ref double? FineAmount, ref bool? PaymentStatus, ref int? CreatedByUserID)
+        public static bool GetFineInfoByID(int? FineID, ref int? MemberID, ref int? BorrowingRecordID, 
+            ref short? NumberOfLateDays, ref double? FineAmount, ref bool? PaymentStatus)
         {
             bool IsFound = false;
 
@@ -48,8 +49,6 @@ namespace Library_DataAccessLayer
                                 }
 
                                 PaymentStatus = (reader["PaymentStatus"] != DBNull.Value) ? (bool?)reader["PaymentStatus"] : null;
-
-                                CreatedByUserID = (reader["CreatedByUserID"] != DBNull.Value) ? (int?)reader["CreatedByUserID"] : null;
 
                             }
 
@@ -102,7 +101,8 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
-        public static int? AddNewFine(int? MemberID, int? BorrowingRecordID, short? NumberOfLateDays, double? FineAmount, bool? PaymentStatus, int? CreatedByUserID)
+        public static int? AddNewFine(int? MemberID, int? BorrowingRecordID, short? NumberOfLateDays, 
+            double? FineAmount, bool? PaymentStatus)
         {
             int? FineID = null;
 
@@ -111,8 +111,8 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO Fines (MemberID,BorrowingRecordID,NumberOfLateDays,FineAmount,PaymentStatus,CreatedByUserID)
-                            VALUES (@MemberID,@BorrowingRecordID,@NumberOfLateDays,@FineAmount,@PaymentStatus,@CreatedByUserID);
+                    string query = @"INSERT INTO Fines (MemberID,BorrowingRecordID,NumberOfLateDays,FineAmount,PaymentStatus)
+                            VALUES (@MemberID,@BorrowingRecordID,@NumberOfLateDays,@FineAmount,@PaymentStatus);
                             SELECT SCOPE_IDENTITY();";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -123,7 +123,6 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@NumberOfLateDays", (object)NumberOfLateDays ?? DBNull.Value);
                         command.Parameters.AddWithValue("@FineAmount", (object)FineAmount ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PaymentStatus", (object)PaymentStatus ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
 
                         object InsertedRowID = command.ExecuteScalar();
 
@@ -148,7 +147,8 @@ namespace Library_DataAccessLayer
             return FineID;
         }
 
-        public static bool UpdateFineInfo(int? FineID, int? MemberID, int? BorrowingRecordID, short? NumberOfLateDays, double? FineAmount, bool? PaymentStatus, int? CreatedByUserID)
+        public static bool UpdateFineInfo(int? FineID, int? MemberID, int? BorrowingRecordID, short? NumberOfLateDays,
+            double? FineAmount, bool? PaymentStatus)
         {
             int rowsAffected = 0;
 
@@ -163,8 +163,7 @@ namespace Library_DataAccessLayer
 							BorrowingRecordID = @BorrowingRecordID,
 							NumberOfLateDays = @NumberOfLateDays,
 							FineAmount = @FineAmount,
-							PaymentStatus = @PaymentStatus,
-							CreatedByUserID = @CreatedByUserID
+							PaymentStatus = @PaymentStatus
                             WHERE FineID = @FineID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -176,7 +175,6 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@NumberOfLateDays", (object)NumberOfLateDays ?? DBNull.Value);
                         command.Parameters.AddWithValue("@FineAmount", (object)FineAmount ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PaymentStatus", (object)PaymentStatus ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
 
@@ -234,10 +232,8 @@ namespace Library_DataAccessLayer
                                     CASE 
 	                                    WHEN PaymentStatus = 1 THEN 'Paid'
 	                                    ELSE 'Not Paid'
-                                    END AS 'Payment Status',
-                                    UserName AS 'Created By'
-                                    FROM Fines
-                                    INNER JOIN Users ON Fines.CreatedByUserID = Users.UserID;";
+                                    END AS 'Payment Status'
+                                    FROM Fines;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -274,10 +270,8 @@ namespace Library_DataAccessLayer
                                     CASE 
 	                                    WHEN PaymentStatus = 1 THEN 'Paid'
 	                                    ELSE 'Not Paid'
-                                    END AS 'Payment Status',
-                                    UserName AS 'Created By'
+                                    END AS 'Payment Status'
                                     FROM Fines
-                                    INNER JOIN Users ON Fines.CreatedByUserID = Users.UserID
                                     WHERE MemberID = @MemberID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))

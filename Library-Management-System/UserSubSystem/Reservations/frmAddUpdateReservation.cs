@@ -101,7 +101,6 @@ namespace LibraryManagementSystem.Reservations
             _Reservation.BookCopyID = _BookCopyID;
             _Reservation.MemberID = ucMemberCardWithFilter1.MemberID;
             _Reservation.ReservationDate = dtpReservationDate.Value;
-            _Reservation.CreatedByUserID = clsGlobal.CurrentUser.UserID;
 
             if (_Reservation.Save())
             {

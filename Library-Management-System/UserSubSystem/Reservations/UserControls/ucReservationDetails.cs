@@ -64,7 +64,6 @@ namespace LibraryManagementSystem.Reservations
             lblTitle.Text = _Reservation.BookCopyInfo.BookInfo.Title;
             lblBookCopyID.Text = _Reservation.BookCopyID.ToString();
             lblReservationDate.Text = _Reservation.ReservationDate.Value.ToShortDateString();
-            lblCreatedByUser.Text = _Reservation.CreatedByUserInfo.UserName;
         }
 
         private void llbShowBookCopyInfo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

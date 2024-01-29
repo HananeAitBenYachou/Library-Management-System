@@ -1,5 +1,6 @@
 ﻿using Library_BusinessLayer;
-using LibraryManagementSystem.Borrowings_Returns;
+using LibraryManagementSystem.Fines;
+using LibraryManagementSystem.GlobalClasses;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,20 +11,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LibraryManagementSystem.Fines
+namespace LibraryManagementSystem.MemberSubSystem.Fines
 {
-    public partial class frmListFines : Form
+    public partial class frmListMemberFines : Form
     {
         private DataView _FinesDataView;
 
-        public frmListFines()
+        public frmListMemberFines()
         {
             InitializeComponent();
         }
 
         private void _RefreshFinesList()
         {
-            _FinesDataView = clsFine.GetAllFines().DefaultView;
+            _FinesDataView = clsFine.GetMemberFines(clsGlobal.CurrentMember.MemberID).DefaultView;
             dgvFinesList.DataSource = _FinesDataView;
             cbFilterByOptions.SelectedIndex = 0;
         }
@@ -37,7 +38,6 @@ namespace LibraryManagementSystem.Fines
             }
 
             _FinesDataView.RowFilter = string.Format("[{0}] = {1}", cbFilterByOptions.Text, txtFilterValue.Text.Trim());
-
         }
 
         private void frmListFines_Load(object sender, EventArgs e)
@@ -86,30 +86,6 @@ namespace LibraryManagementSystem.Fines
         {
             frmShowFineDetails frm = new frmShowFineDetails((int)dgvFinesList.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
-        }
-
-        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Are you sure you want to delete this fine record ?", "Confirm",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-                return;
-
-            int fineID = (int)dgvFinesList.CurrentRow.Cells[0].Value;
-
-            if (!clsFine.IsFineExist(fineID))
-            {
-                MessageBox.Show($"No fine with ID = {fineID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (clsFine.DeleteFine(fineID))
-            {
-                MessageBox.Show("Fine record has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                _RefreshFinesList();
-            }
-
-            else
-                MessageBox.Show("Fine record is not deleted due to data connected to it.", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void payFineToolStripMenuItem_Click(object sender, EventArgs e)

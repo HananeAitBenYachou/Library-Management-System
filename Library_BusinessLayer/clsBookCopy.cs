@@ -74,7 +74,7 @@ namespace Library_BusinessLayer
             return clsBookCopyData.UpdateBookCopyAvailabilityStatus(BookCopyID, false);
         }
 
-        public bool ReturnBorrowedBookCopy(int? UpdatedByUserID, ref double? FineFees)
+        public bool ReturnBorrowedBookCopy(ref double? FineFees)
         {
             short NumberOfLateDays = (short)DateTime.Now.Subtract(this.BorrowingInfo.DueDate.Value).Days;
 
@@ -87,7 +87,6 @@ namespace Library_BusinessLayer
                 Fine.NumberOfLateDays = (short?)DateTime.Now.Subtract(this.BorrowingInfo.DueDate.Value).Days;
                 Fine.FineAmount = Fine.NumberOfLateDays * clsSettings.DefaultFinePerDay;
                 Fine.PaymentStatus = false;
-                Fine.CreatedByUserID = UpdatedByUserID;
 
                 FineFees = Fine.FineAmount;
 
@@ -95,7 +94,7 @@ namespace Library_BusinessLayer
                     return false;
             }
             
-            if (!this.BorrowingInfo.ReturnBorrowedBookCopy(UpdatedByUserID))
+            if (!this.BorrowingInfo.ReturnBorrowedBookCopy())
                 return false;
 
             return clsBookCopyData.UpdateBookCopyAvailabilityStatus(BookCopyID, true);

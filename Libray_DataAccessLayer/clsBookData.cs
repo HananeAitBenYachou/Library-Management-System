@@ -11,7 +11,7 @@ namespace Library_DataAccessLayer
     {
         public static bool GetBookInfoByID(int? BookID, ref string Title,
             ref string ISBN, ref int? GenreID, ref string AdditionalDetails, ref int? AuthorID, 
-            ref int? CreatedByUserID, ref DateTime? PublicationDate, ref string BookImagePath)
+            ref DateTime? PublicationDate, ref string BookImagePath)
         {
             bool IsFound = false;
 
@@ -45,8 +45,6 @@ namespace Library_DataAccessLayer
 
                                 AuthorID = (reader["AuthorID"] != DBNull.Value) ? (int?)reader["AuthorID"] : null;
 
-                                CreatedByUserID = (reader["CreatedByUserID"] != DBNull.Value) ? (int?)reader["CreatedByUserID"] : null;
-
                                 PublicationDate = (reader["PublicationDate"] != DBNull.Value) ? (DateTime?)reader["PublicationDate"] : null;
 
                                 BookImagePath = (reader["BookImagePath"] != DBNull.Value) ? (string)reader["BookImagePath"] : null;
@@ -73,7 +71,7 @@ namespace Library_DataAccessLayer
 
         public static bool GetBookInfoByISBN(string ISBN, ref int? BookID, ref string Title,
       ref int? GenreID, ref string AdditionalDetails, ref int? AuthorID,
-      ref int? CreatedByUserID, ref DateTime? PublicationDate, ref string BookImagePath)
+      ref DateTime? PublicationDate, ref string BookImagePath)
         {
             bool IsFound = false;
 
@@ -106,8 +104,6 @@ namespace Library_DataAccessLayer
                                 AdditionalDetails = (reader["AdditionalDetails"] != DBNull.Value) ? (string)reader["AdditionalDetails"] : null;
 
                                 AuthorID = (reader["AuthorID"] != DBNull.Value) ? (int?)reader["AuthorID"] : null;
-
-                                CreatedByUserID = (reader["CreatedByUserID"] != DBNull.Value) ? (int?)reader["CreatedByUserID"] : null;
 
                                 PublicationDate = (reader["PublicationDate"] != DBNull.Value) ? (DateTime?)reader["PublicationDate"] : null;
 
@@ -227,7 +223,7 @@ namespace Library_DataAccessLayer
         }
 
         public static int? AddNewBook(string Title, string ISBN, int? GenreID, 
-            string AdditionalDetails, int? AuthorID, int? CreatedByUserID, 
+            string AdditionalDetails, int? AuthorID,
             DateTime? PublicationDate, string BookImagePath)
         {
             int? BookID = null;
@@ -237,8 +233,8 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO Books (Title,ISBN,GenreID,AdditionalDetails,AuthorID,CreatedByUserID,PublicationDate,BookImagePath)
-                            VALUES (@Title,@ISBN,@GenreID,@AdditionalDetails,@AuthorID,@CreatedByUserID,@PublicationDate,@BookImagePath);
+                    string query = @"INSERT INTO Books (Title,ISBN,GenreID,AdditionalDetails,AuthorID,PublicationDate,BookImagePath)
+                            VALUES (@Title,@ISBN,@GenreID,@AdditionalDetails,@AuthorID,@PublicationDate,@BookImagePath);
                             SELECT SCOPE_IDENTITY();";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -249,7 +245,6 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@GenreID", (object)GenreID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@AdditionalDetails", (object)AdditionalDetails ?? DBNull.Value);
                         command.Parameters.AddWithValue("@AuthorID", (object)AuthorID ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PublicationDate", (object)PublicationDate ?? DBNull.Value);
                         command.Parameters.AddWithValue("@BookImagePath", (object)BookImagePath ?? DBNull.Value);
 
@@ -278,7 +273,7 @@ namespace Library_DataAccessLayer
 
         public static bool UpdateBookInfo(int? BookID, string Title, 
             string ISBN, int? GenreID, string AdditionalDetails, 
-            int? AuthorID, int? CreatedByUserID, 
+            int? AuthorID,
             DateTime? PublicationDate, string BookImagePath)
         {
             int rowsAffected = 0;
@@ -295,7 +290,6 @@ namespace Library_DataAccessLayer
 							GenreID = @GenreID,
 							AdditionalDetails = @AdditionalDetails,
 							AuthorID = @AuthorID,
-							CreatedByUserID = @CreatedByUserID,
 							PublicationDate = @PublicationDate,
 							BookImagePath = @BookImagePath
                             WHERE BookID = @BookID;";
@@ -309,7 +303,6 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@GenreID", (object)GenreID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@AdditionalDetails", (object)AdditionalDetails ?? DBNull.Value);
                         command.Parameters.AddWithValue("@AuthorID", (object)AuthorID ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@PublicationDate", (object)PublicationDate ?? DBNull.Value);
                         command.Parameters.AddWithValue("@BookImagePath", (object)BookImagePath ?? DBNull.Value);
 

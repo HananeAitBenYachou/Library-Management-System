@@ -129,8 +129,6 @@ namespace LibraryManagementSystem.Books
             _Book.GenreID = clsGenre.Find(cbGenres.Text).GenreID;
             _Book.AuthorID = clsAuthor.Find(cbAuthors.Text).AuthorID;
             _Book.BookImagePath = pbBookImage.ImageLocation ?? null;
-            _Book.CreatedByUserID = _Mode == enMode.AddNew ? clsGlobal.CurrentUser.UserID : _Book.CreatedByUserID;
-
             if(dtpPublicationDate.Value == DateTime.Now)
             {
                 _Book.PublicationDate = null;

@@ -13,11 +13,8 @@ namespace Library_BusinessLayer
         public short? NumberOfLateDays { get; set; }
         public double? FineAmount { get; set; }
         public bool? PaymentStatus { get; set; }
-        public int? CreatedByUserID { get; set; }
-
         public clsBorrowingRecord BorrowingInfo { get; }
         public clsMember MemberInfo { get;}
-        public clsUser CreatedByUserInfo { get; }
 
         public clsFine()
         {
@@ -28,10 +25,9 @@ namespace Library_BusinessLayer
             NumberOfLateDays = null;
             FineAmount = null;
             PaymentStatus = null;
-            CreatedByUserID = null;
         }
         private clsFine(int? FineID, int? MemberID, int? BorrowingRecordID, short? NumberOfLateDays, 
-            double? FineAmount, bool? PaymentStatus, int? CreatedByUserID)
+            double? FineAmount, bool? PaymentStatus)
         {
             _Mode = enMode.Update;
             this.FineID = FineID;
@@ -40,11 +36,9 @@ namespace Library_BusinessLayer
             this.NumberOfLateDays = NumberOfLateDays;
             this.FineAmount = FineAmount;
             this.PaymentStatus = PaymentStatus;
-            this.CreatedByUserID = CreatedByUserID;
 
             this.BorrowingInfo = clsBorrowingRecord.Find(this.BorrowingRecordID);
             this.MemberInfo = clsMember.Find(this.MemberID);
-            this.CreatedByUserInfo = clsUser.Find(this.CreatedByUserID);
         }
 
         public static clsFine Find(int? FineID)
@@ -54,12 +48,11 @@ namespace Library_BusinessLayer
             short? NumberOfLateDays = null;
             double? FineAmount = null;
             bool? PaymentStatus = null;
-            int? CreatedByUserID = null;
 
-            bool IsFound = clsFineData.GetFineInfoByID(FineID, ref MemberID, ref BorrowingRecordID, ref NumberOfLateDays, ref FineAmount, ref PaymentStatus, ref CreatedByUserID);
+            bool IsFound = clsFineData.GetFineInfoByID(FineID, ref MemberID, ref BorrowingRecordID, ref NumberOfLateDays, ref FineAmount, ref PaymentStatus);
 
             if (IsFound)
-                return new clsFine(FineID, MemberID, BorrowingRecordID, NumberOfLateDays, FineAmount, PaymentStatus, CreatedByUserID);
+                return new clsFine(FineID, MemberID, BorrowingRecordID, NumberOfLateDays, FineAmount, PaymentStatus);
             else
                 return null;
         }
@@ -71,13 +64,13 @@ namespace Library_BusinessLayer
 
         private bool _AddNewFine()
         {
-            FineID = clsFineData.AddNewFine(MemberID, BorrowingRecordID, NumberOfLateDays, FineAmount, PaymentStatus, CreatedByUserID);
+            FineID = clsFineData.AddNewFine(MemberID, BorrowingRecordID, NumberOfLateDays, FineAmount, PaymentStatus);
             return FineID.HasValue;
         }
 
         private bool _UpdateFine()
         {
-            return clsFineData.UpdateFineInfo(FineID, MemberID, BorrowingRecordID, NumberOfLateDays, FineAmount, PaymentStatus, CreatedByUserID);
+            return clsFineData.UpdateFineInfo(FineID, MemberID, BorrowingRecordID, NumberOfLateDays, FineAmount, PaymentStatus);
         }
 
         public bool Save()

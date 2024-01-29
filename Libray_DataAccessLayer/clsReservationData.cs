@@ -8,7 +8,7 @@ namespace Library_DataAccessLayer
 {
     public class clsReservationData
     {
-        public static bool GetReservationInfoByID(int? ReservationID, ref int? MemberID, ref int? BookCopyID, ref DateTime? ReservationDate, ref int? CreatedByUserID)
+        public static bool GetReservationInfoByID(int? ReservationID, ref int? MemberID, ref int? BookCopyID, ref DateTime? ReservationDate)
         {
             bool IsFound = false;
 
@@ -37,8 +37,6 @@ namespace Library_DataAccessLayer
                                 BookCopyID = (reader["BookCopyID"] != DBNull.Value) ? (int?)reader["BookCopyID"] : null;
 
                                 ReservationDate = (reader["ReservationDate"] != DBNull.Value) ? (DateTime?)reader["ReservationDate"] : null;
-
-                                CreatedByUserID = (reader["CreatedByUserID"] != DBNull.Value) ? (int?)reader["CreatedByUserID"] : null;
 
                             }
 
@@ -91,7 +89,7 @@ namespace Library_DataAccessLayer
             return IsFound;
         }
 
-        public static int? AddNewReservation(int? MemberID, int? BookCopyID, DateTime? ReservationDate, int? CreatedByUserID)
+        public static int? AddNewReservation(int? MemberID, int? BookCopyID, DateTime? ReservationDate)
         {
             int? ReservationID = null;
 
@@ -100,8 +98,8 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = @"INSERT INTO Reservations (MemberID,BookCopyID,ReservationDate,CreatedByUserID)
-                            VALUES (@MemberID,@BookCopyID,@ReservationDate,@CreatedByUserID);
+                    string query = @"INSERT INTO Reservations (MemberID,BookCopyID,ReservationDate)
+                            VALUES (@MemberID,@BookCopyID,@ReservationDate);
                             SELECT SCOPE_IDENTITY();";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -110,7 +108,6 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@MemberID", (object)MemberID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@BookCopyID", (object)BookCopyID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@ReservationDate", (object)ReservationDate ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
 
                         object InsertedRowID = command.ExecuteScalar();
 
@@ -135,7 +132,7 @@ namespace Library_DataAccessLayer
             return ReservationID;
         }
 
-        public static bool UpdateReservationInfo(int? ReservationID, int? MemberID, int? BookCopyID, DateTime? ReservationDate, int? CreatedByUserID)
+        public static bool UpdateReservationInfo(int? ReservationID, int? MemberID, int? BookCopyID, DateTime? ReservationDate)
         {
             int rowsAffected = 0;
 
@@ -148,8 +145,7 @@ namespace Library_DataAccessLayer
                             SET 
 							MemberID = @MemberID,
 							BookCopyID = @BookCopyID,
-							ReservationDate = @ReservationDate,
-							CreatedByUserID = @CreatedByUserID
+							ReservationDate = @ReservationDate
                             WHERE ReservationID = @ReservationID;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
@@ -159,7 +155,6 @@ namespace Library_DataAccessLayer
                         command.Parameters.AddWithValue("@MemberID", (object)MemberID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@BookCopyID", (object)BookCopyID ?? DBNull.Value);
                         command.Parameters.AddWithValue("@ReservationDate", (object)ReservationDate ?? DBNull.Value);
-                        command.Parameters.AddWithValue("@CreatedByUserID", (object)CreatedByUserID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
                     }
@@ -213,7 +208,7 @@ namespace Library_DataAccessLayer
                     connection.Open();
                     string query = @"SELECT ReservationID AS 'Reservation ID' , FirstName + ' ' + LastName AS 'Full Name' ,
                                     LibraryCardNumber AS 'LibraryCard No', Title AS 'Book Title' , BookCopies.BookCopyID AS 'Copy ID' ,
-                                    ReservationDate AS 'Reservation Date' , Reservations.CreatedByUserID AS 'Created By' 
+                                    ReservationDate AS 'Reservation Date'
                                     FROM Reservations
                                     INNER JOIN Members ON Members.MemberID = Reservations.MemberID
                                     INNER JOIN People ON People.PersonID = Members.PersonID 
@@ -252,7 +247,7 @@ namespace Library_DataAccessLayer
                     connection.Open();
                     string query = @"SELECT ReservationID AS 'Reservation ID' , FirstName + ' ' + LastName AS 'Full Name' ,
                                     LibraryCardNumber AS 'LibraryCard No', Title AS 'Book Title' , BookCopies.BookCopyID AS 'Copy ID' ,
-                                    ReservationDate AS 'Reservation Date' , Reservations.CreatedByUserID AS 'Created By' 
+                                    ReservationDate AS 'Reservation Date'
                                     FROM Reservations
                                     INNER JOIN Members ON Members.MemberID = Reservations.MemberID
                                     INNER JOIN People ON People.PersonID = Members.PersonID 
@@ -293,7 +288,7 @@ namespace Library_DataAccessLayer
                     connection.Open();
                     string query = @"SELECT ReservationID AS 'Reservation ID' , FirstName + ' ' + LastName AS 'Full Name' ,
                                     LibraryCardNumber AS 'LibraryCard No', Title AS 'Book Title' , BookCopies.BookCopyID AS 'Copy ID' ,
-                                    ReservationDate AS 'Reservation Date' , Reservations.CreatedByUserID AS 'Created By' 
+                                    ReservationDate AS 'Reservation Date'
                                     FROM Reservations
                                     INNER JOIN Members ON Members.MemberID = Reservations.MemberID
                                     INNER JOIN People ON People.PersonID = Members.PersonID 

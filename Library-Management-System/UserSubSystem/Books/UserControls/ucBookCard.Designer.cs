@@ -29,11 +29,12 @@
         private void InitializeComponent()
         {
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.llbShowAuthorInfo = new System.Windows.Forms.LinkLabel();
+            this.llbShowGenreInfo = new System.Windows.Forms.LinkLabel();
             this.guna2ImageButton4 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.lblDetails = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.guna2ImageButton8 = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2ImageButton6 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton10 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton5 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2ImageButton3 = new Guna.UI2.WinForms.Guna2ImageButton();
@@ -41,7 +42,6 @@
             this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.llbEditBookInfo = new System.Windows.Forms.LinkLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblCreatedByUser = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblPublicationDate = new System.Windows.Forms.Label();
@@ -50,13 +50,10 @@
             this.lblGenre = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.lblIsbn = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
             this.pbBookImage = new System.Windows.Forms.PictureBox();
             this.lblBookID = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.llbShowAuthorInfo = new System.Windows.Forms.LinkLabel();
-            this.llbShowGenreInfo = new System.Windows.Forms.LinkLabel();
             this.guna2GroupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbBookImage)).BeginInit();
             this.SuspendLayout();
@@ -71,7 +68,6 @@
             this.guna2GroupBox1.Controls.Add(this.lblDetails);
             this.guna2GroupBox1.Controls.Add(this.label7);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton8);
-            this.guna2GroupBox1.Controls.Add(this.guna2ImageButton6);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton10);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton5);
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton3);
@@ -79,7 +75,6 @@
             this.guna2GroupBox1.Controls.Add(this.guna2ImageButton1);
             this.guna2GroupBox1.Controls.Add(this.llbEditBookInfo);
             this.guna2GroupBox1.Controls.Add(this.label1);
-            this.guna2GroupBox1.Controls.Add(this.lblCreatedByUser);
             this.guna2GroupBox1.Controls.Add(this.label2);
             this.guna2GroupBox1.Controls.Add(this.label3);
             this.guna2GroupBox1.Controls.Add(this.lblPublicationDate);
@@ -88,7 +83,6 @@
             this.guna2GroupBox1.Controls.Add(this.lblGenre);
             this.guna2GroupBox1.Controls.Add(this.label6);
             this.guna2GroupBox1.Controls.Add(this.lblIsbn);
-            this.guna2GroupBox1.Controls.Add(this.label8);
             this.guna2GroupBox1.Controls.Add(this.lblTitle);
             this.guna2GroupBox1.Controls.Add(this.pbBookImage);
             this.guna2GroupBox1.Controls.Add(this.lblBookID);
@@ -102,6 +96,32 @@
             this.guna2GroupBox1.Size = new System.Drawing.Size(1001, 407);
             this.guna2GroupBox1.TabIndex = 202;
             this.guna2GroupBox1.Text = "Book Information";
+            // 
+            // llbShowAuthorInfo
+            // 
+            this.llbShowAuthorInfo.AutoSize = true;
+            this.llbShowAuthorInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.llbShowAuthorInfo.Location = new System.Drawing.Point(675, 369);
+            this.llbShowAuthorInfo.Name = "llbShowAuthorInfo";
+            this.llbShowAuthorInfo.Size = new System.Drawing.Size(146, 23);
+            this.llbShowAuthorInfo.TabIndex = 226;
+            this.llbShowAuthorInfo.TabStop = true;
+            this.llbShowAuthorInfo.Text = "Show Author Info";
+            this.llbShowAuthorInfo.Visible = false;
+            this.llbShowAuthorInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowAuthorInfo_LinkClicked);
+            // 
+            // llbShowGenreInfo
+            // 
+            this.llbShowGenreInfo.AutoSize = true;
+            this.llbShowGenreInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
+            this.llbShowGenreInfo.Location = new System.Drawing.Point(839, 369);
+            this.llbShowGenreInfo.Name = "llbShowGenreInfo";
+            this.llbShowGenreInfo.Size = new System.Drawing.Size(139, 23);
+            this.llbShowGenreInfo.TabIndex = 225;
+            this.llbShowGenreInfo.TabStop = true;
+            this.llbShowGenreInfo.Text = "Show Genre Info";
+            this.llbShowGenreInfo.Visible = false;
+            this.llbShowGenreInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowGenreInfo_LinkClicked);
             // 
             // guna2ImageButton4
             // 
@@ -146,19 +166,6 @@
             this.guna2ImageButton8.Name = "guna2ImageButton8";
             this.guna2ImageButton8.Size = new System.Drawing.Size(30, 30);
             this.guna2ImageButton8.TabIndex = 211;
-            // 
-            // guna2ImageButton6
-            // 
-            this.guna2ImageButton6.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton6.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.guna2ImageButton6.Image = global::LibraryManagementSystem.Properties.Resources.skill;
-            this.guna2ImageButton6.ImageOffset = new System.Drawing.Point(0, 0);
-            this.guna2ImageButton6.ImageRotate = 0F;
-            this.guna2ImageButton6.ImageSize = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton6.Location = new System.Drawing.Point(570, 241);
-            this.guna2ImageButton6.Name = "guna2ImageButton6";
-            this.guna2ImageButton6.Size = new System.Drawing.Size(30, 30);
-            this.guna2ImageButton6.TabIndex = 210;
             // 
             // guna2ImageButton10
             // 
@@ -248,16 +255,6 @@
             this.label1.TabIndex = 172;
             this.label1.Text = "Title :";
             // 
-            // lblCreatedByUser
-            // 
-            this.lblCreatedByUser.AutoSize = true;
-            this.lblCreatedByUser.Font = new System.Drawing.Font("Segoe UI", 9.3F, System.Drawing.FontStyle.Bold);
-            this.lblCreatedByUser.Location = new System.Drawing.Point(613, 244);
-            this.lblCreatedByUser.Name = "lblCreatedByUser";
-            this.lblCreatedByUser.Size = new System.Drawing.Size(50, 21);
-            this.lblCreatedByUser.TabIndex = 199;
-            this.lblCreatedByUser.Text = "[????]";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -338,16 +335,6 @@
             this.lblIsbn.TabIndex = 193;
             this.lblIsbn.Text = "[????]";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(415, 243);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(142, 23);
-            this.label8.TabIndex = 180;
-            this.label8.Text = "Created By User :";
-            // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
@@ -389,32 +376,6 @@
             this.label14.TabIndex = 189;
             this.label14.Text = "Book ID :";
             // 
-            // llbShowAuthorInfo
-            // 
-            this.llbShowAuthorInfo.AutoSize = true;
-            this.llbShowAuthorInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.llbShowAuthorInfo.Location = new System.Drawing.Point(675, 369);
-            this.llbShowAuthorInfo.Name = "llbShowAuthorInfo";
-            this.llbShowAuthorInfo.Size = new System.Drawing.Size(146, 23);
-            this.llbShowAuthorInfo.TabIndex = 226;
-            this.llbShowAuthorInfo.TabStop = true;
-            this.llbShowAuthorInfo.Text = "Show Author Info";
-            this.llbShowAuthorInfo.Visible = false;
-            this.llbShowAuthorInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowAuthorInfo_LinkClicked);
-            // 
-            // llbShowGenreInfo
-            // 
-            this.llbShowGenreInfo.AutoSize = true;
-            this.llbShowGenreInfo.Font = new System.Drawing.Font("Segoe UI Semibold", 10F, System.Drawing.FontStyle.Bold);
-            this.llbShowGenreInfo.Location = new System.Drawing.Point(839, 369);
-            this.llbShowGenreInfo.Name = "llbShowGenreInfo";
-            this.llbShowGenreInfo.Size = new System.Drawing.Size(139, 23);
-            this.llbShowGenreInfo.TabIndex = 225;
-            this.llbShowGenreInfo.TabStop = true;
-            this.llbShowGenreInfo.Text = "Show Genre Info";
-            this.llbShowGenreInfo.Visible = false;
-            this.llbShowGenreInfo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llbShowGenreInfo_LinkClicked);
-            // 
             // ucBookCard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -434,7 +395,6 @@
 
         private Guna.UI2.WinForms.Guna2GroupBox guna2GroupBox1;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton8;
-        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton6;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton10;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton5;
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton3;
@@ -442,7 +402,6 @@
         private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
         private System.Windows.Forms.LinkLabel llbEditBookInfo;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label lblCreatedByUser;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblPublicationDate;
@@ -451,7 +410,6 @@
         private System.Windows.Forms.Label lblGenre;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label lblIsbn;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.PictureBox pbBookImage;
         private System.Windows.Forms.Label lblBookID;
