@@ -58,6 +58,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="MemberSubSystem\Books\frmListBooks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MemberSubSystem\Books\frmListBooks.Designer.cs">
+      <DependentUpon>frmListBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MemberSubSystem\Books\UserControls\ucBook.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="MemberSubSystem\Books\UserControls\ucBook.Designer.cs">
+      <DependentUpon>ucBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="MemberSubSystem\Borrowings\frmListMemberBorrowings.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -403,6 +415,12 @@
     <Compile Include="UserSubSystem\Users\UserControls\ucUserCard.Designer.cs">
       <DependentUpon>ucUserCard.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="MemberSubSystem\Books\frmListBooks.resx">
+      <DependentUpon>frmListBooks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MemberSubSystem\Books\UserControls\ucBook.resx">
+      <DependentUpon>ucBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MemberSubSystem\Borrowings\frmListMemberBorrowings.resx">
       <DependentUpon>frmListMemberBorrowings.cs</DependentUpon>
     </EmbeddedResource>
@@ -885,6 +903,11 @@
   <ItemGroup>
     <None Include="Resources\logout %281%29.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\search-file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\book3.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

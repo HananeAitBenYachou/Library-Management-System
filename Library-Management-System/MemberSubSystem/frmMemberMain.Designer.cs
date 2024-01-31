@@ -36,7 +36,6 @@
             this.btnReservations = new Guna.UI2.WinForms.Guna2Button();
             this.btnBorrowings = new Guna.UI2.WinForms.Guna2Button();
             this.btnBooks = new Guna.UI2.WinForms.Guna2Button();
-            this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
             this.pnlContainer = new Sipaa.Framework.SPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.sPanel1.SuspendLayout();
@@ -61,7 +60,6 @@
             this.sPanel1.Controls.Add(this.btnReservations);
             this.sPanel1.Controls.Add(this.btnBorrowings);
             this.sPanel1.Controls.Add(this.btnBooks);
-            this.sPanel1.Controls.Add(this.btnDashboard);
             this.sPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
             this.sPanel1.Location = new System.Drawing.Point(-71, 102);
             this.sPanel1.Name = "sPanel1";
@@ -88,7 +86,7 @@
             this.btnFines.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnFines.ImageOffset = new System.Drawing.Point(20, 0);
             this.btnFines.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnFines.Location = new System.Drawing.Point(83, 296);
+            this.btnFines.Location = new System.Drawing.Point(83, 234);
             this.btnFines.Name = "btnFines";
             this.btnFines.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnFines.Size = new System.Drawing.Size(219, 52);
@@ -96,6 +94,7 @@
             this.btnFines.Text = "Fines";
             this.btnFines.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnFines.TextOffset = new System.Drawing.Point(25, 0);
+            this.btnFines.Click += new System.EventHandler(this.btnFines_Click);
             // 
             // btnLogout
             // 
@@ -146,7 +145,7 @@
             this.btnReservations.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnReservations.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnReservations.ImageSize = new System.Drawing.Size(26, 26);
-            this.btnReservations.Location = new System.Drawing.Point(80, 234);
+            this.btnReservations.Location = new System.Drawing.Point(83, 172);
             this.btnReservations.Name = "btnReservations";
             this.btnReservations.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnReservations.Size = new System.Drawing.Size(219, 52);
@@ -176,7 +175,7 @@
             this.btnBorrowings.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBorrowings.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnBorrowings.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnBorrowings.Location = new System.Drawing.Point(80, 172);
+            this.btnBorrowings.Location = new System.Drawing.Point(83, 110);
             this.btnBorrowings.Name = "btnBorrowings";
             this.btnBorrowings.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnBorrowings.Size = new System.Drawing.Size(219, 52);
@@ -206,7 +205,7 @@
             this.btnBooks.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBooks.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnBooks.ImageSize = new System.Drawing.Size(26, 26);
-            this.btnBooks.Location = new System.Drawing.Point(80, 110);
+            this.btnBooks.Location = new System.Drawing.Point(83, 48);
             this.btnBooks.Name = "btnBooks";
             this.btnBooks.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnBooks.Size = new System.Drawing.Size(219, 52);
@@ -214,35 +213,7 @@
             this.btnBooks.Text = "Books";
             this.btnBooks.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBooks.TextOffset = new System.Drawing.Point(40, 0);
-            // 
-            // btnDashboard
-            // 
-            this.btnDashboard.BorderRadius = 23;
-            this.btnDashboard.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnDashboard.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnDashboard.CheckedState.Image = global::LibraryManagementSystem.Properties.Resources.dashboard;
-            this.btnDashboard.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnDashboard.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnDashboard.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnDashboard.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnDashboard.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnDashboard.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnDashboard.ForeColor = System.Drawing.Color.White;
-            this.btnDashboard.HoverState.FillColor = System.Drawing.Color.White;
-            this.btnDashboard.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnDashboard.HoverState.Image = global::LibraryManagementSystem.Properties.Resources.dashboard;
-            this.btnDashboard.Image = global::LibraryManagementSystem.Properties.Resources.dashboard__1_;
-            this.btnDashboard.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnDashboard.ImageOffset = new System.Drawing.Point(25, 0);
-            this.btnDashboard.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnDashboard.Location = new System.Drawing.Point(80, 48);
-            this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
-            this.btnDashboard.Size = new System.Drawing.Size(219, 52);
-            this.btnDashboard.TabIndex = 5;
-            this.btnDashboard.Text = "Dashboard";
-            this.btnDashboard.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnDashboard.TextOffset = new System.Drawing.Point(40, 0);
+            this.btnBooks.Click += new System.EventHandler(this.btnBooks_Click);
             // 
             // pnlContainer
             // 
@@ -279,6 +250,7 @@
             this.Name = "frmMemberMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.frmMemberMain_Load);
             this.sPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -294,7 +266,6 @@
         private Guna.UI2.WinForms.Guna2Button btnReservations;
         private Guna.UI2.WinForms.Guna2Button btnBorrowings;
         private Guna.UI2.WinForms.Guna2Button btnBooks;
-        private Guna.UI2.WinForms.Guna2Button btnDashboard;
         private Sipaa.Framework.SPanel pnlContainer;
         private System.Windows.Forms.PictureBox pictureBox1;
     }

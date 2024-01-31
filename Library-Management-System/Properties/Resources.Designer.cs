@@ -253,6 +253,16 @@ namespace LibraryManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap book3 {
+            get {
+                object obj = ResourceManager.GetObject("book3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap bookworm_high_resolution_logo_transparent__1_ {
             get {
                 object obj = ResourceManager.GetObject("bookworm-high-resolution-logo-transparent (1)", resourceCulture);
@@ -806,6 +816,16 @@ namespace LibraryManagementSystem.Properties {
         internal static System.Drawing.Bitmap right_arrow {
             get {
                 object obj = ResourceManager.GetObject("right-arrow", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_file {
+            get {
+                object obj = ResourceManager.GetObject("search-file", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

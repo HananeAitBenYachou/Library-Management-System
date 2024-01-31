@@ -1,6 +1,7 @@
 ﻿using Library_BusinessLayer;
 using LibraryManagementSystem.Authors;
 using LibraryManagementSystem.Genres;
+using LibraryManagementSystem.GlobalClasses;
 using LibraryManagementSystem.People;
 using LibraryManagementSystem.People.UserControls;
 using LibraryManagementSystem.Properties;
@@ -54,7 +55,11 @@ namespace LibraryManagementSystem.Books.UserControls
         {
             _BookID = _Book.BookID;
 
-            llbEditBookInfo.Visible = true;
+            if(clsGlobal.LoginMode == clsGlobal.enLoginMode.User)
+            {
+                llbEditBookInfo.Visible = true;       
+            }
+
             llbShowAuthorInfo.Visible = true;
             llbShowGenreInfo.Visible = true;
 

@@ -333,7 +333,6 @@ namespace Library_DataAccessLayer
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
-
                         command.Parameters.AddWithValue("@BookID", (object)BookID ?? DBNull.Value);
 
                         rowsAffected = command.ExecuteNonQuery();
@@ -383,6 +382,77 @@ namespace Library_DataAccessLayer
                 clsErrorLogger.LogError(ex);
             }
             return Datatable;
+        }
+
+        public static DataTable GetAllAvailableBooksForMember(int? MemberID)
+        {
+            DataTable Datatable = new DataTable();
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT DISTINCT Books.BookID FROM Books
+	                                INNER JOIN BookCopies ON Books.BookID = BookCopies.BookID
+	                                INNER JOIN BorrowingRecords ON BookCopies.BookCopyID != BorrowingRecords.BookCopyID
+	                                WHERE AvailabilityStatus = 1 AND
+	                                MemberID = @MemberID AND ActualReturnDate IS NULL;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@MemberID", (object) MemberID ?? DBNull.Value);
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                Datatable.Load(reader);
+                            }
+                        }
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return Datatable;
+        }
+
+        public static bool IsMemberHasActiveBorrowingForBook(int? BookID, int? MemberID)
+        {
+            bool IsFound = false;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT IsFound = 1
+                                    FROM BorrowingRecords
+                                    INNER JOIN BookCopies ON BorrowingRecords.BookCopyID = BookCopies.BookCopyID
+                                    WHERE MemberID = @MemberID AND BookID = @BookID AND
+                                    ActualReturnDate IS NULL;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@BookID", (object)BookID ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@MemberID", (object)MemberID ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        IsFound = (reader != null);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+                IsFound = false;
+            }
+            return IsFound;
         }
 
     }

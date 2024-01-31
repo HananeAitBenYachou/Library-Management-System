@@ -82,7 +82,6 @@ namespace LibraryManagementSystem
 
         private bool _SignInAsMember(int? personID)
         {
-            //C:\Users\hanan\source\repos\LibraryManagementSystem\Library-Management-System\MemberSubSystem\frmMain.cs
             clsGlobal.CurrentMember = clsMember.FindByPersonID(personID);
 
             this.Hide();

@@ -172,5 +172,15 @@ namespace Library_BusinessLayer
             return GetAvailableBookCopy().HasValue;
         }
 
+        public static DataTable GetAllAvailbleBooksForMember(int? MemberID)
+        {
+            return clsBookData.GetAllAvailableBooksForMember(MemberID);
+        }
+
+        public bool IsMemberHasActiveBorrowingForBook(int? MemberID)
+        {
+            return clsBookData.IsMemberHasActiveBorrowingForBook(this.BookID,MemberID);
+        }
+
     }
 }

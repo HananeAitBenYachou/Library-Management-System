@@ -1,5 +1,6 @@
 ﻿using Guna.UI2.WinForms;
 using LibraryManagementSystem.MemberSubSystem;
+using LibraryManagementSystem.MemberSubSystem.Books;
 using LibraryManagementSystem.MemberSubSystem.Fines;
 using LibraryManagementSystem.MemberSubSystem.Reservations;
 using System;
@@ -40,6 +41,7 @@ namespace LibraryManagementSystem
 
         private void btnBooks_Click(object sender, EventArgs e)
         {
+            _ShowForm((Guna2Button)sender, new frmListBooks());
         }
 
         private void btnBorrowings_Click(object sender, EventArgs e)
@@ -62,6 +64,11 @@ namespace LibraryManagementSystem
             this.Hide();
             _LoginForm.Show();
             this.Close();
+        }
+
+        private void frmMemberMain_Load(object sender, EventArgs e)
+        {
+            btnBooks.PerformClick();
         }
     }
 }

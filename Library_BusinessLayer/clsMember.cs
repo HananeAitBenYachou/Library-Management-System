@@ -49,7 +49,7 @@ namespace Library_BusinessLayer
             bool IsFound = clsMemberData.GetMemberInfoByPersonID(PersonID, ref MemberID, ref LibraryCardNumber);
 
             if (IsFound)
-                return new clsMember(PersonID, LibraryCardNumber, PersonID);
+                return new clsMember(MemberID, LibraryCardNumber, PersonID);
             else
                 return null;
         }

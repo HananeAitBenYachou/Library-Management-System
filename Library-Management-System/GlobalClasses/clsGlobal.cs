@@ -10,8 +10,40 @@ namespace LibraryManagementSystem.GlobalClasses
 {
     public static class clsGlobal
     {
-        public static clsUser CurrentUser;
-        public static clsMember CurrentMember = clsMember.Find(2);
+        public enum enLoginMode { User= 1 , Member = 2};
+
+        public static enLoginMode LoginMode { get; private set; }
+
+        private static clsUser _CurrentUser;
+        public static clsUser CurrentUser
+        {
+            set
+            {
+                _CurrentUser = value;
+                LoginMode = enLoginMode.User;
+            }
+
+            get
+            {
+                return _CurrentUser;
+            }
+        }
+
+        private static clsMember _CurrentMember;
+        public static clsMember CurrentMember
+        {
+            set
+            {
+                _CurrentMember = value;
+                LoginMode = enLoginMode.Member;
+            }
+
+            get
+            {
+                return _CurrentMember;
+            }
+
+        }
 
         public static bool StorePersonCredentials(string Email ,string Password)
         {
