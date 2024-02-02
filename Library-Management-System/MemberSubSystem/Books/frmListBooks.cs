@@ -23,7 +23,6 @@ namespace LibraryManagementSystem.MemberSubSystem.Books
 
         private void _RefreshBooksList()
         {
-
             foreach (DataRow row in
                 clsBook.GetAllAvailbleBooksForMember(clsGlobal.CurrentMember.MemberID).Rows)
             {
@@ -40,7 +39,6 @@ namespace LibraryManagementSystem.MemberSubSystem.Books
         private void frmListBooks_Load(object sender, EventArgs e)
         {
         }
-
 
     }
 }

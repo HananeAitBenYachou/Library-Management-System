@@ -21,12 +21,14 @@ namespace LibraryManagementSystem.Borrowings_Returns
         {
             InitializeComponent();
             _BookCopyID = bookCopyID;
-  
+            clsGlobal.CurrentUser = clsUser.Find(6);
         }
 
         public frmReturnBook()
         {
             InitializeComponent();
+            clsGlobal.CurrentUser = clsUser.Find(6);
+
         }
 
         private void HandleBookCopyFound(object sender, int? bookCopyID)
@@ -56,14 +58,12 @@ namespace LibraryManagementSystem.Borrowings_Returns
         }
 
         private void frmReturnBook_Load(object sender, EventArgs e)
-        {
-            if (_BookCopyID.HasValue)
-            {
-                ucBookCopyCardWithFilter1.LoadBookCopyData(_BookCopyID);
-            }
-
+        {           
             lblActualReturnDate.Text = DateTime.Now.ToShortDateString();    
             ucBookCopyCardWithFilter1.BookCopyFound += HandleBookCopyFound;
+
+            if (_BookCopyID.HasValue)
+                ucBookCopyCardWithFilter1.LoadBookCopyData(_BookCopyID);       
         }
 
         private void btnClose_Click(object sender, EventArgs e)

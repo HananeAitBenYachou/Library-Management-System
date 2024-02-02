@@ -138,5 +138,15 @@ namespace Library_BusinessLayer
             return clsBorrowingRecordData.ReturnBorrowedBook(this.BorrowingRecordID);
         }
 
+        public static int GetBorrowingsCount()
+        {
+            return clsBorrowingRecordData.GetBorrowingsCount();
+        }
+
+        public static int GetReturnsCount()
+        {
+            return clsBorrowingRecordData.GetReturnsCount();
+        }
+
     }
 }

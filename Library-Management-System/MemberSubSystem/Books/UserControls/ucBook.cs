@@ -53,13 +53,24 @@ namespace LibraryManagementSystem.MemberSubSystem.Books.UserControls
             btnViewBookDetails.Enabled = false;          
         }
 
+        private void _SetUserControlAppearance()
+        {
+            btnBorrowBook.Visible = clsGlobal.LoginMode == clsGlobal.enLoginMode.Member;
+            btnViewBookDetails.Enabled = clsGlobal.LoginMode == clsGlobal.enLoginMode.Member;
+            this.Size = clsGlobal.LoginMode == clsGlobal.enLoginMode.Member
+                ? new Size(316, 328) : new Size(316, 259);
+        }
+
         public void LoadBookDetails(int? bookID)
         {
+            _SetUserControlAppearance(); 
+
             _Book = clsBook.Find(bookID);
 
             if (_Book == null)
             {
-                MessageBox.Show($"No book with ID = {bookID} was found in the system !", "Not Found !", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"No book with ID = {bookID} was found in the system !", "Not Found !", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 _ResetDefaultValues();
                 return;
             }

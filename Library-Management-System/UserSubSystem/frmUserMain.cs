@@ -9,6 +9,7 @@ using LibraryManagementSystem.GlobalClasses;
 using LibraryManagementSystem.Members;
 using LibraryManagementSystem.Reservations;
 using LibraryManagementSystem.Users;
+using LibraryManagementSystem.UserSubSystem;
 using LibraryManagementSystem.UserSubSystem.Global;
 using System;
 using System.Windows.Forms;
@@ -60,7 +61,7 @@ namespace LibraryManagementSystem
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-
+            btnDashboard.PerformClick();
         }
 
         private void btnUsers_Click(object sender, EventArgs e)
@@ -119,6 +120,12 @@ namespace LibraryManagementSystem
             this.Hide();
             _LoginForm.Show();
             this.Close();
+        }
+
+        private void btnDashboard_Click(object sender, EventArgs e)
+        {
+            _ShowForm((Guna2Button)sender, new frmDashboard());
+
         }
     }
 }

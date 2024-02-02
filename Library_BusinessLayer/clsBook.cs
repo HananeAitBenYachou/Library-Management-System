@@ -21,6 +21,7 @@ namespace Library_BusinessLayer
         public clsAuthor AuthorInfo { get; }
         public clsGenre GenreInfo { get;}
 
+        public enum enBookStatus { Available = 1 , Borrowed = 0};
         public clsBook()
         {
             _Mode = enMode.AddNew;
@@ -180,6 +181,16 @@ namespace Library_BusinessLayer
         public bool IsMemberHasActiveBorrowingForBook(int? MemberID)
         {
             return clsBookData.IsMemberHasActiveBorrowingForBook(this.BookID,MemberID);
+        }
+
+        public static int GetBooksCountPerStatus(enBookStatus bookStatus)
+        {
+            return clsBookData.GetBooksCountPerStatus((byte)bookStatus);
+        }
+
+        public static int GetBooksCount()
+        {
+            return clsBookData.GetBooksCount();
         }
 
     }

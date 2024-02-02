@@ -161,5 +161,11 @@ namespace Library_BusinessLayer
         {
             return this.PersonInfo.UpdatePersonPassword(PersonID, NewPassword);
         }
+
+        public static int GetUsersCount()
+        {
+            return clsUserData.GetUsersCount();
+        }
+
     }
 }

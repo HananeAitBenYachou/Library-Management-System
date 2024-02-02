@@ -65,6 +65,9 @@ namespace LibraryManagementSystem.Books.BookCopies
         private void _FindBookCopy()
         {
             ucBookCopyCard1.LoadBookCopyData(int.Parse(txtFilterValue.Text.Trim()));
+
+            if (BookCopyID.HasValue)
+                OnBookCopyFound(ucBookCopyCard1.BookCopyID);
         }
 
         private void ucBookCopyCardWithFilter_Load(object sender, EventArgs e)
@@ -79,10 +82,8 @@ namespace LibraryManagementSystem.Books.BookCopies
                 MessageBox.Show("Please enter the CopyID you want to search for !", "Validation Error!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            _FindBookCopy();
 
-            if (FilterEnabled && BookCopyID.HasValue)
-                OnBookCopyFound(ucBookCopyCard1.BookCopyID);
+            _FindBookCopy();
         }
 
         private void txtFilterValue_Validating(object sender, CancelEventArgs e)

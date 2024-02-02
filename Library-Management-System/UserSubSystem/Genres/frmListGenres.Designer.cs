@@ -65,7 +65,7 @@
             "None",
             "Genre ID",
             "Genre Name"});
-            this.cbFilterByOptions.Location = new System.Drawing.Point(121, 297);
+            this.cbFilterByOptions.Location = new System.Drawing.Point(121, 325);
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(231, 41);
             this.cbFilterByOptions.TabIndex = 58;
@@ -100,7 +100,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvGenresList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvGenresList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.dgvGenresList.Location = new System.Drawing.Point(28, 354);
+            this.dgvGenresList.Location = new System.Drawing.Point(28, 395);
             this.dgvGenresList.MultiSelect = false;
             this.dgvGenresList.Name = "dgvGenresList";
             this.dgvGenresList.ReadOnly = true;
@@ -116,7 +116,7 @@
             this.dgvGenresList.RowHeadersVisible = false;
             this.dgvGenresList.RowHeadersWidth = 50;
             this.dgvGenresList.RowTemplate.Height = 35;
-            this.dgvGenresList.Size = new System.Drawing.Size(1213, 329);
+            this.dgvGenresList.Size = new System.Drawing.Size(1234, 329);
             this.dgvGenresList.TabIndex = 57;
             this.dgvGenresList.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.GreenSea;
             this.dgvGenresList.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
@@ -200,7 +200,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(28, 306);
+            this.label3.Location = new System.Drawing.Point(28, 334);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 23);
             this.label3.TabIndex = 62;
@@ -219,7 +219,7 @@
             this.txtFilterValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.txtFilterValue.ForeColor = System.Drawing.Color.Black;
             this.txtFilterValue.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFilterValue.Location = new System.Drawing.Point(383, 291);
+            this.txtFilterValue.Location = new System.Drawing.Point(383, 319);
             this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.PasswordChar = '\0';
@@ -235,7 +235,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
-            this.label1.Location = new System.Drawing.Point(501, 148);
+            this.label1.Location = new System.Drawing.Point(501, 177);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(268, 46);
             this.label1.TabIndex = 55;
@@ -250,7 +250,7 @@
             this.btnAddGenre.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnAddGenre.ImageRotate = 0F;
             this.btnAddGenre.ImageSize = new System.Drawing.Size(75, 75);
-            this.btnAddGenre.Location = new System.Drawing.Point(1176, 274);
+            this.btnAddGenre.Location = new System.Drawing.Point(1176, 302);
             this.btnAddGenre.Name = "btnAddGenre";
             this.btnAddGenre.PressedState.ImageSize = new System.Drawing.Size(40, 40);
             this.btnAddGenre.ShadowDecoration.BorderRadius = 0;
@@ -264,7 +264,7 @@
             // 
             this.guna2PictureBox1.Image = global::LibraryManagementSystem.Properties.Resources.online_library;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(508, 14);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(508, 43);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(241, 131);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -276,7 +276,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1268, 696);
+            this.ClientSize = new System.Drawing.Size(1286, 743);
             this.Controls.Add(this.cbFilterByOptions);
             this.Controls.Add(this.dgvGenresList);
             this.Controls.Add(this.label3);
@@ -284,7 +284,7 @@
             this.Controls.Add(this.btnAddGenre);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2PictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmListGenres";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "List Genres";

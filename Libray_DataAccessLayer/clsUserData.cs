@@ -403,5 +403,34 @@ namespace Library_DataAccessLayer
             return Datatable;
         }
 
+        public static int GetUsersCount()
+        {
+            int count = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT COUNT(*) FROM Users;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        object reader = command.ExecuteScalar();
+
+                        if (reader != null && int.TryParse(reader.ToString(), out int Count))
+                        {
+                            count = Count;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return count;
+        }
+
     }
 }

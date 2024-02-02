@@ -67,7 +67,7 @@
             "Author ID",
             "Name",
             "Nationality"});
-            this.cbFilterByOptions.Location = new System.Drawing.Point(121, 297);
+            this.cbFilterByOptions.Location = new System.Drawing.Point(121, 311);
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(231, 41);
             this.cbFilterByOptions.TabIndex = 50;
@@ -102,7 +102,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvAuthorsList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAuthorsList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.dgvAuthorsList.Location = new System.Drawing.Point(28, 354);
+            this.dgvAuthorsList.Location = new System.Drawing.Point(28, 385);
             this.dgvAuthorsList.MultiSelect = false;
             this.dgvAuthorsList.Name = "dgvAuthorsList";
             this.dgvAuthorsList.ReadOnly = true;
@@ -118,7 +118,7 @@
             this.dgvAuthorsList.RowHeadersVisible = false;
             this.dgvAuthorsList.RowHeadersWidth = 50;
             this.dgvAuthorsList.RowTemplate.Height = 35;
-            this.dgvAuthorsList.Size = new System.Drawing.Size(1213, 329);
+            this.dgvAuthorsList.Size = new System.Drawing.Size(1235, 329);
             this.dgvAuthorsList.TabIndex = 49;
             this.dgvAuthorsList.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.GreenSea;
             this.dgvAuthorsList.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
@@ -202,7 +202,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(28, 306);
+            this.label3.Location = new System.Drawing.Point(28, 320);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 23);
             this.label3.TabIndex = 54;
@@ -219,7 +219,7 @@
             this.cbCountries.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.cbCountries.ForeColor = System.Drawing.Color.Black;
             this.cbCountries.ItemHeight = 40;
-            this.cbCountries.Location = new System.Drawing.Point(383, 293);
+            this.cbCountries.Location = new System.Drawing.Point(383, 307);
             this.cbCountries.Name = "cbCountries";
             this.cbCountries.Size = new System.Drawing.Size(231, 46);
             this.cbCountries.TabIndex = 53;
@@ -239,7 +239,7 @@
             this.txtFilterValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.txtFilterValue.ForeColor = System.Drawing.Color.Black;
             this.txtFilterValue.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFilterValue.Location = new System.Drawing.Point(383, 291);
+            this.txtFilterValue.Location = new System.Drawing.Point(383, 305);
             this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.PasswordChar = '\0';
@@ -255,7 +255,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
-            this.label1.Location = new System.Drawing.Point(486, 148);
+            this.label1.Location = new System.Drawing.Point(486, 173);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(286, 46);
             this.label1.TabIndex = 47;
@@ -269,7 +269,7 @@
             this.btnAddAuthor.Image = global::LibraryManagementSystem.Properties.Resources.editor1;
             this.btnAddAuthor.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnAddAuthor.ImageRotate = 0F;
-            this.btnAddAuthor.Location = new System.Drawing.Point(1176, 274);
+            this.btnAddAuthor.Location = new System.Drawing.Point(1198, 289);
             this.btnAddAuthor.Name = "btnAddAuthor";
             this.btnAddAuthor.PressedState.ImageSize = new System.Drawing.Size(40, 40);
             this.btnAddAuthor.ShadowDecoration.BorderRadius = 0;
@@ -283,7 +283,7 @@
             // 
             this.guna2PictureBox1.Image = global::LibraryManagementSystem.Properties.Resources.quill;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(508, 14);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(508, 39);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(241, 131);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -295,7 +295,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1268, 696);
+            this.ClientSize = new System.Drawing.Size(1286, 743);
             this.Controls.Add(this.cbFilterByOptions);
             this.Controls.Add(this.dgvAuthorsList);
             this.Controls.Add(this.label3);
@@ -304,7 +304,7 @@
             this.Controls.Add(this.btnAddAuthor);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2PictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmListAuthors";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "List Authors";

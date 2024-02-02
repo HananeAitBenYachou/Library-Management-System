@@ -3,6 +3,7 @@ using Libray_DataAccessLayer;
 using System;
 using System.Data;
 using System.Data.SqlClient;
+using System.Net;
 
 
 namespace Library_DataAccessLayer
@@ -453,6 +454,67 @@ namespace Library_DataAccessLayer
                 IsFound = false;
             }
             return IsFound;
+        }
+
+        public static int GetBooksCountPerStatus(byte AvailabilityStatus)
+        {
+            int booksCount = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT COUNT(*) FROM BookCopies
+                                    WHERE AvailabilityStatus = @AvailabilityStatus;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@AvailabilityStatus", (object)AvailabilityStatus ?? DBNull.Value);
+
+                        object reader = command.ExecuteScalar();
+
+                        if (reader != null && int.TryParse(reader.ToString(), out int Count))
+                        {
+                            booksCount = Count;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return booksCount;
+        }
+
+        public static int GetBooksCount()
+        {
+            int count = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT COUNT(*) FROM Books;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        object reader = command.ExecuteScalar();
+
+                        if (reader != null && int.TryParse(reader.ToString(), out int Count))
+                        {
+                            count = Count;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return count;
         }
 
     }

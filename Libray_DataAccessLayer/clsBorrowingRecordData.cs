@@ -429,5 +429,66 @@ namespace Library_DataAccessLayer
             return rowsAffected != 0;
         }
 
+        public static int GetBorrowingsCount()
+        {
+            int count = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT COUNT(*) FROM BorrowingRecords 
+                                     WHERE ActualReturnDate IS NULL;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        object reader = command.ExecuteScalar();
+
+                        if (reader != null && int.TryParse(reader.ToString(), out int Count))
+                        {
+                            count = Count;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return count;
+        }
+
+        public static int GetReturnsCount()
+        {
+            int count = 0;
+
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
+                {
+                    connection.Open();
+                    string query = @"SELECT COUNT(*) FROM BorrowingRecords 
+                                     WHERE ActualReturnDate IS NOT NULL;";
+
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        object reader = command.ExecuteScalar();
+
+                        if (reader != null && int.TryParse(reader.ToString(), out int Count))
+                        {
+                            count = Count;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                clsErrorLogger.LogError(ex);
+            }
+            return count;
+        }
+
+
     }
 }
