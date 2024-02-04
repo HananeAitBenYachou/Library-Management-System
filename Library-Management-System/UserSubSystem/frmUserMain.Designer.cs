@@ -29,10 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.sPanel1 = new Sipaa.Framework.SPanel();
+            this.pnlContainer = new Sipaa.Framework.SPanel();
+            this.lblUserFullName = new System.Windows.Forms.Label();
+            this.lblUserRole = new System.Windows.Forms.Label();
+            this.guna2VSeparator1 = new Guna.UI2.WinForms.Guna2VSeparator();
+            this.btnExit = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnShowUserProfile = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.pbUserImage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.btnFines = new Guna.UI2.WinForms.Guna2Button();
-            this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.btnUsers = new Guna.UI2.WinForms.Guna2Button();
             this.btnReservations = new Guna.UI2.WinForms.Guna2Button();
             this.btnBorrowings = new Guna.UI2.WinForms.Guna2Button();
@@ -41,10 +48,12 @@
             this.btnGenres = new Guna.UI2.WinForms.Guna2Button();
             this.btnBooks = new Guna.UI2.WinForms.Guna2Button();
             this.btnDashboard = new Guna.UI2.WinForms.Guna2Button();
-            this.pnlContainer = new Sipaa.Framework.SPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.sPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -61,7 +70,6 @@
             this.sPanel1.BorderRadius = 80;
             this.sPanel1.BorderSize = 0;
             this.sPanel1.Controls.Add(this.btnFines);
-            this.sPanel1.Controls.Add(this.btnLogout);
             this.sPanel1.Controls.Add(this.btnUsers);
             this.sPanel1.Controls.Add(this.btnReservations);
             this.sPanel1.Controls.Add(this.btnBorrowings);
@@ -70,11 +78,93 @@
             this.sPanel1.Controls.Add(this.btnGenres);
             this.sPanel1.Controls.Add(this.btnBooks);
             this.sPanel1.Controls.Add(this.btnDashboard);
+            this.sPanel1.Controls.Add(this.guna2PictureBox1);
             this.sPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.sPanel1.Location = new System.Drawing.Point(-71, 102);
+            this.sPanel1.Location = new System.Drawing.Point(-71, 100);
             this.sPanel1.Name = "sPanel1";
-            this.sPanel1.Size = new System.Drawing.Size(350, 868);
+            this.sPanel1.Size = new System.Drawing.Size(350, 883);
             this.sPanel1.TabIndex = 1;
+            // 
+            // pnlContainer
+            // 
+            this.pnlContainer.BackColor = System.Drawing.Color.White;
+            this.pnlContainer.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.pnlContainer.BorderRadius = 6;
+            this.pnlContainer.BorderSize = 0;
+            this.pnlContainer.ForeColor = System.Drawing.Color.White;
+            this.pnlContainer.Location = new System.Drawing.Point(296, 125);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(1286, 743);
+            this.pnlContainer.TabIndex = 3;
+            // 
+            // lblUserFullName
+            // 
+            this.lblUserFullName.AutoSize = true;
+            this.lblUserFullName.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserFullName.ForeColor = System.Drawing.Color.SandyBrown;
+            this.lblUserFullName.Location = new System.Drawing.Point(1297, 19);
+            this.lblUserFullName.Name = "lblUserFullName";
+            this.lblUserFullName.Size = new System.Drawing.Size(76, 21);
+            this.lblUserFullName.TabIndex = 5;
+            this.lblUserFullName.Text = "Jone Doe";
+            // 
+            // lblUserRole
+            // 
+            this.lblUserRole.AutoSize = true;
+            this.lblUserRole.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserRole.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
+            this.lblUserRole.Location = new System.Drawing.Point(1297, 42);
+            this.lblUserRole.Name = "lblUserRole";
+            this.lblUserRole.Size = new System.Drawing.Size(56, 21);
+            this.lblUserRole.TabIndex = 6;
+            this.lblUserRole.Text = "Admin";
+            // 
+            // guna2VSeparator1
+            // 
+            this.guna2VSeparator1.FillThickness = 2;
+            this.guna2VSeparator1.Location = new System.Drawing.Point(1483, 19);
+            this.guna2VSeparator1.Name = "guna2VSeparator1";
+            this.guna2VSeparator1.Size = new System.Drawing.Size(10, 48);
+            this.guna2VSeparator1.TabIndex = 7;
+            // 
+            // btnExit
+            // 
+            this.btnExit.Image = global::LibraryManagementSystem.Properties.Resources.logout__1_1;
+            this.btnExit.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnExit.ImageRotate = 0F;
+            this.btnExit.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnExit.Location = new System.Drawing.Point(1553, 34);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(25, 25);
+            this.btnExit.TabIndex = 9;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnShowUserProfile
+            // 
+            this.btnShowUserProfile.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnShowUserProfile.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnShowUserProfile.Image = global::LibraryManagementSystem.Properties.Resources.user_avatar__1_;
+            this.btnShowUserProfile.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnShowUserProfile.ImageRotate = 0F;
+            this.btnShowUserProfile.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnShowUserProfile.Location = new System.Drawing.Point(1515, 33);
+            this.btnShowUserProfile.Name = "btnShowUserProfile";
+            this.btnShowUserProfile.PressedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnShowUserProfile.Size = new System.Drawing.Size(25, 25);
+            this.btnShowUserProfile.TabIndex = 8;
+            this.btnShowUserProfile.Click += new System.EventHandler(this.btnShowUserProfile_Click);
+            // 
+            // pbUserImage
+            // 
+            this.pbUserImage.Image = global::LibraryManagementSystem.Properties.Resources.man1;
+            this.pbUserImage.ImageRotate = 0F;
+            this.pbUserImage.Location = new System.Drawing.Point(1401, 9);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.pbUserImage.Size = new System.Drawing.Size(64, 64);
+            this.pbUserImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbUserImage.TabIndex = 4;
+            this.pbUserImage.TabStop = false;
             // 
             // btnFines
             // 
@@ -96,7 +186,7 @@
             this.btnFines.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnFines.ImageOffset = new System.Drawing.Point(20, 0);
             this.btnFines.ImageSize = new System.Drawing.Size(40, 40);
-            this.btnFines.Location = new System.Drawing.Point(83, 489);
+            this.btnFines.Location = new System.Drawing.Point(83, 469);
             this.btnFines.Name = "btnFines";
             this.btnFines.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnFines.Size = new System.Drawing.Size(219, 52);
@@ -105,36 +195,6 @@
             this.btnFines.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnFines.TextOffset = new System.Drawing.Point(25, 0);
             this.btnFines.Click += new System.EventHandler(this.btnFines_Click);
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.BorderRadius = 23;
-            this.btnLogout.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnLogout.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnLogout.CheckedState.Image = global::LibraryManagementSystem.Properties.Resources.logout__1_;
-            this.btnLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.HoverState.FillColor = System.Drawing.Color.White;
-            this.btnLogout.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnLogout.HoverState.Image = global::LibraryManagementSystem.Properties.Resources.logout__1_;
-            this.btnLogout.Image = global::LibraryManagementSystem.Properties.Resources.logout;
-            this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogout.ImageOffset = new System.Drawing.Point(25, 0);
-            this.btnLogout.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLogout.Location = new System.Drawing.Point(83, 739);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
-            this.btnLogout.Size = new System.Drawing.Size(219, 52);
-            this.btnLogout.TabIndex = 15;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogout.TextOffset = new System.Drawing.Point(40, 0);
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnUsers
             // 
@@ -156,7 +216,7 @@
             this.btnUsers.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnUsers.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnUsers.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnUsers.Location = new System.Drawing.Point(80, 551);
+            this.btnUsers.Location = new System.Drawing.Point(83, 531);
             this.btnUsers.Name = "btnUsers";
             this.btnUsers.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnUsers.Size = new System.Drawing.Size(219, 52);
@@ -186,7 +246,7 @@
             this.btnReservations.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnReservations.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnReservations.ImageSize = new System.Drawing.Size(26, 26);
-            this.btnReservations.Location = new System.Drawing.Point(80, 426);
+            this.btnReservations.Location = new System.Drawing.Point(83, 406);
             this.btnReservations.Name = "btnReservations";
             this.btnReservations.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnReservations.Size = new System.Drawing.Size(219, 52);
@@ -216,7 +276,7 @@
             this.btnBorrowings.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBorrowings.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnBorrowings.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnBorrowings.Location = new System.Drawing.Point(80, 363);
+            this.btnBorrowings.Location = new System.Drawing.Point(83, 343);
             this.btnBorrowings.Name = "btnBorrowings";
             this.btnBorrowings.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnBorrowings.Size = new System.Drawing.Size(219, 52);
@@ -246,7 +306,7 @@
             this.btnMembers.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnMembers.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnMembers.ImageSize = new System.Drawing.Size(26, 26);
-            this.btnMembers.Location = new System.Drawing.Point(80, 300);
+            this.btnMembers.Location = new System.Drawing.Point(83, 280);
             this.btnMembers.Name = "btnMembers";
             this.btnMembers.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnMembers.Size = new System.Drawing.Size(219, 52);
@@ -276,7 +336,7 @@
             this.btnAuthors.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnAuthors.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnAuthors.ImageSize = new System.Drawing.Size(26, 26);
-            this.btnAuthors.Location = new System.Drawing.Point(80, 237);
+            this.btnAuthors.Location = new System.Drawing.Point(83, 217);
             this.btnAuthors.Name = "btnAuthors";
             this.btnAuthors.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnAuthors.Size = new System.Drawing.Size(219, 52);
@@ -306,7 +366,7 @@
             this.btnGenres.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnGenres.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnGenres.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnGenres.Location = new System.Drawing.Point(80, 174);
+            this.btnGenres.Location = new System.Drawing.Point(83, 154);
             this.btnGenres.Name = "btnGenres";
             this.btnGenres.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnGenres.Size = new System.Drawing.Size(219, 52);
@@ -336,7 +396,7 @@
             this.btnBooks.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnBooks.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnBooks.ImageSize = new System.Drawing.Size(26, 26);
-            this.btnBooks.Location = new System.Drawing.Point(80, 111);
+            this.btnBooks.Location = new System.Drawing.Point(83, 91);
             this.btnBooks.Name = "btnBooks";
             this.btnBooks.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnBooks.Size = new System.Drawing.Size(219, 52);
@@ -366,7 +426,7 @@
             this.btnDashboard.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnDashboard.ImageOffset = new System.Drawing.Point(25, 0);
             this.btnDashboard.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnDashboard.Location = new System.Drawing.Point(80, 48);
+            this.btnDashboard.Location = new System.Drawing.Point(83, 28);
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
             this.btnDashboard.Size = new System.Drawing.Size(219, 52);
@@ -376,27 +436,26 @@
             this.btnDashboard.TextOffset = new System.Drawing.Point(40, 0);
             this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
             // 
-            // pnlContainer
-            // 
-            this.pnlContainer.BackColor = System.Drawing.Color.White;
-            this.pnlContainer.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.pnlContainer.BorderRadius = 6;
-            this.pnlContainer.BorderSize = 0;
-            this.pnlContainer.ForeColor = System.Drawing.Color.White;
-            this.pnlContainer.Location = new System.Drawing.Point(296, 150);
-            this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(1286, 743);
-            this.pnlContainer.TabIndex = 3;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LibraryManagementSystem.Properties.Resources.bookworm_high_resolution_logo_transparent__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(262, 96);
+            this.pictureBox1.Size = new System.Drawing.Size(225, 76);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(51, 596);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(307, 225);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 16;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // frmMain
             // 
@@ -404,6 +463,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1605, 917);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnShowUserProfile);
+            this.Controls.Add(this.guna2VSeparator1);
+            this.Controls.Add(this.lblUserRole);
+            this.Controls.Add(this.lblUserFullName);
+            this.Controls.Add(this.pbUserImage);
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.sPanel1);
             this.Controls.Add(this.pictureBox1);
@@ -413,8 +478,11 @@
             this.Text = "frmMain";
             this.Load += new System.EventHandler(this.frmMain_Load);
             this.sPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -432,8 +500,14 @@
         private Guna.UI2.WinForms.Guna2Button btnGenres;
         private Guna.UI2.WinForms.Guna2Button btnBooks;
         private Sipaa.Framework.SPanel pnlContainer;
-        private Guna.UI2.WinForms.Guna2Button btnLogout;
         private Guna.UI2.WinForms.Guna2Button btnFines;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox pbUserImage;
+        private System.Windows.Forms.Label lblUserRole;
+        private System.Windows.Forms.Label lblUserFullName;
+        private Guna.UI2.WinForms.Guna2VSeparator guna2VSeparator1;
+        private Guna.UI2.WinForms.Guna2ImageButton btnExit;
+        private Guna.UI2.WinForms.Guna2ImageButton btnShowUserProfile;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }
 

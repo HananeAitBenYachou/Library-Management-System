@@ -59,8 +59,18 @@ namespace LibraryManagementSystem
             frm.Show();
         }
 
+        private void _LoadLoggedInUserInfo()
+        {
+            lblUserRole.Text = clsGlobal.CurrentUser.UserRole.ToString();
+            lblUserFullName.Text = clsGlobal.CurrentUser.PersonInfo.FullName;
+
+            if (clsGlobal.CurrentUser.PersonInfo.PersonalImagePath != null)
+                pbUserImage.ImageLocation = clsGlobal.CurrentUser.PersonInfo.PersonalImagePath;
+        }
+
         private void frmMain_Load(object sender, EventArgs e)
         {
+            _LoadLoggedInUserInfo();
             btnDashboard.PerformClick();
         }
 
@@ -110,22 +120,23 @@ namespace LibraryManagementSystem
                 _ShowForm((Guna2Button)sender, new frmListReservations());
         }
 
-        private void btnPayments_Click(object sender, EventArgs e)
+        private void btnDashboard_Click(object sender, EventArgs e)
         {
+            _ShowForm((Guna2Button)sender, new frmDashboard());
 
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Hide();
             _LoginForm.Show();
             this.Close();
         }
 
-        private void btnDashboard_Click(object sender, EventArgs e)
+        private void btnShowUserProfile_Click(object sender, EventArgs e)
         {
-            _ShowForm((Guna2Button)sender, new frmDashboard());
-
+            frmShowUserDetails frm = new frmShowUserDetails(clsGlobal.CurrentUser.UserID);
+            frm.ShowDialog();
         }
     }
 }

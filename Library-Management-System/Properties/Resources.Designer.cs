@@ -563,6 +563,16 @@ namespace LibraryManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logout__1_1 {
+            get {
+                object obj = ResourceManager.GetObject("logout (1)1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap male {
             get {
                 object obj = ResourceManager.GetObject("male", resourceCulture);
@@ -576,6 +586,16 @@ namespace LibraryManagementSystem.Properties {
         internal static System.Drawing.Bitmap man {
             get {
                 object obj = ResourceManager.GetObject("man", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap man1 {
+            get {
+                object obj = ResourceManager.GetObject("man1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -996,6 +1016,16 @@ namespace LibraryManagementSystem.Properties {
         internal static System.Drawing.Bitmap user {
             get {
                 object obj = ResourceManager.GetObject("user", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user_avatar__1_ {
+            get {
+                object obj = ResourceManager.GetObject("user-avatar (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

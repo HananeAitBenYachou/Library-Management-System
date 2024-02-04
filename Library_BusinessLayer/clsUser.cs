@@ -26,6 +26,16 @@ namespace Library_BusinessLayer
             eAll = -1
         }
 
+        public enum enUserRole { Admin = 1 , Assistant = 2 }
+
+        public enUserRole UserRole
+        {
+            get
+            {
+                return this.Permissions == -1 ? enUserRole.Admin : enUserRole.Assistant;
+            }
+        }
+
         public clsUser()
         {
             _Mode = enMode.AddNew;
