@@ -1,4 +1,6 @@
 ﻿using Guna.UI2.WinForms;
+using LibraryManagementSystem.GlobalClasses;
+using LibraryManagementSystem.Members;
 using LibraryManagementSystem.MemberSubSystem;
 using LibraryManagementSystem.MemberSubSystem.Books;
 using LibraryManagementSystem.MemberSubSystem.Fines;
@@ -40,6 +42,14 @@ namespace LibraryManagementSystem
             frm.Show();
         }
 
+        private void _LoadLoggedInUserInfo()
+        {
+            lblMemberFullName.Text = clsGlobal.CurrentMember.PersonInfo.FullName;
+
+            if (clsGlobal.CurrentMember.PersonInfo.PersonalImagePath != null)
+                pbMemberImage.ImageLocation = clsGlobal.CurrentMember.PersonInfo.PersonalImagePath;
+        }
+
         private void btnBooks_Click(object sender, EventArgs e)
         {
             _ShowForm((Guna2Button)sender, new frmListBooks());
@@ -60,18 +70,23 @@ namespace LibraryManagementSystem
             _ShowForm((Guna2Button)sender, new frmListMemberReservations());
         }
 
-        private void btnLogout_Click(object sender, EventArgs e)
+        private void frmMemberMain_Load(object sender, EventArgs e)
+        {
+            _LoadLoggedInUserInfo();
+            btnBooks.PerformClick(); 
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
         {
             this.Hide();
             _LoginForm.Show();
             this.Close();
         }
 
-        private void frmMemberMain_Load(object sender, EventArgs e)
+        private void btnShowMemberProfile_Click(object sender, EventArgs e)
         {
-            btnBooks.PerformClick(); 
+            frmShowMemberDetails frm = new frmShowMemberDetails(clsGlobal.CurrentMember.MemberID);
+            frm.ShowDialog();
         }
-
-     
     }
 }

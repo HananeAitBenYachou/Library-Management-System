@@ -36,9 +36,5 @@ namespace LibraryManagementSystem.MemberSubSystem.Books
             }         
         }
 
-        private void frmListBooks_Load(object sender, EventArgs e)
-        {
-        }
-
     }
 }

@@ -29,17 +29,26 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMemberMain));
             this.guna2BorderlessForm1 = new Guna.UI2.WinForms.Guna2BorderlessForm(this.components);
             this.sPanel1 = new Sipaa.Framework.SPanel();
             this.btnFines = new Guna.UI2.WinForms.Guna2Button();
-            this.btnLogout = new Guna.UI2.WinForms.Guna2Button();
             this.btnReservations = new Guna.UI2.WinForms.Guna2Button();
             this.btnBorrowings = new Guna.UI2.WinForms.Guna2Button();
             this.btnBooks = new Guna.UI2.WinForms.Guna2Button();
             this.pnlContainer = new Sipaa.Framework.SPanel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnExit = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.btnShowMemberProfile = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.guna2VSeparator1 = new Guna.UI2.WinForms.Guna2VSeparator();
+            this.label = new System.Windows.Forms.Label();
+            this.lblMemberFullName = new System.Windows.Forms.Label();
+            this.pbMemberImage = new Guna.UI2.WinForms.Guna2CirclePictureBox();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.sPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMemberImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2BorderlessForm1
@@ -55,15 +64,15 @@
             this.sPanel1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
             this.sPanel1.BorderRadius = 80;
             this.sPanel1.BorderSize = 0;
+            this.sPanel1.Controls.Add(this.guna2PictureBox1);
             this.sPanel1.Controls.Add(this.btnFines);
-            this.sPanel1.Controls.Add(this.btnLogout);
             this.sPanel1.Controls.Add(this.btnReservations);
             this.sPanel1.Controls.Add(this.btnBorrowings);
             this.sPanel1.Controls.Add(this.btnBooks);
             this.sPanel1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.sPanel1.Location = new System.Drawing.Point(-71, 102);
+            this.sPanel1.Location = new System.Drawing.Point(-71, 100);
             this.sPanel1.Name = "sPanel1";
-            this.sPanel1.Size = new System.Drawing.Size(350, 868);
+            this.sPanel1.Size = new System.Drawing.Size(350, 883);
             this.sPanel1.TabIndex = 4;
             // 
             // btnFines
@@ -95,36 +104,6 @@
             this.btnFines.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.btnFines.TextOffset = new System.Drawing.Point(25, 0);
             this.btnFines.Click += new System.EventHandler(this.btnFines_Click);
-            // 
-            // btnLogout
-            // 
-            this.btnLogout.BorderRadius = 23;
-            this.btnLogout.CheckedState.FillColor = System.Drawing.Color.White;
-            this.btnLogout.CheckedState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnLogout.CheckedState.Image = global::LibraryManagementSystem.Properties.Resources.logout__1_;
-            this.btnLogout.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogout.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btnLogout.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btnLogout.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogout.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.btnLogout.ForeColor = System.Drawing.Color.White;
-            this.btnLogout.HoverState.FillColor = System.Drawing.Color.White;
-            this.btnLogout.HoverState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
-            this.btnLogout.HoverState.Image = global::LibraryManagementSystem.Properties.Resources.logout__1_;
-            this.btnLogout.Image = global::LibraryManagementSystem.Properties.Resources.logout;
-            this.btnLogout.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogout.ImageOffset = new System.Drawing.Point(25, 0);
-            this.btnLogout.ImageSize = new System.Drawing.Size(30, 30);
-            this.btnLogout.Location = new System.Drawing.Point(83, 739);
-            this.btnLogout.Name = "btnLogout";
-            this.btnLogout.PressedColor = System.Drawing.Color.FromArgb(((int)(((byte)(119)))), ((int)(((byte)(199)))), ((int)(((byte)(187)))));
-            this.btnLogout.Size = new System.Drawing.Size(219, 52);
-            this.btnLogout.TabIndex = 15;
-            this.btnLogout.Text = "Logout";
-            this.btnLogout.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.btnLogout.TextOffset = new System.Drawing.Point(40, 0);
-            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
             // btnReservations
             // 
@@ -223,7 +202,7 @@
             this.pnlContainer.BorderRadius = 6;
             this.pnlContainer.BorderSize = 0;
             this.pnlContainer.ForeColor = System.Drawing.Color.White;
-            this.pnlContainer.Location = new System.Drawing.Point(296, 150);
+            this.pnlContainer.Location = new System.Drawing.Point(296, 125);
             this.pnlContainer.Name = "pnlContainer";
             this.pnlContainer.Size = new System.Drawing.Size(1286, 743);
             this.pnlContainer.TabIndex = 6;
@@ -231,12 +210,93 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::LibraryManagementSystem.Properties.Resources.bookworm_high_resolution_logo_transparent__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(6, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(262, 96);
+            this.pictureBox1.Size = new System.Drawing.Size(225, 76);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
+            // 
+            // btnExit
+            // 
+            this.btnExit.HoverState.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnExit.Image = global::LibraryManagementSystem.Properties.Resources.logout__1_1;
+            this.btnExit.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnExit.ImageRotate = 0F;
+            this.btnExit.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnExit.Location = new System.Drawing.Point(1557, 32);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(25, 25);
+            this.btnExit.TabIndex = 15;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
+            // 
+            // btnShowMemberProfile
+            // 
+            this.btnShowMemberProfile.CheckedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnShowMemberProfile.HoverState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnShowMemberProfile.Image = global::LibraryManagementSystem.Properties.Resources.user_avatar__1_;
+            this.btnShowMemberProfile.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnShowMemberProfile.ImageRotate = 0F;
+            this.btnShowMemberProfile.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnShowMemberProfile.Location = new System.Drawing.Point(1519, 31);
+            this.btnShowMemberProfile.Name = "btnShowMemberProfile";
+            this.btnShowMemberProfile.PressedState.ImageSize = new System.Drawing.Size(30, 30);
+            this.btnShowMemberProfile.Size = new System.Drawing.Size(25, 25);
+            this.btnShowMemberProfile.TabIndex = 14;
+            this.btnShowMemberProfile.Click += new System.EventHandler(this.btnShowMemberProfile_Click);
+            // 
+            // guna2VSeparator1
+            // 
+            this.guna2VSeparator1.FillThickness = 2;
+            this.guna2VSeparator1.Location = new System.Drawing.Point(1487, 17);
+            this.guna2VSeparator1.Name = "guna2VSeparator1";
+            this.guna2VSeparator1.Size = new System.Drawing.Size(10, 48);
+            this.guna2VSeparator1.TabIndex = 13;
+            // 
+            // label
+            // 
+            this.label.AutoSize = true;
+            this.label.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(186)))), ((int)(((byte)(171)))));
+            this.label.Location = new System.Drawing.Point(1301, 40);
+            this.label.Name = "label";
+            this.label.Size = new System.Drawing.Size(70, 21);
+            this.label.TabIndex = 12;
+            this.label.Text = "Member";
+            // 
+            // lblMemberFullName
+            // 
+            this.lblMemberFullName.AutoSize = true;
+            this.lblMemberFullName.Font = new System.Drawing.Font("Calibri", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMemberFullName.ForeColor = System.Drawing.Color.SandyBrown;
+            this.lblMemberFullName.Location = new System.Drawing.Point(1301, 17);
+            this.lblMemberFullName.Name = "lblMemberFullName";
+            this.lblMemberFullName.Size = new System.Drawing.Size(76, 21);
+            this.lblMemberFullName.TabIndex = 11;
+            this.lblMemberFullName.Text = "Jone Doe";
+            // 
+            // pbMemberImage
+            // 
+            this.pbMemberImage.Image = global::LibraryManagementSystem.Properties.Resources.man1;
+            this.pbMemberImage.ImageRotate = 0F;
+            this.pbMemberImage.Location = new System.Drawing.Point(1405, 7);
+            this.pbMemberImage.Name = "pbMemberImage";
+            this.pbMemberImage.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.pbMemberImage.Size = new System.Drawing.Size(64, 64);
+            this.pbMemberImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbMemberImage.TabIndex = 10;
+            this.pbMemberImage.TabStop = false;
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(51, 596);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(307, 225);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.guna2PictureBox1.TabIndex = 17;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // frmMemberMain
             // 
@@ -244,6 +304,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1605, 917);
+            this.Controls.Add(this.btnExit);
+            this.Controls.Add(this.btnShowMemberProfile);
+            this.Controls.Add(this.guna2VSeparator1);
+            this.Controls.Add(this.label);
+            this.Controls.Add(this.lblMemberFullName);
+            this.Controls.Add(this.pbMemberImage);
             this.Controls.Add(this.sPanel1);
             this.Controls.Add(this.pnlContainer);
             this.Controls.Add(this.pictureBox1);
@@ -254,7 +320,10 @@
             this.Load += new System.EventHandler(this.frmMemberMain_Load);
             this.sPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbMemberImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -263,11 +332,17 @@
         private Guna.UI2.WinForms.Guna2BorderlessForm guna2BorderlessForm1;
         private Sipaa.Framework.SPanel sPanel1;
         private Guna.UI2.WinForms.Guna2Button btnFines;
-        private Guna.UI2.WinForms.Guna2Button btnLogout;
         private Guna.UI2.WinForms.Guna2Button btnReservations;
         private Guna.UI2.WinForms.Guna2Button btnBorrowings;
         private Guna.UI2.WinForms.Guna2Button btnBooks;
         private Sipaa.Framework.SPanel pnlContainer;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private Guna.UI2.WinForms.Guna2ImageButton btnExit;
+        private Guna.UI2.WinForms.Guna2ImageButton btnShowMemberProfile;
+        private Guna.UI2.WinForms.Guna2VSeparator guna2VSeparator1;
+        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.Label lblMemberFullName;
+        private Guna.UI2.WinForms.Guna2CirclePictureBox pbMemberImage;
+        private Guna.UI2.WinForms.Guna2PictureBox guna2PictureBox1;
     }
 }

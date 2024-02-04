@@ -66,7 +66,7 @@
             "Book Title",
             "Borrowed Copy ID",
             "Book Copy Status"});
-            this.cbFilterByOptions.Location = new System.Drawing.Point(121, 297);
+            this.cbFilterByOptions.Location = new System.Drawing.Point(121, 309);
             this.cbFilterByOptions.Name = "cbFilterByOptions";
             this.cbFilterByOptions.Size = new System.Drawing.Size(231, 41);
             this.cbFilterByOptions.TabIndex = 74;
@@ -101,7 +101,7 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvBorrowingsList.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvBorrowingsList.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(182)))), ((int)(((byte)(224)))), ((int)(((byte)(216)))));
-            this.dgvBorrowingsList.Location = new System.Drawing.Point(28, 354);
+            this.dgvBorrowingsList.Location = new System.Drawing.Point(12, 374);
             this.dgvBorrowingsList.MultiSelect = false;
             this.dgvBorrowingsList.Name = "dgvBorrowingsList";
             this.dgvBorrowingsList.ReadOnly = true;
@@ -117,7 +117,7 @@
             this.dgvBorrowingsList.RowHeadersVisible = false;
             this.dgvBorrowingsList.RowHeadersWidth = 50;
             this.dgvBorrowingsList.RowTemplate.Height = 35;
-            this.dgvBorrowingsList.Size = new System.Drawing.Size(1213, 329);
+            this.dgvBorrowingsList.Size = new System.Drawing.Size(1258, 351);
             this.dgvBorrowingsList.TabIndex = 73;
             this.dgvBorrowingsList.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.GreenSea;
             this.dgvBorrowingsList.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(185)))), ((int)(((byte)(226)))), ((int)(((byte)(218)))));
@@ -188,7 +188,7 @@
             this.cbBorrowedCopyStatus.Items.AddRange(new object[] {
             "Returned",
             "Borrowed"});
-            this.cbBorrowedCopyStatus.Location = new System.Drawing.Point(383, 293);
+            this.cbBorrowedCopyStatus.Location = new System.Drawing.Point(383, 305);
             this.cbBorrowedCopyStatus.Name = "cbBorrowedCopyStatus";
             this.cbBorrowedCopyStatus.Size = new System.Drawing.Size(231, 46);
             this.cbBorrowedCopyStatus.TabIndex = 78;
@@ -200,7 +200,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(28, 306);
+            this.label3.Location = new System.Drawing.Point(28, 318);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 23);
             this.label3.TabIndex = 77;
@@ -219,7 +219,7 @@
             this.txtFilterValue.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.txtFilterValue.ForeColor = System.Drawing.Color.Black;
             this.txtFilterValue.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtFilterValue.Location = new System.Drawing.Point(383, 291);
+            this.txtFilterValue.Location = new System.Drawing.Point(383, 303);
             this.txtFilterValue.Margin = new System.Windows.Forms.Padding(4);
             this.txtFilterValue.Name = "txtFilterValue";
             this.txtFilterValue.PasswordChar = '\0';
@@ -239,7 +239,7 @@
             this.btnAddBorrowing.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnAddBorrowing.ImageRotate = 0F;
             this.btnAddBorrowing.ImageSize = new System.Drawing.Size(75, 75);
-            this.btnAddBorrowing.Location = new System.Drawing.Point(1176, 274);
+            this.btnAddBorrowing.Location = new System.Drawing.Point(1199, 286);
             this.btnAddBorrowing.Name = "btnAddBorrowing";
             this.btnAddBorrowing.PressedState.ImageSize = new System.Drawing.Size(40, 40);
             this.btnAddBorrowing.ShadowDecoration.BorderRadius = 0;
@@ -254,7 +254,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 20F, System.Drawing.FontStyle.Bold);
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(57)))), ((int)(((byte)(139)))), ((int)(((byte)(127)))));
-            this.label1.Location = new System.Drawing.Point(449, 148);
+            this.label1.Location = new System.Drawing.Point(449, 174);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(344, 46);
             this.label1.TabIndex = 71;
@@ -264,7 +264,7 @@
             // 
             this.guna2PictureBox1.Image = global::LibraryManagementSystem.Properties.Resources._13_delivering_books;
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(508, 14);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(508, 40);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(241, 131);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -276,7 +276,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1268, 696);
+            this.ClientSize = new System.Drawing.Size(1286, 743);
             this.Controls.Add(this.cbFilterByOptions);
             this.Controls.Add(this.dgvBorrowingsList);
             this.Controls.Add(this.cbBorrowedCopyStatus);
@@ -285,7 +285,7 @@
             this.Controls.Add(this.btnAddBorrowing);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2PictureBox1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmListMemberBorrowings";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "List Member Borrowings";

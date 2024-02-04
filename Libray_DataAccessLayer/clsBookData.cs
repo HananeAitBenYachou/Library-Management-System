@@ -394,11 +394,12 @@ namespace Library_DataAccessLayer
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.connectionString))
                 {
                     connection.Open();
-                    string query = @"SELECT DISTINCT Books.BookID FROM Books
-	                                INNER JOIN BookCopies ON Books.BookID = BookCopies.BookID
-	                                INNER JOIN BorrowingRecords ON BookCopies.BookCopyID != BorrowingRecords.BookCopyID
-	                                WHERE AvailabilityStatus = 1 AND
-	                                MemberID = @MemberID AND ActualReturnDate IS NULL;";
+                    string query = @"SELECT BookID FROM Books
+                                    WHERE BookID NOT IN 
+                                    (SELECT BookID FROM BorrowingRecords
+                                    INNER JOIN BookCopies ON BorrowingRecords.BookCopyID = BookCopies.BookCopyID
+                                    WHERE ActualReturnDate IS NULL AND MemberID = @MemberID) 
+                                    AND (SELECT COUNT(*) FROM BookCopies WHERE BookID = Books.BookID AND AvailabilityStatus = 1) != 0;";
 
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
