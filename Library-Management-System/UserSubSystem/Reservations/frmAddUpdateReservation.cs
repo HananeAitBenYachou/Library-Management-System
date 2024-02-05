@@ -27,13 +27,14 @@ namespace LibraryManagementSystem.Reservations
 
         private int? _ReservationID = null;
 
-        public frmAddUpdateReservation()
+        public frmAddUpdateReservation(int? MemberID = null)
         {
             InitializeComponent();
             _Mode = enMode.AddNew;
+            _MemberID = MemberID;       
         }
 
-        public frmAddUpdateReservation(int? reservationID)
+        public frmAddUpdateReservation(int? reservationID, int? MemberID = null)
         {
             InitializeComponent();
             _Mode = enMode.Update;
@@ -56,18 +57,18 @@ namespace LibraryManagementSystem.Reservations
                 _Reservation = new clsReservation();
                 lblTitle.Text = "Add New Reservation";
                 ucBookCardWithFilter1.FilterFocus();
+
+                if (_MemberID.HasValue)
+                    ucMemberCardWithFilter1.LoadMemberData(_MemberID);
             }
 
             else
             {
                 lblTitle.Text = "Update Reservation";
             }
-
-            _Reservation = new clsReservation();
-            ucBookCardWithFilter1.FilterFocus();
-
+         
             btnToSecondPage.Enabled = _Mode == enMode.Update;
-            btnToLastPage.Enabled = _Mode == enMode.Update;
+            btnToLastPage.Enabled = _Mode == enMode.Update || _MemberID.HasValue;
 
             tpMemberInfo.Enabled = btnToSecondPage.Enabled;
             tpReservationInfo.Enabled = btnToLastPage.Enabled;
@@ -93,6 +94,8 @@ namespace LibraryManagementSystem.Reservations
             ucBookCardWithFilter1.LoadBookData(_Reservation.BookCopyInfo.BookID);
 
             lblReservationID.Text = _ReservationID.ToString();
+
+            dtpReservationDate.MinDate = _Reservation.ReservationDate.Value;
             dtpReservationDate.Value = _Reservation.ReservationDate.Value;
         }
 
@@ -107,6 +110,8 @@ namespace LibraryManagementSystem.Reservations
                 MessageBox.Show("Reservation data saved successfully !", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 lblReservationID.Text = _Reservation.ReservationID.ToString();
 
+                _Mode = enMode.Update;
+                lblTitle.Text = "Update Reservation";
                 ucMemberCardWithFilter1.FilterEnabled = false;
                 ucBookCardWithFilter1.FilterEnabled = false;
             }
@@ -182,7 +187,8 @@ namespace LibraryManagementSystem.Reservations
             {
                 tpMemberInfo.Enabled = true;
                 tcReservationInfo.SelectedTab = tpMemberInfo;
-                ucMemberCardWithFilter1.FilterFocus();
+                if (!_MemberID.HasValue)
+                    ucMemberCardWithFilter1.FilterFocus();
             }
         }
 

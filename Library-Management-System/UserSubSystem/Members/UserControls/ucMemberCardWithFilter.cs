@@ -80,6 +80,9 @@ namespace LibraryManagementSystem.Members.UserControls
                     ucMemberCard1.LoadMemberData(txtFilterValue.Text.Trim());
                     break;
             }
+
+            if (MemberID.HasValue)
+                OnMemberFound(ucMemberCard1.MemberID);
         }
 
         private void ucMemberCardWithFilter_Load(object sender, EventArgs e)
@@ -95,9 +98,6 @@ namespace LibraryManagementSystem.Members.UserControls
             }
 
             _FindMember();
-
-            if (FilterEnabled && MemberID.HasValue)
-                OnMemberFound(ucMemberCard1.MemberID);
         }
 
         private void btnAddNewMember_Click(object sender, EventArgs e)

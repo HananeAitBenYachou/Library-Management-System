@@ -124,7 +124,8 @@ namespace LibraryManagementSystem.MemberSubSystem.Reservations
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmAddUpdateReservation frm = new frmAddUpdateReservation((int)dgvReservationsList.CurrentRow.Cells[0].Value);
+            frmAddUpdateReservation frm = 
+                new frmAddUpdateReservation((int)dgvReservationsList.CurrentRow.Cells[0].Value,clsGlobal.CurrentMember.MemberID);
             frm.ShowDialog();
             _RefreshReservationsList();
         }
