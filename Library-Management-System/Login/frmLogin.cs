@@ -93,7 +93,7 @@ namespace LibraryManagementSystem
 
         private bool _SignIn()
         {
-            clsPerson person = clsPerson.Find(txtEmail.Text.Trim(), clsPasswordEncryptor.ComputeHash(txtPassword.Text.Trim()));
+            clsPerson person = clsPerson.Find(txtEmail.Text.Trim(), clsCryptoUtility.ComputeHash(txtPassword.Text.Trim()));
 
             if(person == null)
             {

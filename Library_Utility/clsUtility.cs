@@ -1,6 +1,7 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -67,11 +68,13 @@ namespace Library_Utility
             string valueName1 = "Email";
             string valueName2 = "Password";
 
+            string key = ConfigurationManager.AppSettings["Key"];
+
             try
             {
                 // Write the email and password to the Registry
-                Registry.SetValue(keyPath, valueName1, Email, RegistryValueKind.String);
-                Registry.SetValue(keyPath, valueName2, Password, RegistryValueKind.String);
+                Registry.SetValue(keyPath, valueName1, clsCryptoUtility.Encrypt(Email, key), RegistryValueKind.String);
+                Registry.SetValue(keyPath, valueName2, clsCryptoUtility.Encrypt(Password, key), RegistryValueKind.String);
 
                 return true;
             }
@@ -89,6 +92,8 @@ namespace Library_Utility
             string valueName1 = "Email";
             string valueName2 = "Password";
 
+            string key = ConfigurationManager.AppSettings["Key"];
+
             try
             {
                 // Read the email and password from the Registry
@@ -97,8 +102,8 @@ namespace Library_Utility
 
                 if(emailData != null && passwordData != null) 
                 {  
-                    Email = emailData;
-                    Password = passwordData;
+                    Email = clsCryptoUtility.Decrypt(emailData,key);
+                    Password = clsCryptoUtility.Decrypt(passwordData, key);
                     return true;
                 }
 

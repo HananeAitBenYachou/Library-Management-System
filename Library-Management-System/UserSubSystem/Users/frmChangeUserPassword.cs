@@ -33,7 +33,7 @@ namespace LibraryManagementSystem.Users
                 return;
             }
 
-            if (clsPasswordEncryptor.ComputeHash(txtCurrentPassword.Text.Trim()) != _User.PersonInfo.Password)
+            if (clsCryptoUtility.ComputeHash(txtCurrentPassword.Text.Trim()) != _User.PersonInfo.Password)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtCurrentPassword, "The password you entered is incorrect !");
@@ -85,7 +85,7 @@ namespace LibraryManagementSystem.Users
 
         private bool _UpdateUserPassword()
         {
-            return _User.UpdateUserPassword(clsPasswordEncryptor.ComputeHash(txtNewPassword.Text.Trim()));
+            return _User.UpdateUserPassword(clsCryptoUtility.ComputeHash(txtNewPassword.Text.Trim()));
         }
 
         private void btnSave_Click(object sender, EventArgs e)
